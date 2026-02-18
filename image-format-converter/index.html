@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert images between JPG, PNG, WebP, GIF, BMP, and TIFF formats instantly. Fast, free online image converter with no signup required. Start converting now!">
+    <meta name="keywords" content="image converter, jpg to png, png to jpg, webp converter, convert image format, image format converter, jpg converter, png converter, gif converter, bmp to jpg, tiff converter, online image converter, free image converter, convert images online, image file converter, photo format converter, picture converter">
+    <title>Free Image Converter - JPG, PNG, WebP, GIF & More</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Free Image Converter - JPG, PNG, WebP, GIF & More">
+    <meta property="og:description" content="Convert images between JPG, PNG, WebP, GIF, BMP, and TIFF formats instantly. Fast, free online image converter with no signup required. Start converting now!">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Free Image Converter - JPG, PNG, WebP, GIF & More">
+    <meta name="twitter:description" content="Convert images between JPG, PNG, WebP, GIF, BMP, and TIFF formats instantly. Fast, free online image converter with no signup required. Start converting now!">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Analytics (Replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Image Format Converter",
+  "description": "Convert images between JPG, PNG, WebP, GIF, BMP, and TIFF formats instantly. Fast, free online image converter with no signup required. Start converting now!",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript"
+}
+    </script>
+</head>
+<body>
+    <!-- Header Ad Slot -->
+    <div class="ad-container ad-header">
+        <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <header>
+        <h1>Image Format Converter</h1>
+        <p class="subtitle">Convert images between JPG, PNG, WebP, GIF, BMP, TIFF and other formats instantly</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Main App Content Goes Here -->
+            <div id="app-content">
+                <div class="container">
+  <h1>Image Format Converter</h1>
+  <div class="upload-section">
+    <input type="file" id="imageInput" accept="image/*" />
+    <label for="imageInput" class="upload-btn">Choose Image</label>
+    <span id="fileName" class="file-name"></span>
+  </div>
+  
+  <div id="previewSection" class="preview-section" style="display: none;">
+    <h2>Preview</h2>
+    <canvas id="canvas"></canvas>
+    
+    <div class="format-section">
+      <label for="formatSelect">Convert to:</label>
+      <select id="formatSelect">
+        <option value="image/png">PNG</option>
+        <option value="image/jpeg">JPEG</option>
+        <option value="image/webp">WEBP</option>
+      </select>
+      
+      <div id="qualitySection" style="display: none;">
+        <label for="qualitySlider">Quality: <span id="qualityValue">90</span>%</label>
+        <input type="range" id="qualitySlider" min="1" max="100" value="90" />
+      </div>
+    </div>
+    
+    <button id="convertBtn" class="convert-btn">Convert & Download</button>
+  </div>
+</div>
+            </div>
+            
+            <!-- Sidebar Ad -->
+            <aside class="sidebar">
+                <div class="ad-container ad-sidebar">
+                    <div class="ad-placeholder">Advertisement</div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Image Format Converter. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

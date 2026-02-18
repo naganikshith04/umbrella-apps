@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculate your net worth instantly with our free calculator. Track assets, liabilities, and see where you rank by age. Get your complete financial picture now!">
+    <meta name="keywords" content="net worth calculator, calculate net worth, net worth tracker, personal net worth calculator, what is my net worth, net worth by age, wealth calculator, assets minus liabilities calculator, financial calculator, personal finance, wealth tracking, net worth percentile">
+    <title>Net Worth Calculator - Calculate Your Total Wealth Free</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Net Worth Calculator - Calculate Your Total Wealth Free">
+    <meta property="og:description" content="Calculate your net worth instantly with our free calculator. Track assets, liabilities, and see where you rank by age. Get your complete financial picture now!">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Net Worth Calculator - Calculate Your Total Wealth Free">
+    <meta name="twitter:description" content="Calculate your net worth instantly with our free calculator. Track assets, liabilities, and see where you rank by age. Get your complete financial picture now!">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Analytics (Replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Net Worth Calculator",
+  "description": "Calculate your net worth instantly with our free calculator. Track assets, liabilities, and see where you rank by age. Get your complete financial picture now!",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript"
+}
+    </script>
+</head>
+<body>
+    <!-- Header Ad Slot -->
+    <div class="ad-container ad-header">
+        <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <header>
+        <h1>Net Worth Calculator</h1>
+        <p class="subtitle">Calculate and track your total net worth with asset and liability breakdown and percentile ranking</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Main App Content Goes Here -->
+            <div id="app-content">
+                <div class="net-worth-calculator">
+    <div class="container">
+        <h1>Net Worth Calculator</h1>
+        
+        <div class="calculator-grid">
+            <!-- Assets Section -->
+            <div class="section assets-section">
+                <h2>Assets</h2>
+                <div class="input-group">
+                    <label for="cash">Cash & Savings</label>
+                    <input type="number" id="cash" placeholder="0" min="0" step="0.01">
+                </div>
+                <div class="input-group">
+                    <label for="investments">Investments</label>
+                    <input type="number" id="investments" placeholder="0" min="0" step="0.01">
+                </div>
+                <div class="input-group">
+                    <label for="real-estate">Real Estate</label>
+                    <input type="number" id="real-estate" placeholder="0" min="0" step="0.01">
+                </div>
+                <div class="input-group">
+                    <label for="vehicles">Vehicles</label>
+                    <input type="number" id="vehicles" placeholder="0" min="0" step="0.01">
+                </div>
+                <div class="input-group">
+                    <label for="other-assets">Other Assets</label>
+                    <input type="number" id="other-assets" placeholder="0" min="0" step="0.01">
+                </div>
+                <div class="total">
+                    <strong>Total Assets:</strong>
+                    <span id="total-assets">$0.00</span>
+                </div>
+            </div>
+
+            <!-- Liabilities Section -->
+            <div class="section liabilities-section">
+                <h2>Liabilities</h2>
+                <div class="input-group">
+                    <label for="mortgage">Mortgage</label>
+                    <input type="number" id="mortgage" placeholder="0" min="0" step="0.01">
+                </div>
+                <div class="input-group">
+                    <label for="car-loans">Car Loans</label>
+                    <input type="number" id="car-loans" placeholder="0" min="0" step="0.01">
+                </div>
+                <div class="input-group">
+                    <label for="student-loans">Student Loans</label>
+                    <input type="number" id="student-loans" placeholder="0" min="0" step="0.01">
+                </div>
+                <div class="input-group">
+                    <label for="credit-cards">Credit Cards</label>
+                    <input type="number" id="credit-cards" placeholder="0" min="0" step="0.01">
+                </div>
+                <div class="input-group">
+                    <label for="other-liabilities">Other Liabilities</label>
+                    <input type="number" id="other-liabilities" placeholder="0" min="0" step="0.01">
+                </div>
+                <div class="total">
+                    <strong>Total Liabilities:</strong>
+                    <span id="total-liabilities">$0.00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Net Worth Display -->
+        <div class="net-worth-display">
+            <h2>Your Net Worth</h2>
+            <div class="net-worth-value" id="net-worth">$0.00</div>
+            <button id="save-snapshot" class="btn-primary">Save Snapshot</button>
+        </div>
+
+        <!-- Historical Tracking Section -->
+        <div class="historical-section">
+            <h2>Historical Tracking & Growth Visualization</h2>
+            <div class="history-controls">
+                <button id="clear-history" class="btn-secondary">Clear History</button>
+                <span id="snapshot-count">Snapshots: 0</span>
+            </div>
+            
+            <!-- Chart Canvas -->
+            <div class="chart-container">
+                <canvas id="net-worth-chart"></canvas>
+            </div>
+
+            <!-- Historical Data Table -->
+            <div class="history-table-container">
+                <table id="history-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Assets</th>
+                            <th>Liabilities</th>
+                            <th>Net Worth</th>
+                            <th>Change</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="history-tbody">
+                        <tr class="no-data">
+                            <td colspan="6">No historical data yet. Save a snapshot to start tracking!</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+            
+            <!-- Sidebar Ad -->
+            <aside class="sidebar">
+                <div class="ad-container ad-sidebar">
+                    <div class="ad-placeholder">Advertisement</div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Net Worth Calculator. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

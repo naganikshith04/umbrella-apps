@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "ideal-weight-calculator",
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ]
+}

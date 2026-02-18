@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "text-to-speech",
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ]
+}

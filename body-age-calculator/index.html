@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculate your biological age based on fitness metrics and lifestyle factors. Discover your real body age vs chronological age. Free health age calculator with instant results.">
+    <meta name="keywords" content="body age calculator, biological age calculator, fitness age calculator, real age calculator, health age calculator, calculate body age, biological age test, fitness age test, body age vs real age, health age assessment, longevity calculator, wellness age calculator">
+    <title>Body Age Calculator - Find Your Real Biological Age</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Body Age Calculator - Find Your Real Biological Age">
+    <meta property="og:description" content="Calculate your biological age based on fitness metrics and lifestyle factors. Discover your real body age vs chronological age. Free health age calculator with instant results.">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Body Age Calculator - Find Your Real Biological Age">
+    <meta name="twitter:description" content="Calculate your biological age based on fitness metrics and lifestyle factors. Discover your real body age vs chronological age. Free health age calculator with instant results.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Analytics (Replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Body Age Calculator",
+  "description": "Calculate your biological age based on fitness metrics and lifestyle factors. Discover your real body age vs chronological age. Free health age calculator with instant results.",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript"
+}
+    </script>
+</head>
+<body>
+    <!-- Header Ad Slot -->
+    <div class="ad-container ad-header">
+        <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <header>
+        <h1>Body Age Calculator</h1>
+        <p class="subtitle">Calculate biological age based on fitness metrics and lifestyle factors</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Main App Content Goes Here -->
+            <div id="app-content">
+                <div class="container">
+  <h1>Body Age Calculator</h1>
+  <p class="subtitle">Discover your biological age based on lifestyle factors</p>
+  
+  <form id="bodyAgeForm">
+    <div class="form-group">
+      <label for="chronologicalAge">Chronological Age:</label>
+      <input type="number" id="chronologicalAge" min="18" max="100" required>
+    </div>
+
+    <div class="form-group">
+      <label for="exerciseFrequency">Exercise Frequency (days per week):</label>
+      <input type="number" id="exerciseFrequency" min="0" max="7" required>
+    </div>
+
+    <div class="form-group">
+      <label for="sleepHours">Average Sleep Hours per Night:</label>
+      <input type="number" id="sleepHours" min="0" max="24" step="0.5" required>
+    </div>
+
+    <div class="form-group">
+      <label for="smokingStatus">Smoking Status:</label>
+      <select id="smokingStatus" required>
+        <option value="">Select...</option>
+        <option value="never">Never Smoked</option>
+        <option value="former">Former Smoker</option>
+        <option value="current">Current Smoker</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="alcoholConsumption">Alcohol Consumption (drinks per week):</label>
+      <input type="number" id="alcoholConsumption" min="0" max="50" required>
+    </div>
+
+    <div class="form-group">
+      <label for="stressLevel">Stress Level (1-10):</label>
+      <input type="range" id="stressLevel" min="1" max="10" value="5" required>
+      <span id="stressValue">5</span>
+    </div>
+
+    <div class="form-group">
+      <label for="dietQuality">Diet Quality (1-10):</label>
+      <input type="range" id="dietQuality" min="1" max="10" value="5" required>
+      <span id="dietValue">5</span>
+    </div>
+
+    <div class="form-group">
+      <label for="bmi">BMI (Body Mass Index):</label>
+      <input type="number" id="bmi" min="10" max="60" step="0.1" required>
+    </div>
+
+    <button type="submit" class="btn-calculate">Calculate Body Age</button>
+  </form>
+
+  <div id="result" class="result hidden">
+    <h2>Your Results</h2>
+    <div class="result-content">
+      <div class="age-display">
+        <p class="label">Your Body Age:</p>
+        <p class="body-age" id="bodyAge">--</p>
+      </div>
+      <div class="age-display">
+        <p class="label">Chronological Age:</p>
+        <p class="chrono-age" id="chronoAge">--</p>
+      </div>
+      <div class="age-difference" id="ageDifference"></div>
+      <div class="recommendations" id="recommendations"></div>
+    </div>
+  </div>
+</div>
+            </div>
+            
+            <!-- Sidebar Ad -->
+            <aside class="sidebar">
+                <div class="ad-container ad-sidebar">
+                    <div class="ad-placeholder">Advertisement</div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Body Age Calculator. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

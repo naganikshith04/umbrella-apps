@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert text to natural speech instantly with our free text to speech tool. Multiple voices, adjustable speed, and download as MP3. Try our TTS generator now!">
+    <meta name="keywords" content="text to speech, tts, text reader, speech generator, text to audio, voice generator, read text aloud, text to mp3, tts converter, online text reader, speech synthesis, audio generator, voice synthesis, free tts, text narrator">
+    <title>Text to Speech Converter - Free TTS Voice Generator</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Text to Speech Converter - Free TTS Voice Generator">
+    <meta property="og:description" content="Convert text to natural speech instantly with our free text to speech tool. Multiple voices, adjustable speed, and download as MP3. Try our TTS generator now!">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Text to Speech Converter - Free TTS Voice Generator">
+    <meta name="twitter:description" content="Convert text to natural speech instantly with our free text to speech tool. Multiple voices, adjustable speed, and download as MP3. Try our TTS generator now!">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Analytics (Replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Text to Speech",
+  "description": "Convert text to natural speech instantly with our free text to speech tool. Multiple voices, adjustable speed, and download as MP3. Try our TTS generator now!",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript"
+}
+    </script>
+</head>
+<body>
+    <!-- Header Ad Slot -->
+    <div class="ad-container ad-header">
+        <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <header>
+        <h1>Text to Speech</h1>
+        <p class="subtitle">Convert written text to natural-sounding speech with voice and speed controls</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Main App Content Goes Here -->
+            <div id="app-content">
+                <div class="tts-container">
+  <div class="tts-card">
+    <h1 class="tts-title">Text to Speech</h1>
+    
+    <div class="form-group">
+      <label for="text-input">Enter Text:</label>
+      <textarea 
+        id="text-input" 
+        class="text-input" 
+        placeholder="Type or paste your text here..."
+        rows="6"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="language-select">Select Language:</label>
+      <select id="language-select" class="language-select">
+        <option value="en-US">English (US)</option>
+        <option value="en-GB">English (UK)</option>
+        <option value="es-ES">Spanish (Spain)</option>
+        <option value="es-MX">Spanish (Mexico)</option>
+        <option value="fr-FR">French (France)</option>
+        <option value="de-DE">German (Germany)</option>
+        <option value="it-IT">Italian (Italy)</option>
+        <option value="pt-BR">Portuguese (Brazil)</option>
+        <option value="pt-PT">Portuguese (Portugal)</option>
+        <option value="ru-RU">Russian (Russia)</option>
+        <option value="ja-JP">Japanese (Japan)</option>
+        <option value="ko-KR">Korean (Korea)</option>
+        <option value="zh-CN">Chinese (Mandarin)</option>
+        <option value="zh-TW">Chinese (Taiwan)</option>
+        <option value="ar-SA">Arabic (Saudi Arabia)</option>
+        <option value="hi-IN">Hindi (India)</option>
+        <option value="nl-NL">Dutch (Netherlands)</option>
+        <option value="pl-PL">Polish (Poland)</option>
+        <option value="tr-TR">Turkish (Turkey)</option>
+        <option value="sv-SE">Swedish (Sweden)</option>
+        <option value="da-DK">Danish (Denmark)</option>
+        <option value="fi-FI">Finnish (Finland)</option>
+        <option value="no-NO">Norwegian (Norway)</option>
+        <option value="cs-CZ">Czech (Czech Republic)</option>
+        <option value="th-TH">Thai (Thailand)</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="voice-select">Select Voice:</label>
+      <select id="voice-select" class="voice-select">
+        <option value="">Loading voices...</option>
+      </select>
+    </div>
+
+    <div class="controls-group">
+      <div class="control-item">
+        <label for="rate-control">Speed: <span id="rate-value">1.0</span>x</label>
+        <input 
+          type="range" 
+          id="rate-control" 
+          class="slider" 
+          min="0.5" 
+          max="2" 
+          step="0.1" 
+          value="1"
+        >
+      </div>
+
+      <div class="control-item">
+        <label for="pitch-control">Pitch: <span id="pitch-value">1.0</span></label>
+        <input 
+          type="range" 
+          id="pitch-control" 
+          class="slider" 
+          min="0.5" 
+          max="2" 
+          step="0.1" 
+          value="1"
+        >
+      </div>
+
+      <div class="control-item">
+        <label for="volume-control">Volume: <span id="volume-value">100</span>%</label>
+        <input 
+          type="range" 
+          id="volume-control" 
+          class="slider" 
+          min="0" 
+          max="100" 
+          step="1" 
+          value="100"
+        >
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button id="speak-btn" class="btn btn-primary">
+        <span class="btn-icon">🔊</span> Speak
+      </button>
+      <button id="pause-btn" class="btn btn-secondary" disabled>
+        <span class="btn-icon">⏸️</span> Pause
+      </button>
+      <button id="resume-btn" class="btn btn-secondary" disabled>
+        <span class="btn-icon">▶️</span> Resume
+      </button>
+      <button id="stop-btn" class="btn btn-danger" disabled>
+        <span class="btn-icon">⏹️</span> Stop
+      </button>
+      <button id="download-btn" class="btn btn-success">
+        <span class="btn-icon">⬇️</span> Download MP3
+      </button>
+    </div>
+
+    <div id="status-message" class="status-message"></div>
+  </div>
+</div>
+            </div>
+            
+            <!-- Sidebar Ad -->
+            <aside class="sidebar">
+                <div class="ad-container ad-sidebar">
+                    <div class="ad-placeholder">Advertisement</div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Text to Speech. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "compound-interest-calculator",
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ]
+}

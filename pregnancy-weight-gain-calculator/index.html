@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free pregnancy weight gain calculator tracks healthy weight by trimester based on your BMI. Get personalized recommendations for safe weight gain during pregnancy.">
+    <meta name="keywords" content="pregnancy weight gain calculator, pregnancy weight calculator, healthy pregnancy weight gain, weight gain during pregnancy, trimester weight calculator, pregnancy BMI calculator, pregnancy weight tracker, weight gain by trimester, healthy pregnancy weight, pre-pregnancy BMI calculator">
+    <title>Pregnancy Weight Gain Calculator | Track Healthy Weight</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Pregnancy Weight Gain Calculator | Track Healthy Weight">
+    <meta property="og:description" content="Free pregnancy weight gain calculator tracks healthy weight by trimester based on your BMI. Get personalized recommendations for safe weight gain during pregnancy.">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Pregnancy Weight Gain Calculator | Track Healthy Weight">
+    <meta name="twitter:description" content="Free pregnancy weight gain calculator tracks healthy weight by trimester based on your BMI. Get personalized recommendations for safe weight gain during pregnancy.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Analytics (Replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Pregnancy Weight Gain Calculator",
+  "description": "Free pregnancy weight gain calculator tracks healthy weight by trimester based on your BMI. Get personalized recommendations for safe weight gain during pregnancy.",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript"
+}
+    </script>
+</head>
+<body>
+    <!-- Header Ad Slot -->
+    <div class="ad-container ad-header">
+        <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <header>
+        <h1>Pregnancy Weight Gain Calculator</h1>
+        <p class="subtitle">Track healthy pregnancy weight gain by trimester based on pre-pregnancy BMI</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Main App Content Goes Here -->
+            <div id="app-content">
+                <div class="pregnancy-calculator">
+  <div class="container">
+    <h1>Pregnancy Weight Gain Calculator</h1>
+    <p class="subtitle">Calculate your recommended weight gain during pregnancy based on your pre-pregnancy BMI</p>
+    
+    <div class="calculator-card">
+      <form id="pregnancyForm">
+        <div class="form-group">
+          <label for="height">Height</label>
+          <div class="input-row">
+            <input type="number" id="heightFt" placeholder="Feet" min="0" max="8" required>
+            <input type="number" id="heightIn" placeholder="Inches" min="0" max="11" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="preWeight">Pre-pregnancy Weight (lbs)</label>
+          <input type="number" id="preWeight" placeholder="Enter weight" min="50" max="500" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="currentWeight">Current Weight (lbs)</label>
+          <input type="number" id="currentWeight" placeholder="Enter current weight" min="50" max="500" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="weeks">Weeks Pregnant</label>
+          <input type="number" id="weeks" placeholder="Enter weeks" min="0" max="42" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="pregnancyType">Pregnancy Type</label>
+          <select id="pregnancyType" required>
+            <option value="single">Single Baby</option>
+            <option value="twins">Twins</option>
+          </select>
+        </div>
+        
+        <button type="submit" class="btn-calculate">Calculate</button>
+      </form>
+      
+      <div id="results" class="results hidden">
+        <h2>Your Results</h2>
+        
+        <div class="result-item">
+          <span class="result-label">Pre-pregnancy BMI:</span>
+          <span class="result-value" id="bmiValue"></span>
+        </div>
+        
+        <div class="result-item">
+          <span class="result-label">BMI Category:</span>
+          <span class="result-value" id="bmiCategory"></span>
+        </div>
+        
+        <div class="result-item">
+          <span class="result-label">Current Weight Gain:</span>
+          <span class="result-value" id="currentGain"></span>
+        </div>
+        
+        <div class="result-item highlight">
+          <span class="result-label">Recommended Total Gain:</span>
+          <span class="result-value" id="recommendedGain"></span>
+        </div>
+        
+        <div class="result-item">
+          <span class="result-label">Expected Gain at This Week:</span>
+          <span class="result-value" id="expectedGain"></span>
+        </div>
+        
+        <div class="result-item">
+          <span class="result-label">Status:</span>
+          <span class="result-value" id="status"></span>
+        </div>
+        
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        
+        <div class="info-box">
+          <h3>Guidelines</h3>
+          <p id="guidelines"></p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="disclaimer">
+      <p><strong>Disclaimer:</strong> This calculator provides general guidelines based on CDC and ACOG recommendations. Always consult with your healthcare provider for personalized advice.</p>
+    </div>
+  </div>
+</div>
+            </div>
+            
+            <!-- Sidebar Ad -->
+            <aside class="sidebar">
+                <div class="ad-container ad-sidebar">
+                    <div class="ad-placeholder">Advertisement</div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Pregnancy Weight Gain Calculator. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

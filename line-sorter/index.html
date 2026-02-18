@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{META_DESCRIPTION}}">
+    <meta name="keywords" content="{{META_KEYWORDS}}">
+    <title>{{PAGE_TITLE}}</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{PAGE_TITLE}}">
+    <meta property="og:description" content="{{META_DESCRIPTION}}">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{PAGE_TITLE}}">
+    <meta name="twitter:description" content="{{META_DESCRIPTION}}">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Analytics (Replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+</head>
+<body>
+    <!-- Header Ad Slot -->
+    <div class="ad-container ad-header">
+        <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <header>
+        <h1>{{APP_NAME}}</h1>
+        <p class="subtitle">{{APP_SUBTITLE}}</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Main App Content Goes Here -->
+            <div id="app-content">
+                <div class="container">
+        <h1>Line Sorter</h1>
+        
+        <div class="input-section">
+            <label for="inputText">Enter text (one item per line):</label>
+            <textarea id="inputText" rows="10" placeholder="Enter lines to sort..."></textarea>
+        </div>
+
+        <div class="options-section">
+            <h3>Sorting Options</h3>
+            
+            <div class="option-group">
+                <label>Sort Order:</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="sortOrder" value="asc" checked>
+                        Ascending (A-Z or 0-9)
+                    </label>
+                    <label>
+                        <input type="radio" name="sortOrder" value="desc">
+                        Descending (Z-A or 9-0)
+                    </label>
+                </div>
+            </div>
+
+            <div class="option-group">
+                <label>Sort Type:</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="sortType" value="alphabetical" checked>
+                        Alphabetical
+                    </label>
+                    <label>
+                        <input type="radio" name="sortType" value="numerical">
+                        Numerical (Natural Number Handling)
+                    </label>
+                </div>
+            </div>
+
+            <div class="option-group">
+                <label>
+                    <input type="checkbox" id="caseSensitive">
+                    Case-sensitive sorting
+                </label>
+            </div>
+
+            <div class="option-group">
+                <label>
+                    <input type="checkbox" id="removeDuplicates">
+                    Remove duplicate lines
+                </label>
+            </div>
+
+            <div class="option-group">
+                <label>
+                    <input type="checkbox" id="removeEmpty">
+                    Remove empty lines
+                </label>
+            </div>
+        </div>
+
+        <div class="button-section">
+            <button id="sortBtn" class="btn btn-primary">Sort Lines</button>
+            <button id="clearBtn" class="btn btn-secondary">Clear</button>
+            <button id="copyBtn" class="btn btn-secondary">Copy Result</button>
+        </div>
+
+        <div class="output-section">
+            <label for="outputText">Sorted output:</label>
+            <textarea id="outputText" rows="10" readonly placeholder="Sorted lines will appear here..."></textarea>
+        </div>
+
+        <div class="stats">
+            <span id="stats"></span>
+        </div>
+    </div>
+            </div>
+            
+            <!-- Sidebar Ad -->
+            <aside class="sidebar">
+                <div class="ad-container ad-sidebar">
+                    <div class="ad-placeholder">Advertisement</div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 {{APP_NAME}}. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

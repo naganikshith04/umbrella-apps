@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert CSV to Excel instantly with our free online tool. Automatic data type detection, formatting, and XLSX conversion. Fast, secure, and no software needed!">
+    <meta name="keywords" content="csv to excel, convert csv to xlsx, csv to xls, csv excel converter, csv spreadsheet online, csv to excel online, free csv converter, csv file converter, excel converter online, csv to spreadsheet, data type detection, file converter tool, online excel converter, csv formatter">
+    <title>CSV to Excel Converter - Free Online XLSX Tool</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="CSV to Excel Converter - Free Online XLSX Tool">
+    <meta property="og:description" content="Convert CSV to Excel instantly with our free online tool. Automatic data type detection, formatting, and XLSX conversion. Fast, secure, and no software needed!">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="CSV to Excel Converter - Free Online XLSX Tool">
+    <meta name="twitter:description" content="Convert CSV to Excel instantly with our free online tool. Automatic data type detection, formatting, and XLSX conversion. Fast, secure, and no software needed!">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Analytics (Replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "CSV to Excel Converter",
+  "description": "Convert CSV to Excel instantly with our free online tool. Automatic data type detection, formatting, and XLSX conversion. Fast, secure, and no software needed!",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript"
+}
+    </script>
+</head>
+<body>
+    <!-- Header Ad Slot -->
+    <div class="ad-container ad-header">
+        <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <header>
+        <h1>CSV to Excel Converter</h1>
+        <p class="subtitle">Transform CSV files into formatted Excel spreadsheets with data type detection</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Main App Content Goes Here -->
+            <div id="app-content">
+                <div class="csv-converter-container">
+  <div class="converter-card">
+    <h1>CSV to Excel Converter</h1>
+    
+    <div class="upload-section">
+      <label for="csvFile" class="file-label">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="17 8 12 3 7 8"></polyline>
+          <line x1="12" y1="3" x2="12" y2="15"></line>
+        </svg>
+        <span>Choose CSV File</span>
+      </label>
+      <input type="file" id="csvFile" accept=".csv" />
+      <p class="file-name" id="fileName">No file selected</p>
+    </div>
+
+    <div class="options-section">
+      <h3>Options</h3>
+      
+      <div class="option-group">
+        <label class="checkbox-label">
+          <input type="checkbox" id="hasHeader" checked />
+          <span>First row contains headers</span>
+        </label>
+      </div>
+
+      <div class="option-group">
+        <label for="delimiter">Delimiter:</label>
+        <select id="delimiter">
+          <option value=",">Comma (,)</option>
+          <option value=";">Semicolon (;)</option>
+          <option value="\t">Tab</option>
+          <option value="|">Pipe (|)</option>
+        </select>
+      </div>
+
+      <div class="formatting-section">
+        <h4>Formatting Options</h4>
+        
+        <div class="option-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="boldHeaders" checked />
+            <span>Bold header row</span>
+          </label>
+        </div>
+
+        <div class="option-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="freezeHeader" checked />
+            <span>Freeze header row</span>
+          </label>
+        </div>
+
+        <div class="option-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="autoFilter" />
+            <span>Enable auto-filter</span>
+          </label>
+        </div>
+
+        <div class="option-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="alternateRows" />
+            <span>Alternate row colors</span>
+          </label>
+        </div>
+
+        <div class="option-group">
+          <label for="headerColor">Header background color:</label>
+          <input type="color" id="headerColor" value="#4CAF50" />
+        </div>
+
+        <div class="option-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="autoWidth" checked />
+            <span>Auto-fit column widths</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-section" id="previewSection" style="display: none;">
+      <h3>Preview</h3>
+      <div class="preview-container" id="previewContainer"></div>
+    </div>
+
+    <div class="button-group">
+      <button id="convertBtn" class="btn btn-primary" disabled>Convert to Excel</button>
+      <button id="resetBtn" class="btn btn-secondary">Reset</button>
+    </div>
+
+    <div class="status-message" id="statusMessage"></div>
+  </div>
+</div>
+            </div>
+            
+            <!-- Sidebar Ad -->
+            <aside class="sidebar">
+                <div class="ad-container ad-sidebar">
+                    <div class="ad-placeholder">Advertisement</div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 CSV to Excel Converter. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert EPUB files to PDF format instantly with our free online ebook converter. Transform your ebooks for universal compatibility. Fast, secure, no registration required.">
+    <meta name="keywords" content="epub to pdf, convert ebook to pdf, epub converter, ebook to pdf online, mobi to pdf, epub pdf converter, free epub to pdf, online ebook converter, epub file converter, digital book converter, ebook format converter, epub to pdf free, convert epub online, pdf converter tool">
+    <title>EPUB to PDF Converter - Convert Ebooks to PDF Online Free</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="EPUB to PDF Converter - Convert Ebooks to PDF Online Free">
+    <meta property="og:description" content="Convert EPUB files to PDF format instantly with our free online ebook converter. Transform your ebooks for universal compatibility. Fast, secure, no registration required.">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="EPUB to PDF Converter - Convert Ebooks to PDF Online Free">
+    <meta name="twitter:description" content="Convert EPUB files to PDF format instantly with our free online ebook converter. Transform your ebooks for universal compatibility. Fast, secure, no registration required.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Analytics (Replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "EPUB to PDF Converter",
+  "description": "Convert EPUB files to PDF format instantly with our free online ebook converter. Transform your ebooks for universal compatibility. Fast, secure, no registration required.",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript"
+}
+    </script>
+</head>
+<body>
+    <!-- Header Ad Slot -->
+    <div class="ad-container ad-header">
+        <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <header>
+        <h1>EPUB to PDF Converter</h1>
+        <p class="subtitle">Convert ebook EPUB files to PDF format for universal reading compatibility</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Main App Content Goes Here -->
+            <div id="app-content">
+                <div class="container">
+  <header>
+    <h1>📚 EPUB to PDF Converter</h1>
+    <p class="subtitle">Convert your EPUB files to PDF format instantly</p>
+  </header>
+
+  <main>
+    <div class="upload-section">
+      <div class="upload-area" id="uploadArea">
+        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="17 8 12 3 7 8"></polyline>
+          <line x1="12" y1="3" x2="12" y2="15"></line>
+        </svg>
+        <h2>Drop EPUB file here</h2>
+        <p>or click to browse</p>
+        <input type="file" id="fileInput" accept=".epub" hidden>
+      </div>
+
+      <div class="file-info" id="fileInfo" style="display: none;">
+        <div class="file-details">
+          <svg class="file-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+            <polyline points="13 2 13 9 20 9"></polyline>
+          </svg>
+          <div class="file-text">
+            <h3 id="fileName"></h3>
+            <p id="fileSize"></p>
+          </div>
+          <button class="remove-btn" id="removeBtn">✕</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="options-section">
+      <h3>Conversion Options</h3>
+      <div class="options-grid">
+        <div class="option-group">
+          <label for="pageSize">Page Size</label>
+          <select id="pageSize">
+            <option value="a4">A4</option>
+            <option value="letter">Letter</option>
+            <option value="legal">Legal</option>
+            <option value="a5">A5</option>
+          </select>
+        </div>
+
+        <div class="option-group">
+          <label for="margin">Margins</label>
+          <select id="margin">
+            <option value="normal">Normal</option>
+            <option value="narrow">Narrow</option>
+            <option value="wide">Wide</option>
+          </select>
+        </div>
+
+        <div class="option-group">
+          <label for="fontSize">Font Size</label>
+          <select id="fontSize">
+            <option value="small">Small</option>
+            <option value="medium" selected>Medium</option>
+            <option value="large">Large</option>
+          </select>
+        </div>
+
+        <div class="option-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="includeImages" checked>
+            <span>Include Images</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <button class="convert-btn" id="convertBtn" disabled>
+      <span id="btnText">Convert to PDF</span>
+      <div class="spinner" id="spinner" style="display: none;"></div>
+    </button>
+
+    <div class="progress-section" id="progressSection" style="display: none;">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <p class="progress-text" id="progressText">Processing: 0%</p>
+    </div>
+
+    <div class="result-section" id="resultSection" style="display: none;">
+      <div class="success-message">
+        <svg class="success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+        <h3>Conversion Complete!</h3>
+        <p>Your PDF is ready to download</p>
+        <button class="download-btn" id="downloadBtn">Download PDF</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Supports EPUB 2.0 and 3.0 formats • Maximum file size: 50MB</p>
+  </footer>
+</div>
+            </div>
+            
+            <!-- Sidebar Ad -->
+            <aside class="sidebar">
+                <div class="ad-container ad-sidebar">
+                    <div class="ad-placeholder">Advertisement</div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 EPUB to PDF Converter. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

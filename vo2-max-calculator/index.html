@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculate your VO2 max and aerobic capacity with our free fitness calculator. Use Cooper test or other field tests to measure cardiovascular health. Get instant results!">
+    <meta name="keywords" content="vo2 max calculator, cardiovascular fitness calculator, aerobic capacity calculator, cooper test calculator, fitness level test, vo2 max test, cardio fitness assessment, aerobic fitness calculator, maximal oxygen uptake, endurance test calculator">
+    <title>VO2 Max Calculator - Test Your Cardiovascular Fitness</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="VO2 Max Calculator - Test Your Cardiovascular Fitness">
+    <meta property="og:description" content="Calculate your VO2 max and aerobic capacity with our free fitness calculator. Use Cooper test or other field tests to measure cardiovascular health. Get instant results!">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="VO2 Max Calculator - Test Your Cardiovascular Fitness">
+    <meta name="twitter:description" content="Calculate your VO2 max and aerobic capacity with our free fitness calculator. Use Cooper test or other field tests to measure cardiovascular health. Get instant results!">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Analytics (Replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "VO2 Max Calculator",
+  "description": "Calculate your VO2 max and aerobic capacity with our free fitness calculator. Use Cooper test or other field tests to measure cardiovascular health. Get instant results!",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript"
+}
+    </script>
+</head>
+<body>
+    <!-- Header Ad Slot -->
+    <div class="ad-container ad-header">
+        <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <header>
+        <h1>VO2 Max Calculator</h1>
+        <p class="subtitle">Estimate cardiovascular fitness level using simple field tests</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Main App Content Goes Here -->
+            <div id="app-content">
+                <div class="container">
+    <h1>VO2 Max Calculator</h1>
+    
+    <div class="calculator-section">
+        <h2>Calculate Your VO2 Max</h2>
+        
+        <div class="form-group">
+            <label for="age">Age (years):</label>
+            <input type="number" id="age" min="1" max="120" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select id="gender" required>
+                <option value="">Select gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="restingHR">Resting Heart Rate (bpm):</label>
+            <input type="number" id="restingHR" min="30" max="200" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="maxHR">Maximum Heart Rate (bpm):</label>
+            <input type="number" id="maxHR" min="50" max="250" required>
+        </div>
+        
+        <button id="calculateBtn" class="btn-primary">Calculate VO2 Max</button>
+    </div>
+    
+    <div id="results" class="results-section" style="display: none;">
+        <h2>Your Results</h2>
+        <div class="result-card">
+            <h3>VO2 Max</h3>
+            <p class="result-value" id="vo2maxValue"></p>
+            <p class="result-unit">ml/kg/min</p>
+        </div>
+        
+        <div class="result-card">
+            <h3>Fitness Level</h3>
+            <p class="result-value" id="fitnessLevel"></p>
+        </div>
+        
+        <div id="comparisonSection" class="comparison-section">
+            <h3>Comparison to Population Averages</h3>
+            <div class="comparison-content">
+                <div class="comparison-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Your VO2 Max:</span>
+                        <span class="stat-value" id="yourVO2"></span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Average for your age/gender:</span>
+                        <span class="stat-value" id="avgVO2"></span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Difference:</span>
+                        <span class="stat-value" id="diffVO2"></span>
+                    </div>
+                </div>
+                <div class="percentile-info">
+                    <p id="percentileText"></p>
+                </div>
+                <div class="visual-comparison">
+                    <div class="comparison-bar-container">
+                        <div class="comparison-bar" id="comparisonBar"></div>
+                        <div class="comparison-marker" id="yourMarker">You</div>
+                    </div>
+                    <div class="comparison-labels">
+                        <span>Poor</span>
+                        <span>Fair</span>
+                        <span>Good</span>
+                        <span>Excellent</span>
+                        <span>Superior</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            </div>
+            
+            <!-- Sidebar Ad -->
+            <aside class="sidebar">
+                <div class="ad-container ad-sidebar">
+                    <div class="ad-placeholder">Advertisement</div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 VO2 Max Calculator. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

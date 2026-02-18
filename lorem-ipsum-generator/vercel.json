@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "lorem-ipsum-generator",
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ]
+}

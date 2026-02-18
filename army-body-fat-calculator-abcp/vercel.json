@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "army-body-fat-calculator-abcp",
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ]
+}

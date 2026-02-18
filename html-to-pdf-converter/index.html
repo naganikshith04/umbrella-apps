@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert HTML files and web pages to PDF documents instantly. Preserve styling, fonts, and layouts perfectly. Free online HTML to PDF converter. No signup required.">
+    <meta name="keywords" content="html to pdf, web page to pdf, convert html to pdf, webpage pdf converter, url to pdf online, html file to pdf, online pdf converter, web to pdf, html document converter, free html to pdf, convert webpage to pdf, html pdf generator, save webpage as pdf, website to pdf converter">
+    <title>HTML to PDF Converter - Convert Web Pages to PDF Online</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="HTML to PDF Converter - Convert Web Pages to PDF Online">
+    <meta property="og:description" content="Convert HTML files and web pages to PDF documents instantly. Preserve styling, fonts, and layouts perfectly. Free online HTML to PDF converter. No signup required.">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="HTML to PDF Converter - Convert Web Pages to PDF Online">
+    <meta name="twitter:description" content="Convert HTML files and web pages to PDF documents instantly. Preserve styling, fonts, and layouts perfectly. Free online HTML to PDF converter. No signup required.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Analytics (Replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "HTML to PDF Converter",
+  "description": "Convert HTML files and web pages to PDF documents instantly. Preserve styling, fonts, and layouts perfectly. Free online HTML to PDF converter. No signup required.",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript"
+}
+    </script>
+</head>
+<body>
+    <!-- Header Ad Slot -->
+    <div class="ad-container ad-header">
+        <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <header>
+        <h1>HTML to PDF Converter</h1>
+        <p class="subtitle">Convert web pages and HTML files to PDF documents with styling preserved</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Main App Content Goes Here -->
+            <div id="app-content">
+                <div class="container">
+        <h1>HTML to PDF Converter</h1>
+        
+        <div class="converter-section">
+            <div class="input-section">
+                <label for="htmlInput">Enter HTML Content:</label>
+                <textarea id="htmlInput" placeholder="Enter your HTML content here..."></textarea>
+            </div>
+
+            <div class="options-section">
+                <h3>PDF Options</h3>
+                
+                <div class="option-group">
+                    <label for="pageSize">Page Size:</label>
+                    <select id="pageSize">
+                        <option value="A4">A4</option>
+                        <option value="Letter">Letter</option>
+                        <option value="Legal">Legal</option>
+                        <option value="A3">A3</option>
+                    </select>
+                </div>
+
+                <div class="option-group">
+                    <label for="orientation">Orientation:</label>
+                    <select id="orientation">
+                        <option value="portrait">Portrait</option>
+                        <option value="landscape">Landscape</option>
+                    </select>
+                </div>
+
+                <div class="option-group">
+                    <label for="margin">Margins (mm):</label>
+                    <input type="number" id="margin" value="10" min="0" max="50">
+                </div>
+
+                <div class="option-group checkbox-group">
+                    <label>
+                        <input type="checkbox" id="jsRendering">
+                        Enable JavaScript Rendering
+                    </label>
+                    <small>Allows execution of JavaScript in HTML before PDF generation</small>
+                </div>
+
+                <div class="option-group">
+                    <label>
+                        <input type="checkbox" id="enableHeaderFooter">
+                        Enable Header & Footer
+                    </label>
+                </div>
+
+                <div id="headerFooterOptions" class="header-footer-section" style="display: none;">
+                    <div class="option-group">
+                        <label for="headerText">Header Text:</label>
+                        <input type="text" id="headerText" placeholder="Enter header text (use {page}, {total}, {date})">
+                    </div>
+
+                    <div class="option-group">
+                        <label for="footerText">Footer Text:</label>
+                        <input type="text" id="footerText" placeholder="Enter footer text (use {page}, {total}, {date})">
+                    </div>
+
+                    <div class="option-group">
+                        <label for="headerAlign">Header Alignment:</label>
+                        <select id="headerAlign">
+                            <option value="left">Left</option>
+                            <option value="center">Center</option>
+                            <option value="right">Right</option>
+                        </select>
+                    </div>
+
+                    <div class="option-group">
+                        <label for="footerAlign">Footer Alignment:</label>
+                        <select id="footerAlign">
+                            <option value="left">Left</option>
+                            <option value="center">Center</option>
+                            <option value="right">Right</option>
+                        </select>
+                    </div>
+
+                    <div class="option-group">
+                        <label for="headerFontSize">Header Font Size (px):</label>
+                        <input type="number" id="headerFontSize" value="10" min="6" max="20">
+                    </div>
+
+                    <div class="option-group">
+                        <label for="footerFontSize">Footer Font Size (px):</label>
+                        <input type="number" id="footerFontSize" value="10" min="6" max="20">
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-section">
+                <button id="convertBtn" class="btn-primary">Convert to PDF</button>
+                <button id="previewBtn" class="btn-secondary">Preview</button>
+            </div>
+
+            <div id="previewSection" class="preview-section" style="display: none;">
+                <h3>Preview</h3>
+                <div id="previewFrame"></div>
+            </div>
+
+            <div id="statusMessage" class="status-message"></div>
+        </div>
+    </div>
+            </div>
+            
+            <!-- Sidebar Ad -->
+            <aside class="sidebar">
+                <div class="ad-container ad-sidebar">
+                    <div class="ad-placeholder">Advertisement</div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 HTML to PDF Converter. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

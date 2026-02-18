@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculate your running pace, finish time, and training splits instantly. Free running pace calculator for marathons, 5Ks, and all distances. Plan your race strategy now!">
+    <meta name="keywords" content="running pace calculator, pace calculator, race time calculator, marathon pace calculator, running time calculator, split calculator, 5k pace calculator, half marathon pace, running speed calculator, training pace calculator, race pace calculator, finish time calculator, km pace calculator, mile pace calculator">
+    <title>Running Pace Calculator - Free Race Time & Pace Tool</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Running Pace Calculator - Free Race Time & Pace Tool">
+    <meta property="og:description" content="Calculate your running pace, finish time, and training splits instantly. Free running pace calculator for marathons, 5Ks, and all distances. Plan your race strategy now!">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Running Pace Calculator - Free Race Time & Pace Tool">
+    <meta name="twitter:description" content="Calculate your running pace, finish time, and training splits instantly. Free running pace calculator for marathons, 5Ks, and all distances. Plan your race strategy now!">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Analytics (Replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Running Pace Calculator",
+  "description": "Calculate your running pace, finish time, and training splits instantly. Free running pace calculator for marathons, 5Ks, and all distances. Plan your race strategy now!",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript"
+}
+    </script>
+</head>
+<body>
+    <!-- Header Ad Slot -->
+    <div class="ad-container ad-header">
+        <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <header>
+        <h1>Running Pace Calculator</h1>
+        <p class="subtitle">Calculate running pace, finish time, and training paces for race preparation</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Main App Content Goes Here -->
+            <div id="app-content">
+                <div class="container">
+  <h1>Running Pace Calculator</h1>
+  
+  <div class="calculator-section">
+    <h2>Calculate Your Pace</h2>
+    
+    <div class="input-group">
+      <label for="distance">Distance:</label>
+      <input type="number" id="distance" step="0.01" min="0" placeholder="Enter distance">
+      <select id="distanceUnit">
+        <option value="km">Kilometers</option>
+        <option value="miles">Miles</option>
+        <option value="meters">Meters</option>
+      </select>
+    </div>
+    
+    <div class="input-group">
+      <label for="hours">Time:</label>
+      <div class="time-inputs">
+        <input type="number" id="hours" min="0" max="23" placeholder="HH" value="0">
+        <span>:</span>
+        <input type="number" id="minutes" min="0" max="59" placeholder="MM" value="0">
+        <span>:</span>
+        <input type="number" id="seconds" min="0" max="59" placeholder="SS" value="0">
+      </div>
+    </div>
+    
+    <button id="calculateBtn" class="btn-primary">Calculate Pace</button>
+    
+    <div id="results" class="results hidden">
+      <h3>Your Results:</h3>
+      <div class="result-item">
+        <span class="result-label">Pace per km:</span>
+        <span id="pacePerKm" class="result-value">-</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Pace per mile:</span>
+        <span id="pacePerMile" class="result-value">-</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Speed:</span>
+        <span id="speed" class="result-value">-</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="calculator-section">
+    <h2>Calculate Time or Distance</h2>
+    
+    <div class="input-group">
+      <label for="knownPaceMin">Known Pace (min/km):</label>
+      <div class="time-inputs">
+        <input type="number" id="knownPaceMin" min="0" placeholder="MM" value="0">
+        <span>:</span>
+        <input type="number" id="knownPaceSec" min="0" max="59" placeholder="SS" value="0">
+      </div>
+    </div>
+    
+    <div class="input-group">
+      <label for="targetDistance">Target Distance (km):</label>
+      <input type="number" id="targetDistance" step="0.01" min="0" placeholder="Leave empty to calculate">
+    </div>
+    
+    <div class="input-group">
+      <label for="targetHours">Target Time:</label>
+      <div class="time-inputs">
+        <input type="number" id="targetHours" min="0" placeholder="HH" value="0">
+        <span>:</span>
+        <input type="number" id="targetMinutes" min="0" max="59" placeholder="MM" value="0">
+        <span>:</span>
+        <input type="number" id="targetSeconds" min="0" max="59" placeholder="SS" value="0">
+      </div>
+    </div>
+    
+    <button id="calculateTargetBtn" class="btn-primary">Calculate</button>
+    
+    <div id="targetResults" class="results hidden">
+      <h3>Calculated Result:</h3>
+      <div id="targetResultContent" class="result-item">
+        <span class="result-value">-</span>
+      </div>
+    </div>
+  </div>
+</div>
+            </div>
+            
+            <!-- Sidebar Ad -->
+            <aside class="sidebar">
+                <div class="ad-container ad-sidebar">
+                    <div class="ad-placeholder">Advertisement</div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Running Pace Calculator. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

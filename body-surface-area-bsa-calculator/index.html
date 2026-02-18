@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free body surface area calculator for accurate medical dosing and burn assessments. Calculate BSA using proven formulas (DuBois, Mosteller). Essential for healthcare professionals.">
+    <meta name="keywords" content="bsa calculator, body surface area calculator, bsa formula, body surface area medical, burn percentage calculator, medical dosing calculator, dubois formula, mosteller formula, body surface area chart, bsa calculation medical, chemotherapy dosing, medication dosing calculator, burn assessment tool, pediatric bsa calculator, adult bsa calculator">
+    <title>BSA Calculator - Body Surface Area for Medical Dosing</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="BSA Calculator - Body Surface Area for Medical Dosing">
+    <meta property="og:description" content="Free body surface area calculator for accurate medical dosing and burn assessments. Calculate BSA using proven formulas (DuBois, Mosteller). Essential for healthcare professionals.">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="BSA Calculator - Body Surface Area for Medical Dosing">
+    <meta name="twitter:description" content="Free body surface area calculator for accurate medical dosing and burn assessments. Calculate BSA using proven formulas (DuBois, Mosteller). Essential for healthcare professionals.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Analytics (Replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Body Surface Area (BSA) Calculator",
+  "description": "Free body surface area calculator for accurate medical dosing and burn assessments. Calculate BSA using proven formulas (DuBois, Mosteller). Essential for healthcare professionals.",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript"
+}
+    </script>
+</head>
+<body>
+    <!-- Header Ad Slot -->
+    <div class="ad-container ad-header">
+        <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <header>
+        <h1>Body Surface Area (BSA) Calculator</h1>
+        <p class="subtitle">Calculate body surface area for medical dosing and health assessments</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Main App Content Goes Here -->
+            <div id="app-content">
+                <div class="bsa-calculator-container">
+  <div class="calculator-header">
+    <h1>Body Surface Area (BSA) Calculator</h1>
+    <p class="subtitle">Calculate BSA using multiple formulas with burn assessment and pediatric calculations</p>
+  </div>
+
+  <div class="calculator-grid">
+    <!-- Input Section -->
+    <div class="card input-section">
+      <h2>Patient Information</h2>
+      
+      <div class="form-group">
+        <label for="age">Age (years)</label>
+        <input type="number" id="age" min="0" max="120" step="1" placeholder="Enter age">
+      </div>
+
+      <div class="form-group">
+        <label for="weight">Weight</label>
+        <div class="input-with-unit">
+          <input type="number" id="weight" min="0" step="0.1" placeholder="Enter weight">
+          <select id="weightUnit">
+            <option value="kg">kg</option>
+            <option value="lbs">lbs</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="height">Height</label>
+        <div class="input-with-unit">
+          <input type="number" id="height" min="0" step="0.1" placeholder="Enter height">
+          <select id="heightUnit">
+            <option value="cm">cm</option>
+            <option value="inches">inches</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="formula">Formula</label>
+        <select id="formula">
+          <option value="dubois">Du Bois & Du Bois</option>
+          <option value="mosteller">Mosteller</option>
+          <option value="haycock">Haycock</option>
+          <option value="gehan">Gehan & George</option>
+          <option value="boyd">Boyd</option>
+        </select>
+      </div>
+
+      <button id="calculateBtn" class="btn-primary">Calculate BSA</button>
+    </div>
+
+    <!-- Results Section -->
+    <div class="card results-section">
+      <h2>BSA Results</h2>
+      <div id="results" class="results-display">
+        <p class="placeholder-text">Enter patient information and click Calculate</p>
+      </div>
+      
+      <div id="pediatricInfo" class="pediatric-info" style="display: none;">
+        <h3>Pediatric Considerations</h3>
+        <div id="pediatricDetails"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Burn Assessment Tool -->
+  <div class="card burn-assessment-section">
+    <h2>Burn Assessment Tool (Rule of Nines)</h2>
+    <p class="info-text">Select affected body areas to calculate total body surface area burned (TBSA%)</p>
+    
+    <div class="burn-grid">
+      <div class="burn-area-group">
+        <h3>Adult (Age ≥ 15)</h3>
+        <div class="burn-checkboxes" id="adultBurnAreas">
+          <label class="burn-checkbox">
+            <input type="checkbox" data-adult="9" data-child="0" value="head">
+            <span>Head & Neck (9%)</span>
+          </label>
+          <label class="burn-checkbox">
+            <input type="checkbox" data-adult="9" data-child="0" value="chest">
+            <span>Chest (9%)</span>
+          </label>
+          <label class="burn-checkbox">
+            <input type="checkbox" data-adult="9" data-child="0" value="abdomen">
+            <span>Abdomen (9%)</span>
+          </label>
+          <label class="burn-checkbox">
+            <input type="checkbox" data-adult="9" data-child="0" value="upper-back">
+            <span>Upper Back (9%)</span>
+          </label>
+          <label class="burn-checkbox">
+            <input type="checkbox" data-adult="9" data-child="0" value="lower-back">
+            <span>Lower Back (9%)</span>
+          </label>
+          <label class="burn-checkbox">
+            <input type="checkbox" data-adult="9" data-child="0" value="right-arm">
+            <span>Right Arm (9%)</span>
+          </label>
+          <label class="burn-checkbox">
+            <input type="checkbox" data-adult="9" data-child="0" value="left-arm">
+            <span>Left Arm (9%)</span>
+          </label>
+          <label class="burn-checkbox">
+            <input type="checkbox" data-adult="18" data-child="0" value="right-leg">
+            <span>Right Leg (18%)</span>
+          </label>
+          <label class="burn-checkbox">
+            <input type="checkbox" data-adult="18" data-child="0" value="left-leg">
+            <span>Left Leg (18%)</span>
+          </label>
+          <label class="burn-checkbox">
+            <input type="checkbox" data-adult="1" data-child="0" value="genitalia">
+            <span>Genitalia (1%)</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="burn-area-group">
+        <h3>Pediatric (Age < 15)</h3>
+        <div class="burn-checkboxes" id="childBurnAreas">
+          <label class="burn-checkbox">
+            <input type="checkbox" data-adult="0" data-child="18" value="head-child">
+            <span>Head & Neck (18%)</span>
+          </label>
+          <label class="burn-checkbox">
+            <input type="checkbox" data-adult="0" data-child="9" value="chest-child">
+            <span>Chest (9%)</span>
+          </label>
+          <label class="burn-checkbox">
+            <input type="checkbox" data-adult="0" data-child="9" value="abdomen-child">
+            <span>Abdomen (9%)</span>
+          </label>
+          <label class="burn-checkbox">
+            <input type="checkbox" data-adult="0" data-child="9" value="upper-back-child">
+            <span>Upper Back (9%)</span>
+          </label>
+          <label class="burn-checkbox">
+            <input type="checkbox" data-adult="0" data-child="9" value="lower-back-child">
+            <span>Lower Back (9%)</span>
+          </label>
+          <label class="burn-checkbox">
+            <input type="checkbox" data-adult="0" data-child="9" value="right-arm-child">
+            <span>Right Arm (9%)</span>
+          </label>
+          <label class="burn-checkbox">
+            <input type="checkbox" data-adult="0" data-child="9" value="left-arm-child">
+            <span>Left Arm (9%)</span>
+          </label>
+          <label class="burn-checkbox">
+            <input type="checkbox" data-adult="0" data-child="13.5" value="right-leg-child">
+            <span>Right Leg (13.5%)</span>
+          </label>
+          <label class="burn-checkbox">
+            <input type="checkbox" data-adult="0" data-child="13.5" value="left-leg-child">
+            <span>Left Leg (13.5%)</span>
+          </label>
+          <label class="burn-checkbox">
+            <input type="checkbox" data-adult="0" data-child="1" value="genitalia-child">
+            <span>Genitalia (1%)</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="burn-results">
+      <div class="burn-result-card">
+        <h3>Total Body Surface Area Burned</h3>
+        <div class="burn-percentage" id="burnPercentage">0%</div>
+        <div class="burn-severity" id="burnSeverity"></div>
+      </div>
+      
+      <div class="burn-result-card">
+        <h3>Fluid Resuscitation (Parkland Formula)</h3>
+        <div id="fluidResuscitation" class="fluid-info">
+          <p class="info-text">Calculate BSA first to estimate fluid requirements</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Information Section -->
+  <div class="card info-section">
+    <h2>About BSA Formulas</h2>
+    <div class="formula-info">
+      <div class="formula-item">
+        <h3>Du Bois & Du Bois (1916)</h3>
+        <p>BSA = 0.007184 × Height^0.725 × Weight^0.425</p>
+        <p class="formula-note">Most widely used formula</p>
+      </div>
+      <div class="formula-item">
+        <h3>Mosteller (1987)</h3>
+        <p>BSA = √(Height × Weight / 3600)</p>
+        <p class="formula-note">Simplest and easiest to calculate</p>
+      </div>
+      <div class="formula-item">
+        <h3>Haycock (1978)</h3>
+        <p>BSA = 0.024265 × Height^0.3964 × Weight^0.5378</p>
+        <p class="formula-note">Good for pediatric patients</p>
+      </div>
+      <div class="formula-item">
+        <h3>Gehan & George (1970)</h3>
+        <p>BSA = 0.0235 × Height^0.42246 × Weight^0.51456</p>
+        <p class="formula-note">Validated for wide range of body sizes</p>
+      </div>
+      <div class="formula-item">
+        <h3>Boyd (1935)</h3>
+        <p>BSA = 0.0003207 × Height^0.3 × Weight^(0.7285 - 0.0188 × log(Weight))</p>
+        <p class="formula-note">Complex but accurate formula</p>
+      </div>
+    </div>
+  </div>
+</div>
+            </div>
+            
+            <!-- Sidebar Ad -->
+            <aside class="sidebar">
+                <div class="ad-container ad-sidebar">
+                    <div class="ad-placeholder">Advertisement</div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Body Surface Area (BSA) Calculator. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

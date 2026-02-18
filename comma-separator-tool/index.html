@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online tool to add or remove commas between items. Convert line-separated lists to comma-separated format, add quotes, use custom separators, and remove duplicates instantly.">
+    <meta name="keywords" content="comma separator, add commas, comma separated, list to comma, csv formatter, comma delimiter, separate with commas, comma tool">
+    <title>{{PAGE_TITLE}}</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{PAGE_TITLE}}">
+    <meta property="og:description" content="Free online tool to add or remove commas between items. Convert line-separated lists to comma-separated format, add quotes, use custom separators, and remove duplicates instantly.">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{PAGE_TITLE}}">
+    <meta name="twitter:description" content="Free online tool to add or remove commas between items. Convert line-separated lists to comma-separated format, add quotes, use custom separators, and remove duplicates instantly.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Analytics (Replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+</head>
+<body>
+    <!-- Header Ad Slot -->
+    <div class="ad-container ad-header">
+        <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <header>
+        <h1>Comma Separator Tool</h1>
+        <p class="subtitle">{{APP_SUBTITLE}}</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Main App Content Goes Here -->
+            <div id="app-content">
+                <div class="container">
+  <h1>Comma Separator Tool</h1>
+  <p class="description">Convert line-separated text into comma-separated values</p>
+  
+  <div class="input-section">
+    <label for="inputText">Input Text (one item per line):</label>
+    <textarea id="inputText" placeholder="Enter text here...&#10;One item per line"></textarea>
+  </div>
+  
+  <div class="options">
+    <label>
+      <input type="checkbox" id="trimSpaces" checked>
+      Trim whitespace
+    </label>
+    <label>
+      <input type="checkbox" id="removeEmpty" checked>
+      Remove empty lines
+    </label>
+    <label>
+      <input type="checkbox" id="addQuotes">
+      Add quotes around items
+    </label>
+    <label>
+      <input type="checkbox" id="addSpace" checked>
+      Add space after comma
+    </label>
+  </div>
+  
+  <button id="convertBtn" class="convert-btn">Convert to Comma-Separated</button>
+  
+  <div class="output-section">
+    <label for="outputText">Output:</label>
+    <textarea id="outputText" readonly placeholder="Comma-separated output will appear here..."></textarea>
+    <button id="copyBtn" class="copy-btn">Copy to Clipboard</button>
+  </div>
+  
+  <div id="notification" class="notification"></div>
+</div>
+            </div>
+            
+            <!-- Sidebar Ad -->
+            <aside class="sidebar">
+                <div class="ad-container ad-sidebar">
+                    <div class="ad-placeholder">Advertisement</div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Comma Separator Tool. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

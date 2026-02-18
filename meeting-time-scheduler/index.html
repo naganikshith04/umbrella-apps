@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Schedule meetings effortlessly across multiple time zones. Our global meeting planner finds optimal times for your international team. Free, fast, and easy to use!">
+    <meta name="keywords" content="meeting scheduler, time zone meeting, schedule across time zones, global meeting planner, best meeting time, international meeting scheduler, cross timezone meetings, team meeting planner, world clock meeting, timezone converter meeting, global team scheduling, meeting time finder, multi timezone scheduler">
+    <title>Meeting Time Scheduler - Find Best Times Across Time Zones</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Meeting Time Scheduler - Find Best Times Across Time Zones">
+    <meta property="og:description" content="Schedule meetings effortlessly across multiple time zones. Our global meeting planner finds optimal times for your international team. Free, fast, and easy to use!">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Meeting Time Scheduler - Find Best Times Across Time Zones">
+    <meta name="twitter:description" content="Schedule meetings effortlessly across multiple time zones. Our global meeting planner finds optimal times for your international team. Free, fast, and easy to use!">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Analytics (Replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Meeting Time Scheduler",
+  "description": "Schedule meetings effortlessly across multiple time zones. Our global meeting planner finds optimal times for your international team. Free, fast, and easy to use!",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript"
+}
+    </script>
+</head>
+<body>
+    <!-- Header Ad Slot -->
+    <div class="ad-container ad-header">
+        <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <header>
+        <h1>Meeting Time Scheduler</h1>
+        <p class="subtitle">Find optimal meeting times across multiple time zones for global teams</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Main App Content Goes Here -->
+            <div id="app-content">
+                <div class="meeting-scheduler">
+  <header class="scheduler-header">
+    <h1>Meeting Time Scheduler</h1>
+    <p>Schedule and manage your meetings efficiently</p>
+  </header>
+
+  <main class="scheduler-main">
+    <!-- Meeting Form Section -->
+    <section class="meeting-form-section">
+      <h2>Schedule a New Meeting</h2>
+      <form id="meetingForm" class="meeting-form">
+        <div class="form-group">
+          <label for="meetingTitle">Meeting Title</label>
+          <input type="text" id="meetingTitle" name="meetingTitle" required placeholder="Enter meeting title">
+        </div>
+
+        <div class="form-group">
+          <label for="meetingDate">Date</label>
+          <input type="date" id="meetingDate" name="meetingDate" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="startTime">Start Time</label>
+            <input type="time" id="startTime" name="startTime" required>
+          </div>
+
+          <div class="form-group">
+            <label for="endTime">End Time</label>
+            <input type="time" id="endTime" name="endTime" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="participants">Participants (comma-separated emails)</label>
+          <input type="text" id="participants" name="participants" placeholder="email1@example.com, email2@example.com">
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" name="description" rows="3" placeholder="Meeting description"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input type="text" id="location" name="location" placeholder="Meeting location or video link">
+        </div>
+
+        <!-- Calendar Integration Section -->
+        <div class="form-group calendar-integration">
+          <label>Calendar Integration</label>
+          <div class="calendar-options">
+            <button type="button" id="googleCalendarBtn" class="calendar-btn google-btn">
+              <svg class="calendar-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill="currentColor"/>
+              </svg>
+              Add to Google Calendar
+            </button>
+            <button type="button" id="outlookCalendarBtn" class="calendar-btn outlook-btn">
+              <svg class="calendar-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.18l7.6 3.8-7.6 3.8-7.6-3.8L12 4.18zM4 9.1l7 3.5v7.3l-7-3.5V9.1zm9 10.8v-7.3l7-3.5v7.3l-7 3.5z" fill="currentColor"/>
+              </svg>
+              Add to Outlook Calendar
+            </button>
+          </div>
+          <div id="calendarStatus" class="calendar-status"></div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Schedule Meeting</button>
+          <button type="reset" class="btn btn-secondary">Clear Form</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Meetings List Section -->
+    <section class="meetings-list-section">
+      <div class="section-header">
+        <h2>Scheduled Meetings</h2>
+        <div class="filter-controls">
+          <select id="filterType" class="filter-select">
+            <option value="all">All Meetings</option>
+            <option value="upcoming">Upcoming</option>
+            <option value="past">Past</option>
+            <option value="today">Today</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="meetingsList" class="meetings-list">
+        <!-- Meetings will be dynamically inserted here -->
+      </div>
+
+      <div id="emptyState" class="empty-state">
+        <svg class="empty-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM5 8V6h14v2H5zm2 4h10v2H7v-2z" fill="currentColor"/>
+        </svg>
+        <p>No meetings scheduled yet</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Calendar Integration Modal -->
+  <div id="calendarModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle">Calendar Integration</h3>
+        <button class="modal-close" id="modalClose">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="modalMessage" class="modal-message"></div>
+        <div id="calendarAuthSection" class="calendar-auth-section">
+          <p>To integrate with your calendar, please authorize access:</p>
+          <button id="authorizeBtn" class="btn btn-primary">Authorize Access</button>
+        </div>
+        <div id="calendarSuccessSection" class="calendar-success-section" style="display: none;">
+          <div class="success-icon">✓</div>
+          <p>Meeting successfully added to your calendar!</p>
+          <div class="calendar-details" id="calendarDetails"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="modalCancelBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast"></div>
+</div>
+            </div>
+            
+            <!-- Sidebar Ad -->
+            <aside class="sidebar">
+                <div class="ad-container ad-sidebar">
+                    <div class="ad-placeholder">Advertisement</div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Meeting Time Scheduler. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

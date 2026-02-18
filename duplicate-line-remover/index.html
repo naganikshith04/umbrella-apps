@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online tool to remove duplicate lines from text. Case-sensitive or insensitive matching, preserve order or sort alphabetically. Fast and privacy-focused.">
+    <meta name="keywords" content="{{META_KEYWORDS}}">
+    <title>{{PAGE_TITLE}}</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{PAGE_TITLE}}">
+    <meta property="og:description" content="Free online tool to remove duplicate lines from text. Case-sensitive or insensitive matching, preserve order or sort alphabetically. Fast and privacy-focused.">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{PAGE_TITLE}}">
+    <meta name="twitter:description" content="Free online tool to remove duplicate lines from text. Case-sensitive or insensitive matching, preserve order or sort alphabetically. Fast and privacy-focused.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Analytics (Replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+</head>
+<body>
+    <!-- Header Ad Slot -->
+    <div class="ad-container ad-header">
+        <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <header>
+        <h1>Duplicate Line Remover</h1>
+        <p class="subtitle">{{APP_SUBTITLE}}</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Main App Content Goes Here -->
+            <div id="app-content">
+                <div class="container">
+    <h1>Duplicate Line Remover</h1>
+    <p class="description">Remove duplicate lines from your text. Choose whether to keep the first or last occurrence.</p>
+    
+    <div class="input-section">
+        <label for="inputText">Input Text:</label>
+        <textarea id="inputText" placeholder="Enter your text here, one line per entry..."></textarea>
+    </div>
+    
+    <div class="options-section">
+        <div class="option-group">
+            <label>
+                <input type="radio" name="keepOption" value="first" checked>
+                Keep First Occurrence
+            </label>
+            <label>
+                <input type="radio" name="keepOption" value="last">
+                Keep Last Occurrence
+            </label>
+        </div>
+        
+        <div class="option-group">
+            <label>
+                <input type="checkbox" id="caseSensitive" checked>
+                Case-sensitive matching
+            </label>
+        </div>
+    </div>
+    
+    <div class="button-section">
+        <button id="removeDuplicatesBtn" class="btn-primary">Remove Duplicates</button>
+        <button id="clearBtn" class="btn-secondary">Clear</button>
+    </div>
+    
+    <div class="output-section">
+        <label for="outputText">Output Text:</label>
+        <textarea id="outputText" placeholder="Result will appear here..." readonly></textarea>
+    </div>
+    
+    <div class="stats">
+        <span id="stats"></span>
+    </div>
+</div>
+            </div>
+            
+            <!-- Sidebar Ad -->
+            <aside class="sidebar">
+                <div class="ad-container ad-sidebar">
+                    <div class="ad-placeholder">Advertisement</div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Duplicate Line Remover. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert PDF files to editable Word documents online for free. Preserve formatting, layout, and fonts perfectly. Fast PDF to DOCX conversion. Try now!">
+    <meta name="keywords" content="pdf to word, pdf to docx converter, convert pdf to word, pdf to doc, pdf converter online, pdf to word online, free pdf converter, pdf to editable word, pdf to microsoft word, online pdf converter, pdf file converter, document converter">
+    <title>PDF to Word Converter - Convert PDF to Editable DOCX Free</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PDF to Word Converter - Convert PDF to Editable DOCX Free">
+    <meta property="og:description" content="Convert PDF files to editable Word documents online for free. Preserve formatting, layout, and fonts perfectly. Fast PDF to DOCX conversion. Try now!">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="PDF to Word Converter - Convert PDF to Editable DOCX Free">
+    <meta name="twitter:description" content="Convert PDF files to editable Word documents online for free. Preserve formatting, layout, and fonts perfectly. Fast PDF to DOCX conversion. Try now!">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Analytics (Replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "PDF to Word Converter",
+  "description": "Convert PDF files to editable Word documents online for free. Preserve formatting, layout, and fonts perfectly. Fast PDF to DOCX conversion. Try now!",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript"
+}
+    </script>
+</head>
+<body>
+    <!-- Header Ad Slot -->
+    <div class="ad-container ad-header">
+        <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <header>
+        <h1>PDF to Word Converter</h1>
+        <p class="subtitle">Convert PDF files to editable Word documents while preserving formatting and layout</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Main App Content Goes Here -->
+            <div id="app-content">
+                <div class="container">
+    <header>
+        <div class="logo">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="40" height="40" rx="8" fill="#4F46E5"/>
+                <path d="M12 10H28V30H12V10Z" fill="white" opacity="0.2"/>
+                <path d="M15 15H25V18H15V15Z" fill="white"/>
+                <path d="M15 20H25V23H15V20Z" fill="white"/>
+                <path d="M15 25H22V28H15V25Z" fill="white"/>
+            </svg>
+            <h1>PDF to Word Converter</h1>
+        </div>
+        <p class="subtitle">Convert your PDF documents to editable Word files instantly</p>
+    </header>
+
+    <main>
+        <div class="upload-section" id="uploadSection">
+            <div class="upload-area" id="uploadArea">
+                <svg class="upload-icon" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M32 8V40M32 8L20 20M32 8L44 20" stroke="#4F46E5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M8 40V52C8 54.2091 9.79086 56 12 56H52C54.2091 56 56 54.2091 56 52V40" stroke="#4F46E5" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+                <h2>Drop your PDF file here</h2>
+                <p>or click to browse</p>
+                <input type="file" id="fileInput" accept=".pdf" hidden>
+                <button class="btn btn-primary" id="browseBtn">Browse Files</button>
+                <p class="file-info">Maximum file size: 10MB</p>
+            </div>
+        </div>
+
+        <div class="file-preview" id="filePreview" style="display: none;">
+            <div class="file-card">
+                <div class="file-icon">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="48" height="48" rx="8" fill="#EF4444" opacity="0.1"/>
+                        <path d="M16 12H28L36 20V36C36 37.1046 35.1046 38 34 38H16C14.8954 38 14 37.1046 14 36V14C14 12.8954 14.8954 12 16 12Z" fill="#EF4444"/>
+                        <path d="M28 12V20H36" fill="#EF4444" opacity="0.5"/>
+                        <text x="24" y="32" font-size="10" fill="white" text-anchor="middle" font-weight="bold">PDF</text>
+                    </svg>
+                </div>
+                <div class="file-details">
+                    <h3 id="fileName">document.pdf</h3>
+                    <p id="fileSize">0 KB</p>
+                </div>
+                <button class="btn-icon" id="removeFile" title="Remove file">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="conversion-options">
+                <h3>Conversion Options</h3>
+                <div class="option-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="preserveFormatting" checked>
+                        <span>Preserve formatting</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="extractImages" checked>
+                        <span>Extract images</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="ocrEnabled">
+                        <span>Enable OCR (for scanned PDFs)</span>
+                    </label>
+                </div>
+            </div>
+
+            <button class="btn btn-primary btn-large" id="convertBtn">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 10H16M16 10L12 6M16 10L12 14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Convert to Word
+            </button>
+        </div>
+
+        <div class="progress-section" id="progressSection" style="display: none;">
+            <div class="progress-card">
+                <div class="spinner"></div>
+                <h3>Converting your PDF...</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p id="progressText">0%</p>
+            </div>
+        </div>
+
+        <div class="success-section" id="successSection" style="display: none;">
+            <div class="success-card">
+                <div class="success-icon">
+                    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="32" cy="32" r="32" fill="#10B981" opacity="0.1"/>
+                        <path d="M20 32L28 40L44 24" stroke="#10B981" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h2>Conversion Complete!</h2>
+                <p>Your Word document is ready to download</p>
+                <div class="success-actions">
+                    <button class="btn btn-primary btn-large" id="downloadBtn">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10 2V14M10 14L6 10M10 14L14 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 14V16C2 17.1046 2.89543 18 4 18H16C17.1046 18 18 17.1046 18 16V14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        Download Word Document
+                    </button>
+                    <button class="btn btn-secondary" id="convertAnotherBtn">Convert Another File</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="features">
+            <div class="feature">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#4F46E5"/>
+                </svg>
+                <div>
+                    <h4>High Quality</h4>
+                    <p>Preserves formatting and layout</p>
+                </div>
+            </div>
+            <div class="feature">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#4F46E5" stroke-width="2"/>
+                    <path d="M12 6V12L16 14" stroke="#4F46E5" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <div>
+                    <h4>Fast Conversion</h4>
+                    <p>Convert files in seconds</p>
+                </div>
+            </div>
+            <div class="feature">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L3 7L12 12L21 7L12 2Z" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 17L12 22L21 17" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M3 12L12 17L21 12" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <div>
+                    <h4>Secure</h4>
+                    <p>Files are processed securely</p>
+                </div>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2024 PDF to Word Converter. All rights reserved.</p>
+    </footer>
+</div>
+            </div>
+            
+            <!-- Sidebar Ad -->
+            <aside class="sidebar">
+                <div class="ad-container ad-sidebar">
+                    <div class="ad-placeholder">Advertisement</div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 PDF to Word Converter. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert HEIC to JPG format instantly. Free online HEIC converter for iPhone photos. Fast, secure, and easy to use. No software download required. Try now!">
+    <meta name="keywords" content="heic to jpg, convert heic to jpeg, heic converter, iphone photo converter, heic to png, heic to jpg converter, convert heic files, heic image converter, apple heic converter, free heic converter, online heic converter, heic format converter, heic photo converter, convert iphone photos">
+    <title>HEIC to JPG Converter - Convert iPhone Photos Instantly</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="HEIC to JPG Converter - Convert iPhone Photos Instantly">
+    <meta property="og:description" content="Convert HEIC to JPG format instantly. Free online HEIC converter for iPhone photos. Fast, secure, and easy to use. No software download required. Try now!">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="HEIC to JPG Converter - Convert iPhone Photos Instantly">
+    <meta name="twitter:description" content="Convert HEIC to JPG format instantly. Free online HEIC converter for iPhone photos. Fast, secure, and easy to use. No software download required. Try now!">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Analytics (Replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "HEIC to JPG Converter",
+  "description": "Convert HEIC to JPG format instantly. Free online HEIC converter for iPhone photos. Fast, secure, and easy to use. No software download required. Try now!",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript"
+}
+    </script>
+</head>
+<body>
+    <!-- Header Ad Slot -->
+    <div class="ad-container ad-header">
+        <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <header>
+        <h1>HEIC to JPG Converter</h1>
+        <p class="subtitle">Convert iPhone HEIC photos to widely compatible JPG format instantly</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Main App Content Goes Here -->
+            <div id="app-content">
+                <div class="heic-converter-container">
+  <header class="converter-header">
+    <h1>HEIC to JPG Converter</h1>
+    <p class="subtitle">Convert your HEIC images to JPG format instantly</p>
+  </header>
+
+  <main class="converter-main">
+    <div class="upload-section">
+      <div class="upload-area" id="uploadArea">
+        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="17 8 12 3 7 8"></polyline>
+          <line x1="12" y1="3" x2="12" y2="15"></line>
+        </svg>
+        <h2>Drop HEIC files here</h2>
+        <p>or click to browse</p>
+        <input type="file" id="fileInput" accept=".heic,.heif" multiple hidden>
+      </div>
+
+      <div class="options-section">
+        <h3>Conversion Options</h3>
+        <div class="option-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="preserveExif" checked>
+            <span class="checkbox-custom"></span>
+            <span class="checkbox-text">Preserve EXIF metadata</span>
+          </label>
+          <p class="option-description">Keep camera settings, location, and date information</p>
+        </div>
+        <div class="option-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="extractLivePhoto">
+            <span class="checkbox-custom"></span>
+            <span class="checkbox-text">Extract Live Photos frames</span>
+          </label>
+          <p class="option-description">Extract all frames from Live Photos as separate images</p>
+        </div>
+        <div class="option-group">
+          <label for="qualitySlider">JPG Quality: <span id="qualityValue">90</span>%</label>
+          <input type="range" id="qualitySlider" min="1" max="100" value="90">
+        </div>
+      </div>
+    </div>
+
+    <div class="files-section" id="filesSection" style="display: none;">
+      <div class="files-header">
+        <h3>Files (<span id="fileCount">0</span>)</h3>
+        <button class="btn btn-secondary" id="clearAllBtn">Clear All</button>
+      </div>
+      <div class="files-list" id="filesList"></div>
+      <div class="conversion-actions">
+        <button class="btn btn-primary" id="convertAllBtn">Convert All</button>
+        <button class="btn btn-success" id="downloadAllBtn" style="display: none;">Download All</button>
+      </div>
+    </div>
+
+    <div class="metadata-viewer" id="metadataViewer" style="display: none;">
+      <h3>EXIF Metadata</h3>
+      <button class="close-btn" id="closeMetadata">&times;</button>
+      <div class="metadata-content" id="metadataContent"></div>
+    </div>
+  </main>
+
+  <footer class="converter-footer">
+    <p>All conversions happen locally in your browser. Your files never leave your device.</p>
+  </footer>
+</div>
+            </div>
+            
+            <!-- Sidebar Ad -->
+            <aside class="sidebar">
+                <div class="ad-container ad-sidebar">
+                    <div class="ad-placeholder">Advertisement</div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 HEIC to JPG Converter. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

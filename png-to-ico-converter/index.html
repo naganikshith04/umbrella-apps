@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert PNG images to ICO favicon files instantly. Generate multi-size favicons for websites with our free online PNG to ICO converter. No signup required!">
+    <meta name="keywords" content="png to ico, favicon generator, ico converter, create favicon, image to ico online, png to favicon, favicon creator, convert png to ico, online ico converter, favicon maker, ico file generator, website favicon, multi-size favicon, free favicon converter, png favicon generator">
+    <title>PNG to ICO Converter - Create Favicon Files Online Free</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PNG to ICO Converter - Create Favicon Files Online Free">
+    <meta property="og:description" content="Convert PNG images to ICO favicon files instantly. Generate multi-size favicons for websites with our free online PNG to ICO converter. No signup required!">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="PNG to ICO Converter - Create Favicon Files Online Free">
+    <meta name="twitter:description" content="Convert PNG images to ICO favicon files instantly. Generate multi-size favicons for websites with our free online PNG to ICO converter. No signup required!">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Analytics (Replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "PNG to ICO Converter",
+  "description": "Convert PNG images to ICO favicon files instantly. Generate multi-size favicons for websites with our free online PNG to ICO converter. No signup required!",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript"
+}
+    </script>
+</head>
+<body>
+    <!-- Header Ad Slot -->
+    <div class="ad-container ad-header">
+        <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <header>
+        <h1>PNG to ICO Converter</h1>
+        <p class="subtitle">Create favicon ICO files from PNG images with multiple size variants</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Main App Content Goes Here -->
+            <div id="app-content">
+                <div class="png-to-ico-converter">
+  <div class="container">
+    <header class="header">
+      <h1>PNG to ICO Converter</h1>
+      <p class="subtitle">Convert your PNG images to ICO format with multiple sizes</p>
+    </header>
+
+    <div class="converter-section">
+      <div class="upload-area" id="uploadArea">
+        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="17 8 12 3 7 8"></polyline>
+          <line x1="12" y1="3" x2="12" y2="15"></line>
+        </svg>
+        <p class="upload-text">Drag & drop PNG files here or click to browse</p>
+        <input type="file" id="fileInput" accept="image/png" multiple hidden>
+        <button class="browse-btn" id="browseBtn">Browse Files</button>
+      </div>
+
+      <div class="options-panel">
+        <h3>Conversion Options</h3>
+        
+        <div class="option-group">
+          <label class="option-label">
+            <input type="checkbox" id="size16" checked>
+            <span>16x16</span>
+          </label>
+          <label class="option-label">
+            <input type="checkbox" id="size32" checked>
+            <span>32x32</span>
+          </label>
+          <label class="option-label">
+            <input type="checkbox" id="size48" checked>
+            <span>48x48</span>
+          </label>
+          <label class="option-label">
+            <input type="checkbox" id="size64">
+            <span>64x64</span>
+          </label>
+          <label class="option-label">
+            <input type="checkbox" id="size128">
+            <span>128x128</span>
+          </label>
+          <label class="option-label">
+            <input type="checkbox" id="size256">
+            <span>256x256</span>
+          </label>
+        </div>
+
+        <div class="batch-favicon-section">
+          <h4>Batch Favicon Creation</h4>
+          <p class="batch-description">Generate complete favicon packages with all necessary formats and sizes</p>
+          
+          <div class="batch-options">
+            <label class="option-label">
+              <input type="checkbox" id="batchEnabled">
+              <span>Enable Batch Favicon Mode</span>
+            </label>
+            
+            <div class="batch-settings" id="batchSettings" style="display: none;">
+              <label class="option-label">
+                <input type="checkbox" id="includeAppleTouchIcon" checked>
+                <span>Include Apple Touch Icon (180x180)</span>
+              </label>
+              <label class="option-label">
+                <input type="checkbox" id="includeAndroidIcons" checked>
+                <span>Include Android Icons (192x192, 512x512)</span>
+              </label>
+              <label class="option-label">
+                <input type="checkbox" id="includeFavicon32" checked>
+                <span>Include favicon-32x32.png</span>
+              </label>
+              <label class="option-label">
+                <input type="checkbox" id="includeFavicon16" checked>
+                <span>Include favicon-16x16.png</span>
+              </label>
+              <label class="option-label">
+                <input type="checkbox" id="generateManifest" checked>
+                <span>Generate manifest.json</span>
+              </label>
+              <label class="option-label">
+                <input type="checkbox" id="generateHTML" checked>
+                <span>Generate HTML snippet</span>
+              </label>
+              
+              <div class="manifest-options" id="manifestOptions">
+                <input type="text" id="appName" placeholder="App Name" class="text-input">
+                <input type="text" id="appShortName" placeholder="Short Name" class="text-input">
+                <input type="color" id="themeColor" value="#ffffff" class="color-input">
+                <label>Theme Color</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-section" id="previewSection" style="display: none;">
+        <h3>Preview</h3>
+        <div class="preview-grid" id="previewGrid"></div>
+      </div>
+
+      <div class="action-buttons" id="actionButtons" style="display: none;">
+        <button class="convert-btn" id="convertBtn">Convert to ICO</button>
+        <button class="download-btn" id="downloadBtn" style="display: none;">Download ICO</button>
+        <button class="download-batch-btn" id="downloadBatchBtn" style="display: none;">Download Favicon Package</button>
+        <button class="clear-btn" id="clearBtn">Clear All</button>
+      </div>
+
+      <div class="batch-preview" id="batchPreview" style="display: none;">
+        <h3>Favicon Package Contents</h3>
+        <div class="file-list" id="fileList"></div>
+      </div>
+    </div>
+  </div>
+</div>
+            </div>
+            
+            <!-- Sidebar Ad -->
+            <aside class="sidebar">
+                <div class="ad-container ad-sidebar">
+                    <div class="ad-placeholder">Advertisement</div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 PNG to ICO Converter. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "emergency-fund-calculator",
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ]
+}

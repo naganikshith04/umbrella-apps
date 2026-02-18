@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "pdf-to-excel-converter",
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ]
+}

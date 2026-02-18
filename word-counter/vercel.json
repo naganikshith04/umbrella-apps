@@ -1,3 +1,10 @@
 {
-  "version": 2
+  "version": 2,
+  "name": "word-counter",
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ]
 }

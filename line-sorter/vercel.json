@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "line-sorter",
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ]
+}

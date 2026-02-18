@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free mortgage refinance calculator with break-even analysis. Calculate your potential savings, monthly payment changes, and see if refinancing makes sense. Get instant results now!">
+    <meta name="keywords" content="refinance calculator, mortgage refinance calculator, should i refinance, refinancing calculator, refi calculator, mortgage refi calculator, refinance savings calculator, refinance break even calculator, mortgage calculator, home loan refinance, refinance analysis, refinance comparison tool, mortgage savings calculator, home refinance calculator">
+    <title>Refinance Calculator - Should I Refinance My Mortgage?</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Refinance Calculator - Should I Refinance My Mortgage?">
+    <meta property="og:description" content="Free mortgage refinance calculator with break-even analysis. Calculate your potential savings, monthly payment changes, and see if refinancing makes sense. Get instant results now!">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Refinance Calculator - Should I Refinance My Mortgage?">
+    <meta name="twitter:description" content="Free mortgage refinance calculator with break-even analysis. Calculate your potential savings, monthly payment changes, and see if refinancing makes sense. Get instant results now!">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Analytics (Replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Refinance Calculator",
+  "description": "Free mortgage refinance calculator with break-even analysis. Calculate your potential savings, monthly payment changes, and see if refinancing makes sense. Get instant results now!",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript"
+}
+    </script>
+</head>
+<body>
+    <!-- Header Ad Slot -->
+    <div class="ad-container ad-header">
+        <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <header>
+        <h1>Refinance Calculator</h1>
+        <p class="subtitle">Calculate if refinancing your mortgage makes financial sense with break-even analysis and lifetime savings</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Main App Content Goes Here -->
+            <div id="app-content">
+                <div class="container">
+  <h1>Refinance Calculator</h1>
+  
+  <div class="calculator-section">
+    <h2>Current Loan Details</h2>
+    <div class="form-group">
+      <label for="currentBalance">Current Loan Balance ($)</label>
+      <input type="number" id="currentBalance" placeholder="250000" />
+    </div>
+    
+    <div class="form-group">
+      <label for="currentRate">Current Interest Rate (%)</label>
+      <input type="number" id="currentRate" step="0.01" placeholder="4.5" />
+    </div>
+    
+    <div class="form-group">
+      <label for="currentTerm">Remaining Term (years)</label>
+      <input type="number" id="currentTerm" placeholder="25" />
+    </div>
+  </div>
+  
+  <div class="calculator-section">
+    <h2>New Loan Details</h2>
+    <div class="form-group">
+      <label for="newRate">New Interest Rate (%)</label>
+      <input type="number" id="newRate" step="0.01" placeholder="3.5" />
+    </div>
+    
+    <div class="form-group">
+      <label for="newTerm">New Loan Term (years)</label>
+      <input type="number" id="newTerm" placeholder="30" />
+    </div>
+    
+    <div class="form-group">
+      <label for="closingCosts">Closing Costs ($)</label>
+      <input type="number" id="closingCosts" placeholder="5000" />
+    </div>
+  </div>
+  
+  <button id="calculateBtn" class="calculate-btn">Calculate Savings</button>
+  
+  <div id="results" class="results hidden">
+    <h2>Results</h2>
+    <div class="result-grid">
+      <div class="result-item">
+        <span class="result-label">Current Monthly Payment:</span>
+        <span class="result-value" id="currentPayment">$0</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">New Monthly Payment:</span>
+        <span class="result-value" id="newPayment">$0</span>
+      </div>
+      <div class="result-item highlight">
+        <span class="result-label">Monthly Savings:</span>
+        <span class="result-value" id="monthlySavings">$0</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Total Interest (Current):</span>
+        <span class="result-value" id="currentInterest">$0</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Total Interest (New):</span>
+        <span class="result-value" id="newInterest">$0</span>
+      </div>
+      <div class="result-item highlight">
+        <span class="result-label">Lifetime Savings:</span>
+        <span class="result-value" id="lifetimeSavings">$0</span>
+      </div>
+      <div class="result-item">
+        <span class="result-label">Break-even Point:</span>
+        <span class="result-value" id="breakEven">0 months</span>
+      </div>
+    </div>
+  </div>
+</div>
+            </div>
+            
+            <!-- Sidebar Ad -->
+            <aside class="sidebar">
+                <div class="ad-container ad-sidebar">
+                    <div class="ad-placeholder">Advertisement</div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Refinance Calculator. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

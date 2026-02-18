@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free time card calculator for weekly hours. Track multiple punch-in/out entries, calculate overtime, and total your timesheet instantly. Easy, accurate, and fast!">
+    <meta name="keywords" content="time card calculator, timecard calculator, punch clock calculator, weekly hours calculator, time sheet calculator, overtime calculator, work hours calculator, employee time tracking, payroll calculator, hours and minutes calculator, time clock calculator, daily hours calculator, biweekly timecard calculator">
+    <title>Time Card Calculator - Calculate Weekly Hours & Punch Clock</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Time Card Calculator - Calculate Weekly Hours & Punch Clock">
+    <meta property="og:description" content="Free time card calculator for weekly hours. Track multiple punch-in/out entries, calculate overtime, and total your timesheet instantly. Easy, accurate, and fast!">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Time Card Calculator - Calculate Weekly Hours & Punch Clock">
+    <meta name="twitter:description" content="Free time card calculator for weekly hours. Track multiple punch-in/out entries, calculate overtime, and total your timesheet instantly. Easy, accurate, and fast!">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Analytics (Replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Time Card Calculator",
+  "description": "Free time card calculator for weekly hours. Track multiple punch-in/out entries, calculate overtime, and total your timesheet instantly. Easy, accurate, and fast!",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript"
+}
+    </script>
+</head>
+<body>
+    <!-- Header Ad Slot -->
+    <div class="ad-container ad-header">
+        <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <header>
+        <h1>Time Card Calculator</h1>
+        <p class="subtitle">Calculate weekly time card totals with multiple punch-in/out entries</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Main App Content Goes Here -->
+            <div id="app-content">
+                <div class="time-card-calculator">
+  <div class="container">
+    <h1>Time Card Calculator</h1>
+    
+    <div class="input-section">
+      <div class="form-group">
+        <label for="employeeName">Employee Name:</label>
+        <input type="text" id="employeeName" value="John Doe">
+      </div>
+      
+      <div class="form-group">
+        <label for="weekEnding">Week Ending:</label>
+        <input type="date" id="weekEnding">
+      </div>
+      
+      <div class="form-group">
+        <label for="hourlyRate">Hourly Rate ($):</label>
+        <input type="number" id="hourlyRate" step="0.01" min="0" value="15.00">
+      </div>
+    </div>
+
+    <div class="timesheet-section">
+      <h2>Daily Time Entries</h2>
+      <div id="timeEntries"></div>
+      <button id="addDayBtn" class="btn btn-secondary">Add Day</button>
+    </div>
+
+    <div class="summary-section">
+      <h2>Summary</h2>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <span class="summary-label">Total Hours:</span>
+          <span id="totalHours" class="summary-value">0.00</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Regular Hours:</span>
+          <span id="regularHours" class="summary-value">0.00</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Overtime Hours:</span>
+          <span id="overtimeHours" class="summary-value">0.00</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Regular Pay:</span>
+          <span id="regularPay" class="summary-value">$0.00</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Overtime Pay:</span>
+          <span id="overtimePay" class="summary-value">$0.00</span>
+        </div>
+        <div class="summary-item total">
+          <span class="summary-label">Total Pay:</span>
+          <span id="totalPay" class="summary-value">$0.00</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-buttons">
+      <button id="calculateBtn" class="btn btn-primary">Calculate</button>
+      <button id="printBtn" class="btn btn-secondary">Print Timesheet</button>
+      <button id="resetBtn" class="btn btn-danger">Reset</button>
+    </div>
+
+    <div id="printableTimesheet" class="printable-timesheet">
+      <div class="print-header">
+        <h1>Time Card Report</h1>
+        <div class="print-info">
+          <p><strong>Employee:</strong> <span id="printEmployeeName"></span></p>
+          <p><strong>Week Ending:</strong> <span id="printWeekEnding"></span></p>
+          <p><strong>Hourly Rate:</strong> $<span id="printHourlyRate"></span></p>
+        </div>
+      </div>
+      
+      <table class="print-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Day</th>
+            <th>Time In</th>
+            <th>Time Out</th>
+            <th>Break (min)</th>
+            <th>Hours Worked</th>
+          </tr>
+        </thead>
+        <tbody id="printTableBody"></tbody>
+        <tfoot>
+          <tr>
+            <td colspan="5" class="text-right"><strong>Total Hours:</strong></td>
+            <td><strong id="printTotalHours">0.00</strong></td>
+          </tr>
+        </tfoot>
+      </table>
+      
+      <div class="print-summary">
+        <h2>Pay Summary</h2>
+        <table class="summary-table">
+          <tr>
+            <td>Regular Hours (up to 40):</td>
+            <td id="printRegularHours">0.00</td>
+          </tr>
+          <tr>
+            <td>Overtime Hours (over 40):</td>
+            <td id="printOvertimeHours">0.00</td>
+          </tr>
+          <tr>
+            <td>Regular Pay:</td>
+            <td id="printRegularPay">$0.00</td>
+          </tr>
+          <tr>
+            <td>Overtime Pay (1.5x rate):</td>
+            <td id="printOvertimePay">$0.00</td>
+          </tr>
+          <tr class="total-row">
+            <td><strong>Total Pay:</strong></td>
+            <td><strong id="printTotalPay">$0.00</strong></td>
+          </tr>
+        </table>
+      </div>
+      
+      <div class="print-footer">
+        <p>Employee Signature: ___________________________ Date: ___________</p>
+        <p>Supervisor Signature: ___________________________ Date: ___________</p>
+      </div>
+    </div>
+  </div>
+</div>
+            </div>
+            
+            <!-- Sidebar Ad -->
+            <aside class="sidebar">
+                <div class="ad-container ad-sidebar">
+                    <div class="ad-placeholder">Advertisement</div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Time Card Calculator. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

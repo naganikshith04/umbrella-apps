@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "pregnancy-weight-gain-calculator",
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "lean-body-mass-calculator",
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "duplicate-line-remover",
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ]
+}

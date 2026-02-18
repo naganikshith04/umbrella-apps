@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{META_DESCRIPTION}}">
+    <meta name="keywords" content="{{META_KEYWORDS}}">
+    <title>{{PAGE_TITLE}}</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{PAGE_TITLE}}">
+    <meta property="og:description" content="{{META_DESCRIPTION}}">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{PAGE_TITLE}}">
+    <meta name="twitter:description" content="{{META_DESCRIPTION}}">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Analytics (Replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+</head>
+<body>
+    <!-- Header Ad Slot -->
+    <div class="ad-container ad-header">
+        <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <header>
+        <h1>{{APP_NAME}}</h1>
+        <p class="subtitle">{{APP_SUBTITLE}}</p>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Main App Content Goes Here -->
+            <div id="app-content">
+                <div class="container">
+  <h1>Whitespace Remover</h1>
+  <p class="description">Remove leading and trailing whitespace from your text</p>
+  
+  <div class="input-section">
+    <label for="inputText">Input Text:</label>
+    <textarea id="inputText" placeholder="Enter text with whitespace..."></textarea>
+  </div>
+  
+  <div class="button-group">
+    <button id="removeBtn" class="btn btn-primary">Remove Whitespace</button>
+    <button id="clearBtn" class="btn btn-secondary">Clear</button>
+  </div>
+  
+  <div class="output-section">
+    <label for="outputText">Output Text:</label>
+    <textarea id="outputText" readonly placeholder="Result will appear here..."></textarea>
+  </div>
+  
+  <div class="stats">
+    <div class="stat-item">
+      <span class="stat-label">Original Length:</span>
+      <span id="originalLength" class="stat-value">0</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">Trimmed Length:</span>
+      <span id="trimmedLength" class="stat-value">0</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-label">Characters Removed:</span>
+      <span id="charsRemoved" class="stat-value">0</span>
+    </div>
+  </div>
+</div>
+            </div>
+            
+            <!-- Sidebar Ad -->
+            <aside class="sidebar">
+                <div class="ad-container ad-sidebar">
+                    <div class="ad-placeholder">Advertisement</div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 {{APP_NAME}}. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

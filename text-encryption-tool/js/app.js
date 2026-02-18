@@ -1,0 +1,197 @@
+// Base JavaScript Template
+// Add your app-specific logic here
+
+// Utility Functions
+const utils = {
+    // Format numbers with commas
+    formatNumber(num) {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    },
+    
+    // Copy text to clipboard
+    copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            this.showNotification('Copied to clipboard!');
+        }).catch(err => {
+            console.error('Failed to copy:', err);
+        });
+    },
+    
+    // Show notification
+    showNotification(message, type = 'success') {
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.textContent = message;
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: ${type === 'success' ? '#10b981' : '#ef4444'};
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 6px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            animation: slideIn 0.3s ease-out;
+        `;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.style.animation = 'slideOut 0.3s ease-out';
+            setTimeout(() => notification.remove(), 300);
+        }, 3000);
+    },
+    
+    // Validate input
+    validateInput(value, type = 'text') {
+        if (!value || value.trim() === '') {
+            return { valid: false, message: 'This field is required' };
+        }
+        
+        if (type === 'number') {
+            const num = parseFloat(value);
+            if (isNaN(num)) {
+                return { valid: false, message: 'Please enter a valid number' };
+            }
+            if (num < 0) {
+                return { valid: false, message: 'Please enter a positive number' };
+            }
+        }
+        
+        if (type === 'email') {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(value)) {
+                return { valid: false, message: 'Please enter a valid email' };
+            }
+        }
+        
+        return { valid: true };
+    }
+};
+
+// Add animations
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+    
+    @keyframes slideOut {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+
+// Initialize app when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('App initialized');
+    
+    // Add your app initialization code here
+    initApp();
+});
+
+// Main app initialization function
+
+
+function formatNumber(num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function initApp() {
+    // This is where your specific app logic goes
+    console.log('Ready to add app-specific functionality');
+
+    // Generated app logic
+    const inputText = document.getElementById('inputText');
+      const outputText = document.getElementById('outputText');
+      const caesarShift = document.getElementById('caesarShift');
+      
+      // Caesar Cipher Functions
+      function caesarCipher(text, shift, decrypt = false) {
+        if (decrypt) shift = 26 - shift;
+        return text.replace(/[a-zA-Z]/g, function(char) {
+          const start = char <= 'Z' ? 65 : 97;
+          return String.fromCharCode(((char.charCodeAt(0) - start + shift) % 26) + start);
+        });
+      }
+
+      // Base64 Functions
+      function base64Encode(text) {
+        return btoa(unescape(encodeURIComponent(text)));
+      }
+
+      function base64Decode(text) {
+        try {
+          return decodeURIComponent(escape(atob(text)));
+        } catch (e) {
+          return 'Error: Invalid Base64 string';
+        }
+      }
+
+      // ROT13 Function
+      function rot13(text) {
+        return caesarCipher(text, 13, false);
+      }
+
+      // Button event listeners
+      document.getElementById('caesarEncryptBtn').addEventListener('click', function() {
+        const text = inputText.value;
+        const shift = parseInt(caesarShift.value) || 3;
+        outputText.value = caesarCipher(text, shift, false);
+      });
+
+      document.getElementById('caesarDecryptBtn').addEventListener('click', function() {
+        const text = inputText.value;
+        const shift = parseInt(caesarShift.value) || 3;
+        outputText.value = caesarCipher(text, shift, true);
+      });
+
+      document.getElementById('base64EncodeBtn').addEventListener('click', function() {
+        outputText.value = base64Encode(inputText.value);
+      });
+
+      document.getElementById('base64DecodeBtn').addEventListener('click', function() {
+        outputText.value = base64Decode(inputText.value);
+      });
+
+      document.getElementById('rot13Btn').addEventListener('click', function() {
+        outputText.value = rot13(inputText.value);
+      });
+
+      document.getElementById('copyBtn').addEventListener('click', function() {
+        if (!outputText.value) {
+          alert('Nothing to copy!');
+          return;
+        }
+        navigator.clipboard.writeText(outputText.value).then(() => {
+          utils.showNotification('Copied to clipboard!');
+        }).catch(() => {
+          alert('Failed to copy');
+        });
+      });
+
+      document.getElementById('clearBtn').addEventListener('click', function() {
+        inputText.value = '';
+        outputText.value = '';
+      });
+}
+
+// Export utils for use in other scripts
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = utils;
+}

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "text-repeater",
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ]
+}

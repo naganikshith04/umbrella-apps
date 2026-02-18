@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "html-to-plain-text",
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ]
+}

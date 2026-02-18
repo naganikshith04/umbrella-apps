@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "text-difference-checker",
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ]
+}

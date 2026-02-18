@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "txt-to-pdf-converter",
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ]
+}
