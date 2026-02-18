@@ -1,10 +1,3 @@
 {
-  "version": 2,
-  "name": "rent-vs-buy-calculator",
-  "builds": [
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    }
-  ]
+  "version": 2
 }
