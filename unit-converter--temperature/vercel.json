@@ -1,10 +1,3 @@
 {
-  "version": 2,
-  "name": "unit-converter--temperature",
-  "builds": [
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    }
-  ]
+  "version": 2
 }
