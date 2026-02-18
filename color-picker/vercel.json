@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "color-picker",
+  "builds": [
+    {
+      "src": "index.html",
+      "use": "@vercel/static"
+    }
+  ]
+}

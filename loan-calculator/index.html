@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458"
+            crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free loan calculator to calculate monthly payments with detailed amortization schedule. Compare mortgage rates, auto loans, and personal loans. Get instant results now!">
+    <meta name="keywords" content="loan calculator, mortgage calculator, loan payment calculator, amortization calculator, monthly payment calculator, auto loan calculator, personal loan calculator, loan amortization schedule, interest calculator, finance calculator, payment schedule calculator">
+    <title>Loan Calculator - Calculate Monthly Payments & Amortization</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Loan Calculator - Calculate Monthly Payments & Amortization">
+    <meta property="og:description" content="Free loan calculator to calculate monthly payments with detailed amortization schedule. Compare mortgage rates, auto loans, and personal loans. Get instant results now!">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Loan Calculator - Calculate Monthly Payments & Amortization">
+    <meta name="twitter:description" content="Free loan calculator to calculate monthly payments with detailed amortization schedule. Compare mortgage rates, auto loans, and personal loans. Get instant results now!">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Analytics (Replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Loan Calculator",
+  "description": "Free loan calculator to calculate monthly payments with detailed amortization schedule. Compare mortgage rates, auto loans, and personal loans. Get instant results now!",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript"
+}
+    </script>
+</head>
+<body>
+    <!-- Header Ad Slot -->
+    <div class="ad-container ad-header">
+        <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <header>
+        <h1>Loan Calculator</h1>
+        <p class="subtitle">Calculate monthly loan payments with amortization schedule</p>
+    </header>
+
+    <!-- AdSense Display Ad -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9048718254553458"
+         data-ad-slot="1234567890"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+
+    <main>
+        <div class="container">
+            <!-- Main App Content Goes Here -->
+            <div id="app-content">
+                <div class="loan-calculator">
+  <h1>Loan Calculator</h1>
+  
+  <div class="calculator-form">
+    <div class="form-group">
+      <label for="loanAmount">Loan Amount ($)</label>
+      <input type="number" id="loanAmount" placeholder="Enter loan amount" min="0" step="100" value="10000">
+    </div>
+    
+    <div class="form-group">
+      <label for="interestRate">Annual Interest Rate (%)</label>
+      <input type="number" id="interestRate" placeholder="Enter interest rate" min="0" max="100" step="0.1" value="5">
+    </div>
+    
+    <div class="form-group">
+      <label for="loanTerm">Loan Term (years)</label>
+      <input type="number" id="loanTerm" placeholder="Enter loan term" min="1" max="50" step="1" value="5">
+    </div>
+    
+    <button id="calculateBtn" class="calculate-btn">Calculate</button>
+  </div>
+  
+  <div id="results" class="results hidden">
+    <h2>Results</h2>
+    <div class="result-item">
+      <span class="result-label">Monthly Payment:</span>
+      <span id="monthlyPayment" class="result-value">$0.00</span>
+    </div>
+    <div class="result-item">
+      <span class="result-label">Total Payment:</span>
+      <span id="totalPayment" class="result-value">$0.00</span>
+    </div>
+    <div class="result-item">
+      <span class="result-label">Total Interest:</span>
+      <span id="totalInterest" class="result-value">$0.00</span>
+    </div>
+  </div>
+  
+  <div id="amortizationSchedule" class="amortization-schedule hidden">
+    <h2>Amortization Schedule</h2>
+    <div class="table-container">
+      <table id="scheduleTable">
+        <thead>
+          <tr>
+            <th>Payment #</th>
+            <th>Payment</th>
+            <th>Principal</th>
+            <th>Interest</th>
+            <th>Balance</th>
+          </tr>
+        </thead>
+        <tbody id="scheduleBody">
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+            </div>
+            
+            <!-- Sidebar Ad -->
+            <aside class="sidebar">
+                <div class="ad-container ad-sidebar">
+                    <div class="ad-placeholder">Advertisement</div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    
+    <!-- AdSense In-Article Ad -->
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-layout="in-article"
+         data-ad-format="fluid"
+         data-ad-client="ca-pub-9048718254553458"
+         data-ad-slot="9876543210"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 Loan Calculator. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>

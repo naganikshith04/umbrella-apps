@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458"
+            crossorigin="anonymous"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calculate your BMI instantly with our free Body Mass Index calculator. Enter height and weight to get your BMI score and health category. Includes BMI chart and results.">
+    <meta name="keywords" content="bmi calculator, body mass index calculator, bmi chart, calculate bmi, bmi calculator online, health calculator, weight calculator, body mass index, bmi score, healthy weight calculator, obesity calculator, fitness calculator">
+    <title>BMI Calculator - Free Body Mass Index Calculator & Chart</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="BMI Calculator - Free Body Mass Index Calculator & Chart">
+    <meta property="og:description" content="Calculate your BMI instantly with our free Body Mass Index calculator. Enter height and weight to get your BMI score and health category. Includes BMI chart and results.">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="BMI Calculator - Free Body Mass Index Calculator & Chart">
+    <meta name="twitter:description" content="Calculate your BMI instantly with our free Body Mass Index calculator. Enter height and weight to get your BMI score and health category. Includes BMI chart and results.">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Analytics (Replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "BMI Calculator",
+  "description": "Calculate your BMI instantly with our free Body Mass Index calculator. Enter height and weight to get your BMI score and health category. Includes BMI chart and results.",
+  "applicationCategory": "UtilityApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript"
+}
+    </script>
+</head>
+<body>
+    <!-- Header Ad Slot -->
+    <div class="ad-container ad-header">
+        <div class="ad-placeholder">Advertisement</div>
+    </div>
+
+    <header>
+        <h1>BMI Calculator</h1>
+        <p class="subtitle">Calculate Body Mass Index from height and weight with category results</p>
+    </header>
+
+    <!-- AdSense Display Ad -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9048718254553458"
+         data-ad-slot="1234567890"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+
+    <main>
+        <div class="container">
+            <!-- Main App Content Goes Here -->
+            <div id="app-content">
+                <div class="bmi-calculator">
+  <div class="container">
+    <h1>BMI Calculator</h1>
+    
+    <div class="calculator-section">
+      <div class="input-group">
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" placeholder="Enter weight" min="1" step="0.1">
+      </div>
+      
+      <div class="input-group">
+        <label for="height">Height (cm):</label>
+        <input type="number" id="height" placeholder="Enter height" min="1" step="0.1">
+      </div>
+      
+      <button id="calculateBtn" class="btn-calculate">Calculate BMI</button>
+      
+      <div id="result" class="result hidden">
+        <h2>Your BMI: <span id="bmiValue"></span></h2>
+        <p class="category">Category: <span id="bmiCategory"></span></p>
+        <p class="description" id="bmiDescription"></p>
+      </div>
+    </div>
+
+    <div class="bmi-chart-section">
+      <h2>BMI Chart</h2>
+      <div class="chart-container">
+        <table class="bmi-chart-table">
+          <thead>
+            <tr>
+              <th>BMI Range</th>
+              <th>Category</th>
+              <th>Health Risk</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="underweight-row">
+              <td>&lt; 18.5</td>
+              <td>Underweight</td>
+              <td>Malnutrition risk</td>
+            </tr>
+            <tr class="normal-row">
+              <td>18.5 - 24.9</td>
+              <td>Normal weight</td>
+              <td>Low risk</td>
+            </tr>
+            <tr class="overweight-row">
+              <td>25.0 - 29.9</td>
+              <td>Overweight</td>
+              <td>Enhanced risk</td>
+            </tr>
+            <tr class="obese-row">
+              <td>30.0 - 34.9</td>
+              <td>Obese Class I</td>
+              <td>Medium risk</td>
+            </tr>
+            <tr class="obese-severe-row">
+              <td>35.0 - 39.9</td>
+              <td>Obese Class II</td>
+              <td>High risk</td>
+            </tr>
+            <tr class="obese-very-severe-row">
+              <td>≥ 40.0</td>
+              <td>Obese Class III</td>
+              <td>Very high risk</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="bmi-visual-chart">
+        <h3>Visual BMI Scale</h3>
+        <div class="visual-scale">
+          <div class="scale-segment underweight" data-range="< 18.5">
+            <span class="range-label">Underweight</span>
+            <span class="range-value">&lt; 18.5</span>
+          </div>
+          <div class="scale-segment normal" data-range="18.5 - 24.9">
+            <span class="range-label">Normal</span>
+            <span class="range-value">18.5 - 24.9</span>
+          </div>
+          <div class="scale-segment overweight" data-range="25.0 - 29.9">
+            <span class="range-label">Overweight</span>
+            <span class="range-value">25.0 - 29.9</span>
+          </div>
+          <div class="scale-segment obese" data-range="30.0 - 39.9">
+            <span class="range-label">Obese</span>
+            <span class="range-value">30.0 - 39.9</span>
+          </div>
+          <div class="scale-segment obese-severe" data-range="≥ 40.0">
+            <span class="range-label">Extremely Obese</span>
+            <span class="range-value">≥ 40.0</span>
+          </div>
+        </div>
+        <div id="bmiIndicator" class="bmi-indicator hidden">
+          <div class="indicator-arrow"></div>
+        </div>
+      </div>
+
+      <div class="chart-info">
+        <h3>About BMI</h3>
+        <p>Body Mass Index (BMI) is a measure of body fat based on height and weight. It's calculated by dividing weight in kilograms by height in meters squared.</p>
+        <p class="formula"><strong>Formula:</strong> BMI = weight (kg) / [height (m)]²</p>
+        <p><strong>Note:</strong> BMI is a screening tool and does not diagnose body fatness or health. Consult healthcare professionals for personalized advice.</p>
+      </div>
+    </div>
+  </div>
+</div>
+            </div>
+            
+            <!-- Sidebar Ad -->
+            <aside class="sidebar">
+                <div class="ad-container ad-sidebar">
+                    <div class="ad-placeholder">Advertisement</div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    
+    <!-- AdSense In-Article Ad -->
+    <ins class="adsbygoogle"
+         style="display:block; text-align:center;"
+         data-ad-layout="in-article"
+         data-ad-format="fluid"
+         data-ad-client="ca-pub-9048718254553458"
+         data-ad-slot="9876543210"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 BMI Calculator. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/app.js"></script>
+</body>
+</html>
