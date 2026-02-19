@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online developer tools and productivity utilities. Markdown preview, time zone converter, pomodoro timer, and meeting scheduler for developers and teams.">
+    <meta name="keywords" content="developer tools, markdown preview, time zone converter, pomodoro timer, productivity tools, dev tools, online developer utilities">
+    <title>DevTools - Developer Tools Done Right | 5+ Free Tools</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
+        header { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; padding: 3rem 2rem; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        header h1 { font-size: 3rem; margin-bottom: 0.5rem; font-weight: 700; }
+        header .subtitle { font-size: 1.3rem; opacity: 0.95; margin-bottom: 2rem; }
+        .stats { display: flex; justify-content: center; gap: 3rem; margin-top: 2rem; flex-wrap: wrap; }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 2.5rem; font-weight: bold; display: block; }
+        .stat-label { font-size: 0.9rem; opacity: 0.9; }
+        .search-section { max-width: 800px; margin: -30px auto 3rem; padding: 0 2rem; }
+        .search-box { background: white; padding: 1rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 1rem; }
+        .search-box input { flex: 1; border: none; outline: none; font-size: 1.1rem; padding: 0.5rem; }
+        .search-icon { font-size: 1.5rem; color: #4facfe; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+        .category-filters { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }
+        .filter-btn { padding: 0.7rem 1.5rem; border: 2px solid #4facfe; background: white; color: #4facfe; border-radius: 50px; cursor: pointer; font-size: 1rem; font-weight: 600; transition: all 0.3s; }
+        .filter-btn:hover, .filter-btn.active { background: #4facfe; color: white; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(79, 172, 254, 0.3); }
+        .category-section { margin-bottom: 4rem; }
+        .category-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 3px solid #4facfe; }
+        .category-icon { font-size: 2rem; }
+        .category-header h2 { font-size: 1.8rem; color: #333; }
+        .category-count { background: #4facfe; color: white; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+        .tool-card { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 10px rgba(0,0,0,0.08); transition: all 0.3s; cursor: pointer; text-decoration: none; color: inherit; display: block; }
+        .tool-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(79, 172, 254, 0.2); }
+        .tool-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .tool-card h3 { font-size: 1.3rem; color: #333; margin-bottom: 0.5rem; }
+        .tool-card p { color: #666; font-size: 0.95rem; line-height: 1.5; }
+        .tool-tag { display: inline-block; background: #f0f0f0; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-top: 0.8rem; color: #4facfe; font-weight: 600; }
+        footer { background: #2d3748; color: white; padding: 3rem 2rem; margin-top: 4rem; }
+        .footer-content { max-width: 1400px; margin: 0 auto; text-align: center; }
+        .footer-links { display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; flex-wrap: wrap; }
+        .footer-links a { color: white; text-decoration: none; opacity: 0.8; transition: opacity 0.3s; }
+        .footer-links a:hover { opacity: 1; }
+        .other-sites { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
+        .other-sites h3 { margin-bottom: 1rem; font-size: 1.2rem; }
+        .site-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+        .site-link { color: white; text-decoration: none; padding: 0.5rem 1rem; background: rgba(255,255,255,0.1); border-radius: 8px; transition: all 0.3s; }
+        .site-link:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            header .subtitle { font-size: 1rem; }
+            .stats { gap: 1.5rem; }
+            .stat-number { font-size: 2rem; }
+            .tools-grid { grid-template-columns: 1fr; }
+            .category-filters { gap: 0.5rem; }
+            .filter-btn { padding: 0.5rem 1rem; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>👨‍💻 DevTools</h1>
+        <p class="subtitle">Developer Tools Done Right</p>
+        <div class="stats">
+            <div class="stat-item"><span class="stat-number">5+</span><span class="stat-label">Dev Tools</span></div>
+            <div class="stat-item"><span class="stat-number">100%</span><span class="stat-label">Productivity</span></div>
+            <div class="stat-item"><span class="stat-number">0</span><span class="stat-label">Setup Time</span></div>
+        </div>
+    </header>
+
+    <div class="search-section">
+        <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="Search for any tool...">
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="category-filters">
+            <button class="filter-btn active" data-category="all">All Tools</button>
+            <button class="filter-btn" data-category="development">👨‍💻 Development</button>
+            <button class="filter-btn" data-category="productivity">⏰ Productivity</button>
+        </div>
+
+        <!-- Development Tools -->
+        <div class="category-section" data-category="development">
+            <div class="category-header">
+                <span class="category-icon">👨‍💻</span>
+                <h2>Development Tools</h2>
+                <span class="category-count">2 tools</span>
+            </div>
+            <div class="tools-grid">
+                <a href="/umbrella-apps/markdown-preview/" class="tool-card">
+                    <div class="tool-icon">📝</div>
+                    <h3>Markdown Preview</h3>
+                    <p>Live preview of Markdown with syntax highlighting.</p>
+                    <span class="tool-tag">Development</span>
+                </a>
+                <a href="/umbrella-apps/markdown-to-html-converter/" class="tool-card">
+                    <div class="tool-icon">🔄</div>
+                    <h3>Markdown to HTML Converter</h3>
+                    <p>Convert Markdown files to HTML instantly.</p>
+                    <span class="tool-tag">Development</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Productivity Tools -->
+        <div class="category-section" data-category="productivity">
+            <div class="category-header">
+                <span class="category-icon">⏰</span>
+                <h2>Productivity & Time Management</h2>
+                <span class="category-count">3 tools</span>
+            </div>
+            <div class="tools-grid">
+                <a href="/umbrella-apps/pomodoro-timer/" class="tool-card">
+                    <div class="tool-icon">🍅</div>
+                    <h3>Pomodoro Timer</h3>
+                    <p>Focus timer with Pomodoro technique for productivity.</p>
+                    <span class="tool-tag">Productivity</span>
+                </a>
+                <a href="/umbrella-apps/time-zone-converter/" class="tool-card">
+                    <div class="tool-icon">🌍</div>
+                    <h3>Time Zone Converter</h3>
+                    <p>Convert time between different time zones easily.</p>
+                    <span class="tool-tag">Productivity</span>
+                </a>
+                <a href="/umbrella-apps/meeting-time-scheduler/" class="tool-card">
+                    <div class="tool-icon">📅</div>
+                    <h3>Meeting Time Scheduler</h3>
+                    <p>Find the best meeting time across time zones.</p>
+                    <span class="tool-tag">Productivity</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 DevTools. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+                <a href="#about">About</a>
+            </nav>
+            <div class="other-sites">
+                <h3>Explore Our Other Tool Sites</h3>
+                <div class="site-links">
+                    <a href="../calculator-hub/" class="site-link">🧮 CalculatorHub</a>
+                    <a href="../converter-tools/" class="site-link">🔄 ConverterTools</a>
+                    <a href="../text-tools/" class="site-link">📝 TextTools</a>
+                    <a href="../quick-tools/" class="site-link">⚡ QuickTools</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const toolCards = document.querySelectorAll('.tool-card');
+        const categorySections = document.querySelectorAll('.category-section');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            toolCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                card.style.display = (title.includes(searchTerm) || description.includes(searchTerm)) ? 'block' : 'none';
+            });
+            categorySections.forEach(section => {
+                const visibleCards = Array.from(section.querySelectorAll('.tool-card')).filter(card => card.style.display !== 'none');
+                section.style.display = visibleCards.length > 0 ? 'block' : 'none';
+            });
+        });
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const category = btn.dataset.category;
+                searchInput.value = '';
+                if (category === 'all') {
+                    categorySections.forEach(section => section.style.display = 'block');
+                    toolCards.forEach(card => card.style.display = 'block');
+                } else {
+                    categorySections.forEach(section => {
+                        section.style.display = section.dataset.category === category ? 'block' : 'none';
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

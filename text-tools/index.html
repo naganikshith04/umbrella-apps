@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online text tools for writers, developers, and content creators. 15+ tools including word counter, case converter, find and replace, text encryption, and more.">
+    <meta name="keywords" content="text tools, word counter, case converter, text manipulation, find replace, text encryption, text formatter, online text tools">
+    <title>TextTools - Master Your Text | 15+ Free Text Tools</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📝</text></svg>">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; background: #f8f9fa; }
+        header { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white; padding: 3rem 2rem; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        header h1 { font-size: 3rem; margin-bottom: 0.5rem; font-weight: 700; }
+        header .subtitle { font-size: 1.3rem; opacity: 0.95; margin-bottom: 2rem; }
+        .stats { display: flex; justify-content: center; gap: 3rem; margin-top: 2rem; flex-wrap: wrap; }
+        .stat-item { text-align: center; }
+        .stat-number { font-size: 2.5rem; font-weight: bold; display: block; }
+        .stat-label { font-size: 0.9rem; opacity: 0.9; }
+        .search-section { max-width: 800px; margin: -30px auto 3rem; padding: 0 2rem; }
+        .search-box { background: white; padding: 1rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 1rem; }
+        .search-box input { flex: 1; border: none; outline: none; font-size: 1.1rem; padding: 0.5rem; }
+        .search-icon { font-size: 1.5rem; color: #43e97b; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+        .category-filters { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }
+        .filter-btn { padding: 0.7rem 1.5rem; border: 2px solid #43e97b; background: white; color: #43e97b; border-radius: 50px; cursor: pointer; font-size: 1rem; font-weight: 600; transition: all 0.3s; }
+        .filter-btn:hover, .filter-btn.active { background: #43e97b; color: white; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(67, 233, 123, 0.3); }
+        .category-section { margin-bottom: 4rem; }
+        .category-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 3px solid #43e97b; }
+        .category-icon { font-size: 2rem; }
+        .category-header h2 { font-size: 1.8rem; color: #333; }
+        .category-count { background: #43e97b; color: white; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.9rem; font-weight: 600; }
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+        .tool-card { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 2px 10px rgba(0,0,0,0.08); transition: all 0.3s; cursor: pointer; text-decoration: none; color: inherit; display: block; }
+        .tool-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(67, 233, 123, 0.2); }
+        .tool-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .tool-card h3 { font-size: 1.3rem; color: #333; margin-bottom: 0.5rem; }
+        .tool-card p { color: #666; font-size: 0.95rem; line-height: 1.5; }
+        .tool-tag { display: inline-block; background: #f0f0f0; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; margin-top: 0.8rem; color: #43e97b; font-weight: 600; }
+        footer { background: #2d3748; color: white; padding: 3rem 2rem; margin-top: 4rem; }
+        .footer-content { max-width: 1400px; margin: 0 auto; text-align: center; }
+        .footer-links { display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; flex-wrap: wrap; }
+        .footer-links a { color: white; text-decoration: none; opacity: 0.8; transition: opacity 0.3s; }
+        .footer-links a:hover { opacity: 1; }
+        .other-sites { margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
+        .other-sites h3 { margin-bottom: 1rem; font-size: 1.2rem; }
+        .site-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+        .site-link { color: white; text-decoration: none; padding: 0.5rem 1rem; background: rgba(255,255,255,0.1); border-radius: 8px; transition: all 0.3s; }
+        .site-link:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            header .subtitle { font-size: 1rem; }
+            .stats { gap: 1.5rem; }
+            .stat-number { font-size: 2rem; }
+            .tools-grid { grid-template-columns: 1fr; }
+            .category-filters { gap: 0.5rem; }
+            .filter-btn { padding: 0.5rem 1rem; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📝 TextTools</h1>
+        <p class="subtitle">Master Your Text</p>
+        <div class="stats">
+            <div class="stat-item"><span class="stat-number">15+</span><span class="stat-label">Text Tools</span></div>
+            <div class="stat-item"><span class="stat-number">100%</span><span class="stat-label">Free Forever</span></div>
+            <div class="stat-item"><span class="stat-number">0</span><span class="stat-label">Privacy Concerns</span></div>
+        </div>
+    </header>
+
+    <div class="search-section">
+        <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="Search for any text tool...">
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="category-filters">
+            <button class="filter-btn active" data-category="all">All Tools</button>
+            <button class="filter-btn" data-category="manipulation">✏️ Manipulation</button>
+            <button class="filter-btn" data-category="organization">📋 Organization</button>
+            <button class="filter-btn" data-category="analysis">📊 Analysis</button>
+        </div>
+
+        <!-- Text Manipulation -->
+        <div class="category-section" data-category="manipulation">
+            <div class="category-header">
+                <span class="category-icon">✏️</span>
+                <h2>Text Manipulation</h2>
+                <span class="category-count">9 tools</span>
+            </div>
+            <div class="tools-grid">
+                <a href="/umbrella-apps/case-converter/" class="tool-card">
+                    <div class="tool-icon">🔤</div>
+                    <h3>Case Converter</h3>
+                    <p>Convert text to uppercase, lowercase, title case, and more.</p>
+                    <span class="tool-tag">Manipulation</span>
+                </a>
+                <a href="/umbrella-apps/find-and-replace/" class="tool-card">
+                    <div class="tool-icon">🔍</div>
+                    <h3>Find and Replace</h3>
+                    <p>Search and replace text with powerful pattern matching.</p>
+                    <span class="tool-tag">Manipulation</span>
+                </a>
+                <a href="/umbrella-apps/text-repeater/" class="tool-card">
+                    <div class="tool-icon">🔁</div>
+                    <h3>Text Repeater</h3>
+                    <p>Repeat text multiple times instantly.</p>
+                    <span class="tool-tag">Manipulation</span>
+                </a>
+                <a href="/umbrella-apps/text-reverser/" class="tool-card">
+                    <div class="tool-icon">↩️</div>
+                    <h3>Text Reverser</h3>
+                    <p>Reverse text, words, or entire sentences.</p>
+                    <span class="tool-tag">Manipulation</span>
+                </a>
+                <a href="/umbrella-apps/text-splitter/" class="tool-card">
+                    <div class="tool-icon">✂️</div>
+                    <h3>Text Splitter</h3>
+                    <p>Split text by delimiter, line, or character count.</p>
+                    <span class="tool-tag">Manipulation</span>
+                </a>
+                <a href="/umbrella-apps/text-encryption-tool/" class="tool-card">
+                    <div class="tool-icon">🔒</div>
+                    <h3>Text Encryption Tool</h3>
+                    <p>Encrypt and decrypt text securely.</p>
+                    <span class="tool-tag">Manipulation</span>
+                </a>
+                <a href="/umbrella-apps/text-difference-checker/" class="tool-card">
+                    <div class="tool-icon">🔍</div>
+                    <h3>Text Difference Checker</h3>
+                    <p>Compare two texts and highlight differences.</p>
+                    <span class="tool-tag">Manipulation</span>
+                </a>
+                <a href="/umbrella-apps/whitespace-remover/" class="tool-card">
+                    <div class="tool-icon">🧹</div>
+                    <h3>Whitespace Remover</h3>
+                    <p>Remove extra spaces, tabs, and line breaks.</p>
+                    <span class="tool-tag">Manipulation</span>
+                </a>
+                <a href="/umbrella-apps/html-to-plain-text/" class="tool-card">
+                    <div class="tool-icon">🌐</div>
+                    <h3>HTML to Plain Text</h3>
+                    <p>Strip HTML tags and convert to plain text.</p>
+                    <span class="tool-tag">Manipulation</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Text Organization -->
+        <div class="category-section" data-category="organization">
+            <div class="category-header">
+                <span class="category-icon">📋</span>
+                <h2>Text Organization</h2>
+                <span class="category-count">4 tools</span>
+            </div>
+            <div class="tools-grid">
+                <a href="/umbrella-apps/comma-separator-tool/" class="tool-card">
+                    <div class="tool-icon">📝</div>
+                    <h3>Comma Separator Tool</h3>
+                    <p>Add or remove commas from lists easily.</p>
+                    <span class="tool-tag">Organization</span>
+                </a>
+                <a href="/umbrella-apps/duplicate-line-remover/" class="tool-card">
+                    <div class="tool-icon">🗑️</div>
+                    <h3>Duplicate Line Remover</h3>
+                    <p>Remove duplicate lines from text automatically.</p>
+                    <span class="tool-tag">Organization</span>
+                </a>
+                <a href="/umbrella-apps/line-sorter/" class="tool-card">
+                    <div class="tool-icon">📊</div>
+                    <h3>Line Sorter</h3>
+                    <p>Sort text lines alphabetically or numerically.</p>
+                    <span class="tool-tag">Organization</span>
+                </a>
+                <a href="/umbrella-apps/slug-generator/" class="tool-card">
+                    <div class="tool-icon">🔗</div>
+                    <h3>Slug Generator</h3>
+                    <p>Convert text to URL-friendly slugs.</p>
+                    <span class="tool-tag">Organization</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Text Analysis -->
+        <div class="category-section" data-category="analysis">
+            <div class="category-header">
+                <span class="category-icon">📊</span>
+                <h2>Text Analysis</h2>
+                <span class="category-count">3 tools</span>
+            </div>
+            <div class="tools-grid">
+                <a href="/umbrella-apps/word-counter/" class="tool-card">
+                    <div class="tool-icon">📖</div>
+                    <h3>Word Counter</h3>
+                    <p>Count words, characters, sentences, and paragraphs.</p>
+                    <span class="tool-tag">Analysis</span>
+                </a>
+                <a href="/umbrella-apps/sentence-counter/" class="tool-card">
+                    <div class="tool-icon">💬</div>
+                    <h3>Sentence Counter</h3>
+                    <p>Count sentences and analyze text structure.</p>
+                    <span class="tool-tag">Analysis</span>
+                </a>
+                <a href="/umbrella-apps/invisible-character-detector/" class="tool-card">
+                    <div class="tool-icon">👁️</div>
+                    <h3>Invisible Character Detector</h3>
+                    <p>Detect and remove invisible characters.</p>
+                    <span class="tool-tag">Analysis</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 TextTools. All rights reserved.</p>
+            <nav class="footer-links">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+                <a href="#about">About</a>
+            </nav>
+            <div class="other-sites">
+                <h3>Explore Our Other Tool Sites</h3>
+                <div class="site-links">
+                    <a href="../calculator-hub/" class="site-link">🧮 CalculatorHub</a>
+                    <a href="../converter-tools/" class="site-link">🔄 ConverterTools</a>
+                    <a href="../quick-tools/" class="site-link">⚡ QuickTools</a>
+                    <a href="../dev-tools/" class="site-link">👨‍💻 DevTools</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const toolCards = document.querySelectorAll('.tool-card');
+        const categorySections = document.querySelectorAll('.category-section');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            toolCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                card.style.display = (title.includes(searchTerm) || description.includes(searchTerm)) ? 'block' : 'none';
+            });
+            categorySections.forEach(section => {
+                const visibleCards = Array.from(section.querySelectorAll('.tool-card')).filter(card => card.style.display !== 'none');
+                section.style.display = visibleCards.length > 0 ? 'block' : 'none';
+            });
+        });
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const category = btn.dataset.category;
+                searchInput.value = '';
+                if (category === 'all') {
+                    categorySections.forEach(section => section.style.display = 'block');
+                    toolCards.forEach(card => card.style.display = 'block');
+                } else {
+                    categorySections.forEach(section => {
+                        section.style.display = section.dataset.category === category ? 'block' : 'none';
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
