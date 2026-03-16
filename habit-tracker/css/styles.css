@@ -1,0 +1,547 @@
+:root {
+    --primary: #D97757;
+    --secondary: #7C4DFF;
+    --background: #F5F3EF;
+    --surface: #FFFFFF;
+    --text-primary: #2C2C2C;
+    --text-secondary: #666666;
+    --success: #4CAF50;
+    --danger: #F44336;
+    --border: #E0E0E0;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --shadow-hover: rgba(0, 0, 0, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--background);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.main-header {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: var(--surface);
+    padding: 2rem 1rem;
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.app-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.main-content {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.habit-input-section {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+.input-container {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.habit-input {
+    flex: 1;
+    min-width: 250px;
+    padding: 0.875rem 1.25rem;
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.habit-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(217, 119, 87, 0.1);
+}
+
+.add-button {
+    padding: 0.875rem 2rem;
+    background: var(--primary);
+    color: var(--surface);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.add-button:hover {
+    background: #c66847;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(217, 119, 87, 0.3);
+}
+
+.add-button:active {
+    transform: translateY(0);
+}
+
+.habits-list-section {
+    margin-bottom: 2rem;
+}
+
+.habits-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.habit-card {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px var(--shadow);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.habit-card:hover {
+    box-shadow: 0 4px 16px var(--shadow-hover);
+    transform: translateY(-4px);
+    border-color: var(--primary);
+}
+
+.habit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.habit-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.habit-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.delete-button {
+    padding: 0.5rem 0.75rem;
+    background: var(--danger);
+    color: var(--surface);
+    border: none;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.delete-button:hover {
+    background: #d32f2f;
+    transform: scale(1.05);
+}
+
+.export-button {
+    padding: 0.5rem 0.75rem;
+    background: var(--secondary);
+    color: var(--surface);
+    border: none;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.export-button:hover {
+    background: #6a3de8;
+    transform: scale(1.05);
+}
+
+.streak-display {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: linear-gradient(135deg, rgba(217, 119, 87, 0.1), rgba(124, 77, 255, 0.1));
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.streak-icon {
+    font-size: 1.5rem;
+}
+
+.streak-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.streak-count {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.completion-display {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    background: var(--background);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.completion-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.completion-percentage {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--secondary);
+}
+
+.habit-calendar-mini {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+.day-indicators {
+    display: contents;
+}
+
+.day-indicators span {
+    font-size: 0.75rem;
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 0.25rem;
+    font-weight: 600;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-day:hover {
+    transform: scale(1.1);
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.calendar-day.completed {
+    background: var(--success);
+    border-color: var(--success);
+}
+
+.calendar-day.today {
+    border: 2px solid var(--primary);
+    font-weight: 700;
+}
+
+.day-number {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.calendar-day.completed .day-number {
+    color: var(--surface);
+}
+
+.complete-button {
+    width: 100%;
+    padding: 0.875rem;
+    background: var(--success);
+    color: var(--surface);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.complete-button:hover {
+    background: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.complete-button.completed {
+    background: var(--text-secondary);
+}
+
+.complete-button.completed:hover {
+    background: #555555;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+}
+
+.calendar-section {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.month-navigation {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-button {
+    padding: 0.5rem 1rem;
+    background: var(--primary);
+    color: var(--surface);
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+    background: #c66847;
+    transform: scale(1.05);
+}
+
+.current-month {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    min-width: 200px;
+    text-align: center;
+}
+
+.calendar-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+}
+
+.statistics-section {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, var(--background), var(--surface));
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    border: 2px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px var(--shadow);
+    border-color: var(--primary);
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.habit-stats {
+    margin-top: 2rem;
+}
+
+.chart-container {
+    position: relative;
+    height: 300px;
+    margin-top: 1rem;
+}
+
+.ad-container {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px var(--shadow);
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.adsbygoogle {
+    display: block;
+    width: 100%;
+}
+
+.main-footer {
+    background: var(--text-primary);
+    color: var(--surface);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+@media (max-width: 768px) {
+    .app-title {
+        font-size: 1.75rem;
+    }
+
+    .main-content {
+        margin: 1rem auto;
+    }
+
+    .habit-input-section {
+        padding: 1.5rem;
+    }
+
+    .input-container {
+        flex-direction: column;
+    }
+
+    .habit-input {
+        min-width: 100%;
+    }
+
+    .add-button {
+        width: 100%;
+    }
+
+    .habits-container {
+        grid-template-columns: 1fr;
+    }
+
+    .calendar-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .current-month {
+        font-size: 1.25rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .chart-container {
+        height: 250px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .habits-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1025px) {
+    .habits-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.habit-card {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.complete-button:active {
+    animation: pulse 0.3s ease;
+}

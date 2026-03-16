@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create professional receipts online for free. Add business info, customer details, itemized lists, and export to PDF instantly.">
+    <meta name="keywords" content="receipt generator, invoice maker, professional receipts, PDF receipts, business receipts, free receipt maker">
+    <meta property="og:title" content="Professional Receipt Generator - Create & Export Receipts">
+    <meta property="og:description" content="Generate professional receipts with business info, itemized lists, and export to PDF. Free online receipt maker.">
+    <meta property="og:type" content="website">
+    <title>Professional Receipt Generator - Create & Export to PDF</title>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Professional Receipt Generator",
+        "description": "Create professional receipts with business information, customer details, and itemized lists",
+        "applicationCategory": "BusinessApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <h1>Professional Receipt Generator</h1>
+        <p>Create and export professional receipts in seconds</p>
+    </header>
+
+    <main class="main-container">
+        <section class="control-panel">
+            <div class="template-selector">
+                <label for="template-choice">Select Template:</label>
+                <select id="template-choice" class="template-dropdown">
+                    <option value="modern">Modern</option>
+                    <option value="classic">Classic</option>
+                    <option value="minimal">Minimal</option>
+                </select>
+            </div>
+
+            <div class="form-section">
+                <h2>Business Information</h2>
+                <div class="form-grid">
+                    <input type="text" id="business-name" class="form-input" placeholder="Business Name">
+                    <input type="text" id="business-address" class="form-input" placeholder="Business Address">
+                    <input type="tel" id="business-phone" class="form-input" placeholder="Phone Number">
+                    <input type="email" id="business-email" class="form-input" placeholder="Email Address">
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Customer Details</h2>
+                <div class="form-grid">
+                    <input type="text" id="customer-name" class="form-input" placeholder="Customer Name">
+                    <input type="text" id="customer-address" class="form-input" placeholder="Customer Address">
+                    <input type="tel" id="customer-phone" class="form-input" placeholder="Customer Phone">
+                    <input type="email" id="customer-email" class="form-input" placeholder="Customer Email">
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Receipt Details</h2>
+                <div class="form-grid">
+                    <input type="text" id="receipt-number" class="form-input" placeholder="Receipt #">
+                    <input type="date" id="receipt-date" class="form-input">
+                    <select id="payment-method" class="form-input">
+                        <option value="">Payment Method</option>
+                        <option value="Cash">Cash</option>
+                        <option value="Credit Card">Credit Card</option>
+                        <option value="Debit Card">Debit Card</option>
+                        <option value="Bank Transfer">Bank Transfer</option>
+                        <option value="PayPal">PayPal</option>
+                        <option value="Check">Check</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Itemized List</h2>
+                <div class="items-container" id="items-container">
+                    <div class="item-row">
+                        <input type="text" class="item-description" placeholder="Item Description">
+                        <input type="number" class="item-quantity" placeholder="Qty" min="1" value="1">
+                        <input type="number" class="item-price" placeholder="Price" step="0.01" min="0">
+                        <button type="button" class="btn-remove-item">×</button>
+                    </div>
+                </div>
+                <button type="button" id="add-item-btn" class="btn-add">+ Add Item</button>
+            </div>
+
+            <div class="form-section">
+                <label for="receipt-notes">Additional Notes:</label>
+                <textarea id="receipt-notes" class="form-textarea" placeholder="Thank you for your business!"></textarea>
+            </div>
+
+            <div class="action-buttons">
+                <button id="preview-btn" class="btn-primary">Preview Receipt</button>
+                <button id="export-pdf-btn" class="btn-success">Export to PDF</button>
+                <button id="clear-btn" class="btn-secondary">Clear All</button>
+            </div>
+        </section>
+
+        <section class="preview-section">
+            <div class="receipt-preview" id="receipt-preview">
+                <div class="receipt-container modern-template">
+                    <div class="receipt-header">
+                        <h2 class="receipt-title">RECEIPT</h2>
+                        <div class="business-info">
+                            <h3 class="business-name-display">Your Business Name</h3>
+                            <p class="business-address-display">Business Address</p>
+                            <p class="business-contact">
+                                <span class="business-phone-display">Phone</span> | 
+                                <span class="business-email-display">Email</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="receipt-meta">
+                        <div class="meta-item">
+                            <strong>Receipt #:</strong> <span class="receipt-number-display">-</span>
+                        </div>
+                        <div class="meta-item">
+                            <strong>Date:</strong> <span class="receipt-date-display">-</span>
+                        </div>
+                        <div class="meta-item">
+                            <strong>Payment:</strong> <span class="payment-method-display">-</span>
+                        </div>
+                    </div>
+
+                    <div class="customer-section">
+                        <h4>Bill To:</h4>
+                        <p class="customer-name-display">Customer Name</p>
+                        <p class="customer-address-display">Customer Address</p>
+                        <p class="customer-contact">
+                            <span class="customer-phone-display"></span>
+                            <span class="customer-email-display"></span>
+                        </p>
+                    </div>
+
+                    <table class="data-table items-table">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Qty</th>
+                                <th>Price</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="preview-items-body">
+                            <tr>
+                                <td colspan="4" class="empty-state">No items added yet</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="receipt-totals">
+                        <div class="total-row subtotal-row">
+                            <span>Subtotal:</span>
+                            <span class="subtotal-amount">$0.00</span>
+                        </div>
+                        <div class="total-row tax-row">
+                            <span>Tax (0%):</span>
+                            <span class="tax-amount">$0.00</span>
+                        </div>
+                        <div class="total-row grand-total-row">
+                            <span>Total:</span>
+                            <span class="grand-total-amount">$0.00</span>
+                        </div>
+                    </div>
+
+                    <div class="receipt-notes">
+                        <p class="notes-display"></p>
+                    </div>
+
+                    <div class="receipt-footer">
+                        <p>Thank you for your business!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2024 Professional Receipt Generator. All rights reserved.</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

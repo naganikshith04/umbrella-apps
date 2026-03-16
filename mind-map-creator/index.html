@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create visual mind maps online. Add central ideas, branches, customize colors, drag to rearrange, and export as images. Free mind mapping tool.">
+    <meta name="keywords" content="mind map, visual thinking, brainstorming, diagram, idea mapping, online tool">
+    <meta property="og:title" content="Visual Mind Map Creator">
+    <meta property="og:description" content="Create and customize visual mind maps with drag-and-drop functionality">
+    <meta property="og:type" content="website">
+    <title>Visual Mind Map Creator</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Visual Mind Map Creator",
+        "description": "Create visual mind maps with branches and customization",
+        "applicationCategory": "ProductivityApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body>
+    <header class="app-header">
+        <h1>Visual Mind Map Creator</h1>
+        <p class="app-subtitle">Organize your ideas visually</p>
+    </header>
+
+    <main class="main-container">
+        <aside class="control-panel">
+            <section class="control-section">
+                <h2>Central Idea</h2>
+                <input type="text" id="centralIdea" class="input-field" placeholder="Enter central idea" value="My Mind Map">
+                <button id="updateCentral" class="btn btn-primary">Update Central</button>
+            </section>
+
+            <section class="control-section">
+                <h2>Add Branch</h2>
+                <input type="text" id="branchText" class="input-field" placeholder="Branch text">
+                <input type="color" id="branchColor" class="color-picker" value="#4CAF50">
+                <button id="addBranch" class="btn btn-success">Add Branch</button>
+            </section>
+
+            <section class="control-section">
+                <h2>Add Sub-Branch</h2>
+                <select id="parentBranch" class="select-field">
+                    <option value="">Select parent branch</option>
+                </select>
+                <input type="text" id="subBranchText" class="input-field" placeholder="Sub-branch text">
+                <button id="addSubBranch" class="btn btn-success">Add Sub-Branch</button>
+            </section>
+
+            <section class="control-section">
+                <h2>Actions</h2>
+                <button id="saveMap" class="btn btn-secondary">Save Map</button>
+                <button id="loadMap" class="btn btn-secondary">Load Map</button>
+                <button id="exportImage" class="btn btn-info">Export as Image</button>
+                <button id="clearMap" class="btn btn-danger">Clear All</button>
+            </section>
+
+            <section class="control-section">
+                <h2>Instructions</h2>
+                <ul class="instruction-list">
+                    <li>Drag nodes to rearrange</li>
+                    <li>Click node to select & customize</li>
+                    <li>Double-click to edit text</li>
+                    <li>Right-click to delete</li>
+                </ul>
+            </section>
+        </aside>
+
+        <section class="mindmap-workspace">
+            <div class="canvas-container" id="canvasContainer">
+                <svg class="connection-layer" id="connectionLayer"></svg>
+                <div class="mindmap-canvas" id="mindmapCanvas">
+                    <div class="central-node draggable-node" id="centralNode" data-id="central" style="left: 50%; top: 50%; transform: translate(-50%, -50%);">
+                        <span class="node-text">My Mind Map</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <p>&copy; 2024 Visual Mind Map Creator. All rights reserved.</p>
+    </footer>
+
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <h3>Edit Node</h3>
+            <input type="text" id="editNodeText" class="input-field" placeholder="Node text">
+            <input type="color" id="editNodeColor" class="color-picker">
+            <div class="modal-actions">
+                <button id="saveEdit" class="btn btn-primary">Save</button>
+                <button id="cancelEdit" class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script>
+        const mindMap = {
+            nodes: [],
+            connections: [],
+            draggedElement: null,
+            offset: { x: 0, y: 0 },
+            currentEditNode: null,
+            branchCounter: 0
+        };
+
+        function initMindMap() {
+            loadFromStorage();
+            setupEventListeners();
+            updateParentBranchSelect();
+            drawConnections();
+        }
+
+        function setupEventListeners() {
+            document.getElementById('updateCentral').addEventListener('click', updateCentralNode);
+            document.getElementById('addBranch').addEventListener('click', addBranch);
+            document.getElementById('addSubBranch').addEventListener('click', addSubBranch);
+            document.getElementById('saveMap').addEventListener('click', saveToStorage);
+            document.getElementById('loadMap').addEventListener('click', loadFromStorage);
+            document.getElementById('exportImage').addEventListener('click', exportAsImage);
+            document.getElementById('clearMap').addEventListener('click', clearMap);
+            document.getElementById('saveEdit').addEventListener('click', saveNodeEdit);
+            document.getElementById('cancelEdit').addEventListener('click', closeEditModal);
+            setupDraggable();
+        }
+
+        function updateCentralNode() {
+            const text = document.getElementById('centralIdea').value;
+            document.querySelector('#centralNode .node-text').textContent = text;
+        }
+
+        function addBranch() {
+            const text = document.getElementById('branchText').value.trim();
+            const color = document.getElementById('branchColor').value;
+            if (!text) return;
+
+            mindMap.branchCounter++;
+            const nodeId = `branch-${mindMap.branchCounter}`;
+            const angle = (mindMap.nodes.length * 60) % 360;
+            const radius = 200;
+            const x = 50 + Math.cos(angle * Math.PI / 180) * (radius / window.innerWidth * 100);
+            const y = 50 + Math.sin(angle * Math.PI / 180) * (radius / window.innerHeight * 100);
+
+            createNode(nodeId, text, color, x, y, 'central');
+            mindMap.nodes.push({ id: nodeId, text, color, x, y, parent: 'central' });
+            
+            document.getElementById('branchText').value = '';
+            updateParentBranchSelect();
+            drawConnections();
+        }
+
+        function addSubBranch() {
+            const parentId = document.getElementById('parentBranch').value;
+            const text = document.getElementById('subBranchText').value.trim();
+            if (!parentId || !text) return;
+
+            mindMap.branchCounter++;
+            const nodeId = `sub-${mindMap.branchCounter}`;
+            const parent = document.getElementById(parentId);
+            const parentRect = parent.getBoundingClientRect();
+            const containerRect = document.getElementById('mindmapCanvas').getBoundingClientRect();
+            
+            const x = ((parentRect.left - containerRect.left + 100) / containerRect.width) * 100;
+            const y = ((parentRect.top - containerRect.top + 50) / containerRect.height) * 100;
+
+            createNode(nodeId, text, '#2196F3', x, y, parentId);
+            mindMap.nodes.push({ id: nodeId, text, color: '#2196F3', x, y, parent: parentId });
+            
+            document.getElementById('subBranchText').value = '';
+            drawConnections();
+        }
+
+        function createNode(id, text, color, x, y, parent) {
+            const node = document.createElement('div');
+            node.className = 'draggable-node branch-node';
+            node.id = id;
+            node.dataset.id = id;
+            node.dataset.parent = parent;
+            node.style.left = x + '%';
+            node.style.top = y + '%';
+            node.style.backgroundColor = color;
+            node.innerHTML = `<span class="node-text">${text}</span>`;
+            
+            node.addEventListener('dblclick', () => openEditModal(id));
+            node.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+                deleteNode(id);
+            });
+            
+            document.getElementById('mindmapCanvas').appendChild(node);
+            makeDraggable(node);
+        }
+
+        function setupDraggable() {
+            document.querySelectorAll('.draggable-node').forEach(makeDraggable);
+        }
+
+        function makeDraggable(element) {
+            element.addEventListener('mousedown', startDrag);
+        }
+
+        function startDrag(e) {
+            if (e.target.classList.contains('node-text')) return;
+            mindMap.draggedElement = e.currentTarget;
+            const rect = mindMap.draggedElement.getBoundingClientRect();
+            mindMap.offset.x = e.clientX - rect.left;
+            mindMap.offset.y = e.clientY - rect.top;
+            
+            document.addEventListener('mousemove', drag);
+            document.addEventListener('mouseup', stopDrag);
+        }
+
+        function drag(e) {
+            if (!mindMap.draggedElement) return;
+            const container = document.getElementById('mindmapCanvas').getBoundingClientRect();
+            const x = ((e.clientX - container.left - mindMap.offset.x) / container.width) * 100;
+            const y = ((e.clientY - container.top - mindMap.offset.y) / container.height) * 100;
+            
+            mindMap.draggedElement.style.left = x + '%';
+            mindMap.draggedElement.style.top = y + '%';
+            drawConnections();
+        }
+
+        function stopDrag() {
+            mindMap.draggedElement = null;
+            document.removeEventListener('mousemove', drag);
+            document.removeEventListener('mouseup', stopDrag);
+        }
+
+        function drawConnections() {
+            const svg = document.getElementById('connectionLayer');
+            svg.innerHTML = '';
+            
+            document.querySelectorAll('.draggable-node').forEach(node => {
+                const parentId = node.dataset.parent;
+                if (parentId) {
+                    const parent = document.getElementById(parentId);
+                    if (parent) {
+                        const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                        const nodeRect = node.getBoundingClientRect();
+                        const parentRect = parent.getBoundingClientRect();
+                        const container = document.getElementById('canvasContainer').getBoundingClientRect();
+                        
+                        line.setAttribute('x1', parentRect.left - container.left + parentRect.width / 2);
+                        line.setAttribute('y1', parentRect.top - container.top + parentRect.height / 2);
+                        line.setAttribute('x2', nodeRect.left - container.left + nodeRect.width / 2);
+                        line.setAttribute('y2', nodeRect.top - container.top + nodeRect.height / 2);
+                        line.setAttribute('stroke', '#666');
+                        line.setAttribute('stroke-width', '2');
+                        svg.appendChild(line);
+                    }
+                }
+            });
+        }
+
+        function updateParentBranchSelect() {
+            const select = document.getElementById('parentBranch');
+            select.innerHTML = '<option value="">Select parent branch</option>';
+            document.querySelectorAll('.branch-node').forEach(node => {
+                const option = document.createElement('option');
+                option.value = node.id;
+                option.textContent = node.querySelector('.node-text').textContent;
+                select.appendChild(option);
+            });
+        }
+
+        function saveToStorage() {
+            const data = { nodes: [], central: document.getElementById('centralIdea').value };
+            document.querySelectorAll('.draggable-node').forEach(node => {
+                data.nodes.push({
+                    id: node.id,
+                    text: node.querySelector('.node-text').textContent,
+                    color: node.style.backgroundColor,
+                    x: node.style.left,
+                    y: node.style.top,
+                    parent: node.dataset.parent
+                });
+            });
+            localStorage.setItem('mindmap', JSON.stringify(data));
+            alert('Mind map saved!');
+        }
+
+        function loadFromStorage() {
+            const data = JSON.parse(localStorage.getItem('mindmap'));
+            if (data) {
+                document.getElementById('centralIdea').value = data.central || 'My Mind Map';
+                updateCentralNode();
+            }
+        }
+
+        function exportAsImage() {
+            html2canvas(document.getElementById('canvasContainer')).then(canvas => {
+                canvas.toBlob(blob => saveAs(blob, 'mindmap.png'));
+            });
+        }
+
+        function clearMap() {
+            if (confirm('Clear all branches?')) {
+                document.querySelectorAll('.branch-node').forEach(n => n.remove());
+                mindMap.nodes = [];
+                drawConnections();
+                updateParentBranchSelect();
+            }
+        }
+
+        function deleteNode(id) {
+            document.getElementById(id).remove();
+            mindMap.nodes = mindMap.nodes.filter(n => n.id !== id);
+            drawConnections();
+            updateParentBranchSelect();
+        }
+
+        function openEditModal(id) {
+            mindMap.currentEditNode = document.getElementById(id);
+            document.getElementById('editNodeText').value = mindMap.currentEditNode.querySelector('.node-text').textContent;
+            document.getElementById('editModal').style.display = 'flex';
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').style.display = 'none';
+        }
+
+        function saveNodeEdit() {
+            if (mindMap.currentEditNode) {
+                mindMap.currentEditNode.querySelector('.node-text').textContent = document.getElementById('editNodeText').value;
+                mindMap.currentEditNode.style.backgroundColor = document.getElementById('editNodeColor').value;
+            }
+            closeEditModal();
+        }
+
+        window.addEventListener('resize', drawConnections);
+        initMindMap();
+    </script>
+</body>
+</html>

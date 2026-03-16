@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Event Calendar with scheduling, reminders, and recurring events. Manage your schedule with month, week, and day views, event categories, and iCal export.">
+    <meta name="keywords" content="event calendar, scheduling, reminders, recurring events, event management, iCal export, calendar app">
+    <meta property="og:title" content="Event Calendar - Schedule & Manage Events">
+    <meta property="og:description" content="Full-featured event calendar with recurring events, reminders, and multiple views. Export to iCal format.">
+    <meta property="og:type" content="website">
+    <title>Event Calendar - Schedule & Manage Events</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@3.0.0/index.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Event Calendar",
+        "description": "Event calendar application with scheduling, reminders, and recurring events",
+        "applicationCategory": "ProductivityApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-container">
+            <h1 class="app-title">📅 Event Calendar</h1>
+            <div class="header-actions">
+                <button class="btn-icon" id="exportBtn" title="Export to iCal">📤 Export</button>
+                <button class="btn-primary" id="addEventBtn">+ New Event</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <aside class="sidebar">
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search events...">
+            </div>
+
+            <div class="filter-section">
+                <h3>Filter by Category</h3>
+                <div class="category-filters">
+                    <label class="filter-checkbox"><input type="checkbox" value="work" checked> <span class="cat-work">Work</span></label>
+                    <label class="filter-checkbox"><input type="checkbox" value="personal" checked> <span class="cat-personal">Personal</span></label>
+                    <label class="filter-checkbox"><input type="checkbox" value="meeting" checked> <span class="cat-meeting">Meeting</span></label>
+                    <label class="filter-checkbox"><input type="checkbox" value="reminder" checked> <span class="cat-reminder">Reminder</span></label>
+                    <label class="filter-checkbox"><input type="checkbox" value="other" checked> <span class="cat-other">Other</span></label>
+                </div>
+            </div>
+
+            <div class="mini-calendar-container">
+                <h3>Quick Navigation</h3>
+                <div id="miniCalendar" class="mini-calendar"></div>
+            </div>
+
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9048718254553458" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        </aside>
+
+        <section class="calendar-container">
+            <div class="calendar-toolbar">
+                <div class="view-controls">
+                    <button class="view-btn active" data-view="month">Month</button>
+                    <button class="view-btn" data-view="week">Week</button>
+                    <button class="view-btn" data-view="day">Day</button>
+                </div>
+                <div class="navigation-controls">
+                    <button class="btn-nav" id="prevBtn">‹</button>
+                    <button class="btn-today" id="todayBtn">Today</button>
+                    <button class="btn-nav" id="nextBtn">›</button>
+                </div>
+                <h2 class="current-period" id="currentPeriod"></h2>
+            </div>
+
+            <div class="calendar-view" id="calendarView">
+                <div class="calendar-grid" id="calendarGrid"></div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal" id="eventModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Create Event</h2>
+                <button class="btn-close" id="closeModal">&times;</button>
+            </div>
+            <form class="event-form" id="eventForm">
+                <div class="form-group">
+                    <label for="eventTitle">Event Title *</label>
+                    <input type="text" id="eventTitle" class="form-input" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="eventDate">Date *</label>
+                        <input type="date" id="eventDate" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventTime">Time</label>
+                        <input type="time" id="eventTime" class="form-input">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="eventCategory">Category</label>
+                    <select id="eventCategory" class="form-select">
+                        <option value="work">Work</option>
+                        <option value="personal">Personal</option>
+                        <option value="meeting">Meeting</option>
+                        <option value="reminder">Reminder</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="eventDescription">Description</label>
+                    <textarea id="eventDescription" class="form-textarea" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="eventRecurring">
+                        <span>Recurring Event</span>
+                    </label>
+                </div>
+
+                <div class="recurring-options" id="recurringOptions" style="display:none;">
+                    <div class="form-group">
+                        <label for="recurringType">Repeat</label>
+                        <select id="recurringType" class="form-select">
+                            <option value="daily">Daily</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="monthly">Monthly</option>
+                            <option value="yearly">Yearly</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="recurringEnd">End Date</label>
+                        <input type="date" id="recurringEnd" class="form-input">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="eventReminder">Reminder</label>
+                    <select id="eventReminder" class="form-select">
+                        <option value="">No reminder</option>
+                        <option value="0">At time of event</option>
+                        <option value="15">15 minutes before</option>
+                        <option value="30">30 minutes before</option>
+                        <option value="60">1 hour before</option>
+                        <option value="1440">1 day before</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-delete" id="deleteEventBtn" style="display:none;">Delete</button>
+                    <div class="form-actions-right">
+                        <button type="button" class="btn-secondary" id="cancelBtn">Cancel</button>
+                        <button type="submit" class="btn-primary">Save Event</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <footer class="app-footer">
+        <p>&copy; 2024 Event Calendar. Manage your schedule efficiently.</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</body>
+</html>

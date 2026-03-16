@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Simple Kanban Task Board - Organize your tasks with drag and drop columns, due dates, and local storage. Export your board anytime.">
+    <meta name="keywords" content="kanban, task board, project management, drag and drop, todo, productivity, task organizer">
+    <meta property="og:title" content="Simple Kanban Task Board">
+    <meta property="og:description" content="Organize your tasks efficiently with a drag and drop kanban board">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/kanban-board">
+    <title>Simple Kanban Task Board</title>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Simple Kanban Task Board",
+        "description": "A simple kanban board for task management with drag and drop functionality",
+        "applicationCategory": "ProductivityApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-container">
+            <h1 class="app-title">Kanban Task Board</h1>
+            <div class="header-actions">
+                <button class="btn-action btn-add-column" id="addColumnBtn" title="Add Column">
+                    <span>+ Column</span>
+                </button>
+                <button class="btn-action btn-export" id="exportBtn" title="Export Board">
+                    <span>Export</span>
+                </button>
+                <button class="btn-action btn-clear" id="clearBtn" title="Clear Board">
+                    <span>Clear</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="board-container">
+        <div class="kanban-board" id="kanbanBoard">
+            <!-- Columns will be added here -->
+        </div>
+    </main>
+
+    <!-- Add Column Modal -->
+    <div class="modal-overlay" id="columnModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Add New Column</h2>
+                <button class="modal-close" id="closeColumnModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="columnName" class="form-label">Column Name</label>
+                    <input type="text" id="columnName" class="form-input" placeholder="e.g., To Do, In Progress, Done" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="cancelColumnBtn">Cancel</button>
+                <button class="btn-primary" id="saveColumnBtn">Add Column</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Task Modal -->
+    <div class="modal-overlay" id="taskModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Add New Task</h2>
+                <button class="modal-close" id="closeTaskModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="taskTitle" class="form-label">Task Title</label>
+                    <input type="text" id="taskTitle" class="form-input" placeholder="Enter task title" required>
+                </div>
+                <div class="form-group">
+                    <label for="taskDescription" class="form-label">Description</label>
+                    <textarea id="taskDescription" class="form-textarea" placeholder="Enter task description" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="taskDueDate" class="form-label">Due Date</label>
+                    <input type="date" id="taskDueDate" class="form-input">
+                </div>
+                <input type="hidden" id="taskColumnId">
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="cancelTaskBtn">Cancel</button>
+                <button class="btn-primary" id="saveTaskBtn">Add Task</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Task Modal -->
+    <div class="modal-overlay" id="editTaskModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Edit Task</h2>
+                <button class="modal-close" id="closeEditTaskModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="editTaskTitle" class="form-label">Task Title</label>
+                    <input type="text" id="editTaskTitle" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="editTaskDescription" class="form-label">Description</label>
+                    <textarea id="editTaskDescription" class="form-textarea" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editTaskDueDate" class="form-label">Due Date</label>
+                    <input type="date" id="editTaskDueDate" class="form-input">
+                </div>
+                <input type="hidden" id="editTaskId">
+                <input type="hidden" id="editTaskColumnId">
+            </div>
+            <div class="modal-footer">
+                <button class="btn-danger" id="deleteTaskBtn">Delete</button>
+                <div class="modal-footer-right">
+                    <button class="btn-secondary" id="cancelEditTaskBtn">Cancel</button>
+                    <button class="btn-primary" id="updateTaskBtn">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Template for Column -->
+    <template id="columnTemplate">
+        <div class="kanban-column" draggable="false">
+            <div class="column-header">
+                <h3 class="column-title"></h3>
+                <div class="column-actions">
+                    <span class="task-count">0</span>
+                    <button class="btn-icon btn-delete-column" title="Delete Column">
+                        <span>&times;</span>
+                    </button>
+                </div>
+            </div>
+            <div class="task-list" data-column-id="">
+                <!-- Tasks will be added here -->
+            </div>
+            <button class="btn-add-task">
+                <span>+ Add Task</span>
+            </button>
+        </div>
+    </template>
+
+    <!-- Template for Task Card -->
+    <template id="taskTemplate">
+        <div class="task-card" draggable="true">
+            <div class="task-card-header">
+                <h4 class="task-title"></h4>
+            </div>
+            <p class="task-description"></p>
+            <div class="task-footer">
+                <span class="task-due-date"></span>
+            </div>
+        </div>
+    </template>
+
+    <footer class="app-footer">
+        <p class="footer-text">Kanban Task Board - Organize your work efficiently</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

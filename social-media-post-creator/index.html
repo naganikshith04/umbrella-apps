@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Design stunning social media posts with our free online tool. Choose templates, add text and images, apply filters, and download optimized images for Instagram, Facebook, Twitter, and more.">
+    <meta name="keywords" content="social media design, post creator, Instagram template, Facebook post, Twitter image, social media graphics, online design tool">
+    <meta property="og:title" content="Social Media Post Designer - Create Stunning Graphics">
+    <meta property="og:description" content="Design professional social media posts with templates, filters, and customization tools. Free online editor.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://example.com/preview.jpg">
+    <title>Social Media Post Designer - Create Stunning Graphics</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Social Media Post Designer",
+        "description": "Create and design social media posts with templates and customization tools",
+        "applicationCategory": "DesignApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <h1 class="site-title">Social Media Post Designer</h1>
+            <p class="site-tagline">Create stunning graphics for all platforms</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="designer-container">
+            <aside class="tools-sidebar">
+                <section class="tool-section platform-selector">
+                    <h2 class="section-title">Platform Template</h2>
+                    <div class="platform-buttons">
+                        <button class="platform-btn active" data-platform="instagram" data-width="1080" data-height="1080">
+                            <span class="platform-icon">📷</span>
+                            Instagram
+                        </button>
+                        <button class="platform-btn" data-platform="facebook" data-width="1200" data-height="630">
+                            <span class="platform-icon">👍</span>
+                            Facebook
+                        </button>
+                        <button class="platform-btn" data-platform="twitter" data-width="1200" data-height="675">
+                            <span class="platform-icon">🐦</span>
+                            Twitter
+                        </button>
+                        <button class="platform-btn" data-platform="linkedin" data-width="1200" data-height="627">
+                            <span class="platform-icon">💼</span>
+                            LinkedIn
+                        </button>
+                        <button class="platform-btn" data-platform="story" data-width="1080" data-height="1920">
+                            <span class="platform-icon">📱</span>
+                            Story
+                        </button>
+                    </div>
+                </section>
+
+                <section class="tool-section image-upload">
+                    <h2 class="section-title">Background Image</h2>
+                    <div class="upload-zone">
+                        <input type="file" id="imageUpload" accept="image/*" class="file-input">
+                        <label for="imageUpload" class="upload-label">
+                            <span class="upload-icon">📁</span>
+                            <span>Choose Image</span>
+                        </label>
+                    </div>
+                </section>
+
+                <section class="tool-section text-editor">
+                    <h2 class="section-title">Add Text</h2>
+                    <textarea class="text-input" id="postText" placeholder="Enter your text here..." rows="3"></textarea>
+                    <div class="text-controls">
+                        <input type="color" id="textColor" value="#ffffff" class="color-picker" title="Text Color">
+                        <input type="number" id="fontSize" value="32" min="12" max="120" class="font-size-input" placeholder="Size">
+                        <select id="fontFamily" class="font-select">
+                            <option value="Arial">Arial</option>
+                            <option value="Georgia">Georgia</option>
+                            <option value="Impact">Impact</option>
+                            <option value="Courier New">Courier</option>
+                            <option value="Verdana">Verdana</option>
+                        </select>
+                    </div>
+                </section>
+
+                <section class="tool-section filter-section">
+                    <h2 class="section-title">Filters</h2>
+                    <div class="filter-grid">
+                        <button class="filter-btn active" data-filter="none">None</button>
+                        <button class="filter-btn" data-filter="grayscale">B&W</button>
+                        <button class="filter-btn" data-filter="sepia">Sepia</button>
+                        <button class="filter-btn" data-filter="saturate">Vibrant</button>
+                        <button class="filter-btn" data-filter="blur">Blur</button>
+                        <button class="filter-btn" data-filter="brightness">Bright</button>
+                    </div>
+                </section>
+
+                <section class="tool-section sticker-section">
+                    <h2 class="section-title">Stickers & Shapes</h2>
+                    <div class="sticker-grid">
+                        <button class="sticker-btn" data-sticker="⭐">⭐</button>
+                        <button class="sticker-btn" data-sticker="❤️">❤️</button>
+                        <button class="sticker-btn" data-sticker="🔥">🔥</button>
+                        <button class="sticker-btn" data-sticker="✨">✨</button>
+                        <button class="sticker-btn" data-sticker="🎉">🎉</button>
+                        <button class="sticker-btn" data-sticker="💡">💡</button>
+                        <button class="sticker-btn" data-sticker="🚀">🚀</button>
+                        <button class="sticker-btn" data-sticker="👍">👍</button>
+                    </div>
+                    <div class="shape-controls">
+                        <button class="shape-btn" data-shape="rectangle">Rectangle</button>
+                        <button class="shape-btn" data-shape="circle">Circle</button>
+                        <input type="color" id="shapeColor" value="#ff6b6b" class="color-picker" title="Shape Color">
+                    </div>
+                </section>
+            </aside>
+
+            <div class="canvas-workspace">
+                <div class="canvas-header">
+                    <h2 class="canvas-title">Preview</h2>
+                    <div class="device-preview-toggle">
+                        <button class="preview-btn active" data-device="desktop">💻 Desktop</button>
+                        <button class="preview-btn" data-device="mobile">📱 Mobile</button>
+                    </div>
+                </div>
+                
+                <div class="canvas-container" id="canvasContainer">
+                    <div class="design-canvas" id="designCanvas">
+                        <div class="canvas-background" id="canvasBackground"></div>
+                        <div class="canvas-elements" id="canvasElements"></div>
+                    </div>
+                </div>
+
+                <div class="canvas-actions">
+                    <button class="action-btn clear-btn" id="clearCanvas">🗑️ Clear</button>
+                    <button class="action-btn download-btn" id="downloadImage">⬇️ Download</button>
+                </div>
+            </div>
+        </div>
+
+        <aside class="ad-container">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9048718254553458"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </aside>
+
+        <section class="features-section">
+            <h2 class="features-title">Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📐</div>
+                    <h3 class="feature-name">Platform Templates</h3>
+                    <p class="feature-description">Pre-sized templates for all major social media platforms</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3 class="feature-name">Custom Styling</h3>
+                    <p class="feature-description">Add text, images, and customize colors and fonts</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3 class="feature-name">Filters & Effects</h3>
+                    <p class="feature-description">Apply professional filters to enhance your images</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎭</div>
+                    <h3 class="feature-name">Stickers & Shapes</h3>
+                    <p class="feature-description">Add fun stickers and geometric shapes to your design</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3 class="feature-name">Device Preview</h3>
+                    <p class="feature-description">See how your post looks on desktop and mobile</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⬇️</div>
+                    <h3 class="feature-name">Optimized Export</h3>
+                    <p class="feature-description">Download high-quality images ready for posting</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <p class="footer-text">&copy; 2024 Social Media Post Designer. Create amazing content.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

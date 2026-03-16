@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create sortable, filterable data tables from CSV or Excel files. Import, sort, filter, search, paginate and export your data easily.">
+    <meta name="keywords" content="data table, CSV import, Excel import, sort data, filter data, export data, pagination, data management">
+    <meta property="og:title" content="Sortable Filterable Data Tables">
+    <meta property="og:description" content="Import, sort, filter and export data tables with ease. Supports CSV and Excel formats.">
+    <meta property="og:type" content="website">
+    <title>Sortable Filterable Data Tables</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Sortable Filterable Data Tables",
+        "description": "Import, sort, filter and export data tables with ease",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1>📊 Data Table Manager</h1>
+            <p>Import, Sort, Filter & Export Your Data</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="upload-section">
+                <div class="upload-zone" id="uploadZone">
+                    <div class="upload-icon">📁</div>
+                    <h2>Import Your Data</h2>
+                    <p>Drag & drop CSV or Excel file here, or click to browse</p>
+                    <input type="file" id="fileInput" accept=".csv,.xlsx,.xls" hidden>
+                    <button class="btn btn-primary" id="browseBtn">Browse Files</button>
+                </div>
+            </section>
+
+            <section class="controls-section" id="controlsSection" style="display:none;">
+                <div class="controls-grid">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="🔍 Search all columns..." class="search-input">
+                    </div>
+                    <div class="filter-box">
+                        <select id="columnFilter" class="filter-select">
+                            <option value="">Filter by column...</option>
+                        </select>
+                        <input type="text" id="filterValue" placeholder="Enter filter value..." class="filter-input">
+                    </div>
+                    <div class="action-buttons">
+                        <button class="btn btn-secondary" id="exportCsvBtn">📥 Export CSV</button>
+                        <button class="btn btn-secondary" id="exportExcelBtn">📥 Export Excel</button>
+                        <button class="btn btn-secondary" id="printBtn">🖨️ Print</button>
+                        <button class="btn btn-danger" id="clearBtn">🗑️ Clear</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="table-section" id="tableSection" style="display:none;">
+                <div class="table-info">
+                    <span id="recordCount">0 records</span>
+                    <span id="filterInfo"></span>
+                </div>
+                <div class="table-container">
+                    <table class="data-table" id="dataTable">
+                        <thead id="tableHead"></thead>
+                        <tbody id="tableBody"></tbody>
+                    </table>
+                </div>
+                <div class="pagination-container" id="paginationContainer">
+                    <div class="pagination-info">
+                        <span id="pageInfo">Page 1 of 1</span>
+                        <select id="rowsPerPage" class="rows-select">
+                            <option value="10">10 rows</option>
+                            <option value="25" selected>25 rows</option>
+                            <option value="50">50 rows</option>
+                            <option value="100">100 rows</option>
+                            <option value="all">All rows</option>
+                        </select>
+                    </div>
+                    <div class="pagination-buttons" id="paginationButtons"></div>
+                </div>
+            </section>
+
+            <aside class="ad-container">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-9048718254553458"
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </aside>
+
+            <section class="features-section">
+                <h2>Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📂</div>
+                        <h3>Import Data</h3>
+                        <p>Support for CSV and Excel files (XLSX, XLS)</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔄</div>
+                        <h3>Sort Columns</h3>
+                        <p>Click column headers to sort ascending or descending</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <h3>Search & Filter</h3>
+                        <p>Global search and column-specific filtering</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📄</div>
+                        <h3>Pagination</h3>
+                        <p>Navigate large datasets with customizable page sizes</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💾</div>
+                        <h3>Export Data</h3>
+                        <p>Export filtered results to CSV or Excel format</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🖨️</div>
+                        <h3>Print View</h3>
+                        <p>Print-friendly table formatting</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="instructions-section">
+                <h2>How to Use</h2>
+                <ol class="instructions-list">
+                    <li><strong>Import:</strong> Click "Browse Files" or drag & drop your CSV/Excel file into the upload zone</li>
+                    <li><strong>Sort:</strong> Click any column header to sort data (click again to reverse order)</li>
+                    <li><strong>Search:</strong> Use the search box to find data across all columns</li>
+                    <li><strong>Filter:</strong> Select a column and enter a value to filter specific data</li>
+                    <li><strong>Navigate:</strong> Use pagination controls to browse through large datasets</li>
+                    <li><strong>Export:</strong> Download your filtered/sorted data as CSV or Excel</li>
+                    <li><strong>Print:</strong> Generate a print-friendly view of your table</li>
+                </ol>
+            </section>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2024 Data Table Manager. All rights reserved.</p>
+            <p>Free online tool for managing and analyzing tabular data</p>
+        </div>
+    </footer>
+
+    <div class="print-view" id="printView" style="display:none;">
+        <h1>Data Table Report</h1>
+        <div id="printContent"></div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

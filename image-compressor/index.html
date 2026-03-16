@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Compress images without losing quality. Upload multiple JPG, PNG, WebP files, adjust compression quality, preview before/after comparison, and download as ZIP.">
+    <meta name="keywords" content="image compression, compress images, reduce file size, optimize images, JPG PNG WebP, batch image compression">
+    <meta property="og:title" content="Image Compressor - Compress Images Without Losing Quality">
+    <meta property="og:description" content="Advanced image compression tool with quality control, batch processing, and before/after preview.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://example.com/og-image.jpg">
+    <title>Image Compressor - Compress Images Without Losing Quality</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Image Compressor",
+        "description": "Compress images without losing quality with advanced options",
+        "applicationCategory": "MultimediaApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": "Upload multiple images, Adjust compression quality, Preview comparison, Batch download, JPG PNG WebP support"
+    }
+    </script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1 class="site-title">Image Compressor</h1>
+            <p class="site-tagline">Compress images without losing quality</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="upload-section">
+                <div class="upload-zone" id="uploadZone">
+                    <svg class="upload-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                    </svg>
+                    <h2 class="upload-title">Drag & Drop Images Here</h2>
+                    <p class="upload-description">or click to browse</p>
+                    <p class="upload-formats">Supports JPG, PNG, WebP</p>
+                    <input type="file" id="fileInput" class="file-input" accept="image/jpeg,image/png,image/webp" multiple>
+                </div>
+            </section>
+
+            <section class="controls-section" id="controlsSection" style="display:none;">
+                <div class="quality-control">
+                    <label for="qualitySlider" class="control-label">
+                        Compression Quality: <span id="qualityValue" class="quality-value">80</span>%
+                    </label>
+                    <input type="range" id="qualitySlider" class="quality-slider" min="10" max="100" value="80" step="5">
+                    <div class="quality-indicators">
+                        <span class="indicator-low">Low</span>
+                        <span class="indicator-medium">Medium</span>
+                        <span class="indicator-high">High</span>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button id="compressBtn" class="btn btn-primary">Compress All</button>
+                    <button id="downloadAllBtn" class="btn btn-secondary" disabled>Download All as ZIP</button>
+                    <button id="clearAllBtn" class="btn btn-danger">Clear All</button>
+                </div>
+            </section>
+
+            <section class="statistics-section" id="statisticsSection" style="display:none;">
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <h3 class="stat-label">Total Images</h3>
+                        <p class="stat-value" id="totalImages">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="stat-label">Original Size</h3>
+                        <p class="stat-value" id="originalSize">0 KB</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3 class="stat-label">Compressed Size</h3>
+                        <p class="stat-value" id="compressedSize">0 KB</p>
+                    </div>
+                    <div class="stat-card stat-highlight">
+                        <h3 class="stat-label">Space Saved</h3>
+                        <p class="stat-value" id="spaceSaved">0%</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="images-section" id="imagesSection" style="display:none;">
+                <h2 class="section-title">Your Images</h2>
+                <div class="data-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Preview</th>
+                                <th>Filename</th>
+                                <th>Original</th>
+                                <th>Compressed</th>
+                                <th>Reduction</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="imagesTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="comparison-section" id="comparisonSection" style="display:none;">
+                <h2 class="section-title">Before/After Comparison</h2>
+                <div class="comparison-container">
+                    <div class="comparison-panel">
+                        <h3 class="comparison-label">Original</h3>
+                        <div class="image-preview-container">
+                            <img id="originalPreview" class="preview-image" alt="Original">
+                            <p class="preview-size" id="originalPreviewSize"></p>
+                        </div>
+                    </div>
+                    <div class="comparison-divider">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </div>
+                    <div class="comparison-panel">
+                        <h3 class="comparison-label">Compressed</h3>
+                        <div class="image-preview-container">
+                            <img id="compressedPreview" class="preview-image" alt="Compressed">
+                            <p class="preview-size" id="compressedPreviewSize"></p>
+                        </div>
+                    </div>
+                </div>
+                <button id="closeComparison" class="btn btn-secondary">Close Preview</button>
+            </section>
+        </div>
+    </main>
+
+    <aside class="ad-container">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9048718254553458"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </aside>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-text">&copy; 2024 Image Compressor. All rights reserved.</p>
+                <nav class="footer-nav">
+                    <a href="#privacy" class="footer-link">Privacy Policy</a>
+                    <a href="#terms" class="footer-link">Terms of Service</a>
+                    <a href="#contact" class="footer-link">Contact</a>
+                </nav>
+            </div>
+            <p class="footer-note">All compression is done locally in your browser. Your images never leave your device.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

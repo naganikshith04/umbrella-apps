@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Advanced online image editor with filters, layers, cropping tools, and multiple export formats. Edit photos with brightness, contrast, saturation controls and canvas-based manipulation.">
+    <meta name="keywords" content="image editor, photo editor, filters, crop tool, image manipulation, online editor, brightness, contrast, saturation">
+    <meta property="og:title" content="Advanced Image Editor - Professional Photo Editing Tool">
+    <meta property="og:description" content="Edit images online with advanced filters, cropping, layers, and export options. Professional photo editing made simple.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://example.com/og-image.jpg">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Advanced Image Editor",
+        "description": "Professional online image editing tool with filters, layers, and cropping capabilities",
+        "applicationCategory": "MultimediaApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fabric@5.3.0/dist/fabric.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Advanced Image Editor - Filters, Layers & Cropping Tool</title>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <h1 class="app-title">Advanced Image Editor</h1>
+            <p class="app-subtitle">Professional photo editing with filters, layers, and cropping</p>
+        </div>
+    </header>
+
+    <main class="editor-container">
+        <section class="upload-section">
+            <div class="upload-zone" id="uploadZone">
+                <svg class="upload-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                </svg>
+                <h2 class="upload-title">Drop image here or click to upload</h2>
+                <p class="upload-description">Supports JPG, PNG, GIF (Max 10MB)</p>
+                <input type="file" id="imageInput" class="file-input" accept="image/*">
+            </div>
+        </section>
+
+        <section class="editor-workspace" id="editorWorkspace" style="display:none;">
+            <div class="workspace-layout">
+                <aside class="control-panel">
+                    <div class="panel-section">
+                        <h3 class="panel-title">Filters</h3>
+                        <div class="filter-controls">
+                            <div class="control-group">
+                                <label for="brightness" class="control-label">
+                                    <span>Brightness</span>
+                                    <span class="control-value" id="brightnessValue">0</span>
+                                </label>
+                                <input type="range" id="brightness" class="slider-control" min="-100" max="100" value="0">
+                            </div>
+                            <div class="control-group">
+                                <label for="contrast" class="control-label">
+                                    <span>Contrast</span>
+                                    <span class="control-value" id="contrastValue">0</span>
+                                </label>
+                                <input type="range" id="contrast" class="slider-control" min="-100" max="100" value="0">
+                            </div>
+                            <div class="control-group">
+                                <label for="saturation" class="control-label">
+                                    <span>Saturation</span>
+                                    <span class="control-value" id="saturationValue">0</span>
+                                </label>
+                                <input type="range" id="saturation" class="slider-control" min="-100" max="100" value="0">
+                            </div>
+                            <button class="btn-reset" id="resetFilters">Reset Filters</button>
+                        </div>
+                    </div>
+
+                    <div class="panel-section">
+                        <h3 class="panel-title">Crop Tool</h3>
+                        <div class="crop-controls">
+                            <label class="control-label">Aspect Ratio</label>
+                            <select id="aspectRatio" class="select-control">
+                                <option value="free">Free</option>
+                                <option value="1:1">Square (1:1)</option>
+                                <option value="4:3">4:3</option>
+                                <option value="16:9">16:9</option>
+                                <option value="3:2">3:2</option>
+                            </select>
+                            <button class="btn-action" id="enableCrop">Enable Crop</button>
+                            <button class="btn-action" id="applyCrop" style="display:none;">Apply Crop</button>
+                            <button class="btn-secondary" id="cancelCrop" style="display:none;">Cancel</button>
+                        </div>
+                    </div>
+
+                    <div class="panel-section">
+                        <h3 class="panel-title">Export</h3>
+                        <div class="export-controls">
+                            <label class="control-label">Format</label>
+                            <select id="exportFormat" class="select-control">
+                                <option value="png">PNG</option>
+                                <option value="jpeg">JPEG</option>
+                                <option value="webp">WebP</option>
+                            </select>
+                            <div class="control-group" id="qualityControl">
+                                <label for="quality" class="control-label">
+                                    <span>Quality</span>
+                                    <span class="control-value" id="qualityValue">90</span>
+                                </label>
+                                <input type="range" id="quality" class="slider-control" min="1" max="100" value="90">
+                            </div>
+                            <button class="btn-export" id="exportImage">Download Image</button>
+                        </div>
+                    </div>
+
+                    <div class="panel-section">
+                        <button class="btn-secondary" id="newImage">Load New Image</button>
+                    </div>
+                </aside>
+
+                <div class="canvas-container">
+                    <div class="canvas-toolbar">
+                        <button class="btn-icon" id="zoomIn" title="Zoom In">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/>
+                            </svg>
+                        </button>
+                        <button class="btn-icon" id="zoomOut" title="Zoom Out">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M8 11h6"/>
+                            </svg>
+                        </button>
+                        <button class="btn-icon" id="fitScreen" title="Fit to Screen">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                            </svg>
+                        </button>
+                        <div class="toolbar-divider"></div>
+                        <button class="btn-icon" id="toggleComparison" title="Compare Before/After">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/>
+                            </svg>
+                            <span>Compare</span>
+                        </button>
+                    </div>
+                    <div class="canvas-wrapper">
+                        <canvas id="imageCanvas"></canvas>
+                        <div class="comparison-overlay" id="comparisonOverlay" style="display:none;">
+                            <canvas id="originalCanvas"></canvas>
+                            <div class="comparison-slider" id="comparisonSlider">
+                                <div class="slider-handle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <aside class="ad-container">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9048718254553458"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+        </aside>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Advanced Image Editor. All rights reserved.</p>
+            <nav class="footer-nav">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    <script src="js/app.js"></script>
+</body>
+</html>

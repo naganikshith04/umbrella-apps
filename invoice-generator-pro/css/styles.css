@@ -1,0 +1,649 @@
+:root {
+    --primary: #D97757;
+    --secondary: #7C4DFF;
+    --background: #F5F3EF;
+    --surface: #FFFFFF;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666666;
+    --border: #e0e0e0;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.15);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--background);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.app-header {
+    background: var(--surface);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--border);
+}
+
+.header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.invoice-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: -0.02em;
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.main-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 2rem;
+    min-height: calc(100vh - 200px);
+}
+
+.sidebar-controls {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+}
+
+.control-section {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.control-section:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.control-section h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.875rem;
+}
+
+.form-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.form-input,
+.form-select,
+.input-field {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    font-family: inherit;
+    transition: var(--transition);
+    background: var(--surface);
+    color: var(--text-primary);
+}
+
+.form-input:focus,
+.form-select:focus,
+.input-field:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(217, 119, 87, 0.1);
+}
+
+.form-select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23666666' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    padding-right: 2.5rem;
+}
+
+.upload-zone {
+    border: 2px dashed var(--border);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    transition: var(--transition);
+    cursor: pointer;
+    background: var(--background);
+}
+
+.upload-zone:hover {
+    border-color: var(--primary);
+    background: rgba(217, 119, 87, 0.05);
+}
+
+.upload-label {
+    display: block;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.logo-preview {
+    margin-top: 1rem;
+}
+
+.logo-display {
+    max-width: 100%;
+    height: auto;
+    max-height: 120px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-add-item,
+.btn-remove {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover {
+    background: #c66847;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: var(--secondary);
+    color: white;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+    background: #6a3de8;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.btn-add-item {
+    background: var(--background);
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.btn-add-item:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-remove {
+    padding: 0.5rem 1rem;
+    background: #ff5252;
+    color: white;
+    font-size: 0.875rem;
+}
+
+.btn-remove:hover {
+    background: #e04040;
+    transform: scale(1.05);
+}
+
+.invoice-preview {
+    background: var(--surface);
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+}
+
+.invoice-container {
+    padding: 3rem;
+}
+
+.invoice-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--border);
+}
+
+.company-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.input-company-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    border: 1px solid transparent;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: var(--transition);
+}
+
+.input-company-name:focus {
+    border-color: var(--primary);
+    background: var(--background);
+}
+
+.input-company-address {
+    border: 1px solid transparent;
+    padding: 0.5rem;
+    border-radius: 4px;
+    resize: vertical;
+    min-height: 80px;
+    font-family: inherit;
+    font-size: 0.9375rem;
+    transition: var(--transition);
+}
+
+.input-company-address:focus {
+    border-color: var(--primary);
+    background: var(--background);
+}
+
+.client-details {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.invoice-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.meta-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.meta-group label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.invoice-items {
+    margin-bottom: 2rem;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+.data-table thead {
+    background: var(--background);
+}
+
+.data-table th {
+    padding: 1rem;
+    text-align: left;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.data-table th:last-child,
+.data-table td:last-child {
+    text-align: right;
+}
+
+.item-row {
+    border-bottom: 1px solid var(--border);
+    transition: var(--transition);
+}
+
+.item-row:hover {
+    background: var(--background);
+}
+
+.item-row td {
+    padding: 1rem;
+}
+
+.item-description,
+.item-quantity,
+.item-rate,
+.item-amount {
+    border: 1px solid transparent;
+    padding: 0.5rem;
+    border-radius: 4px;
+    width: 100%;
+    transition: var(--transition);
+}
+
+.item-description {
+    font-size: 0.9375rem;
+}
+
+.item-quantity,
+.item-rate {
+    width: 100px;
+    text-align: center;
+}
+
+.item-amount {
+    text-align: right;
+    font-weight: 600;
+}
+
+.item-description:focus,
+.item-quantity:focus,
+.item-rate:focus {
+    border-color: var(--primary);
+    background: var(--background);
+    outline: none;
+}
+
+.invoice-totals {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 3rem;
+}
+
+.totals-grid {
+    min-width: 350px;
+}
+
+.total-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    padding: 0.75rem 1rem;
+    align-items: center;
+}
+
+.total-row span:first-child {
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.total-row span:last-child {
+    font-weight: 600;
+    text-align: right;
+    font-size: 1.125rem;
+}
+
+.total-final {
+    background: var(--primary);
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.total-final span {
+    color: white;
+}
+
+.invoice-notes {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px solid var(--border);
+}
+
+.invoice-notes h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.input-notes {
+    width: 100%;
+    min-height: 100px;
+    padding: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.9375rem;
+    resize: vertical;
+    transition: var(--transition);
+}
+
+.input-notes:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(217, 119, 87, 0.1);
+}
+
+.app-footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 2rem;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-top: 4rem;
+}
+
+@media (max-width: 1024px) {
+    .main-content {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+    }
+
+    .sidebar-controls {
+        position: static;
+        order: 2;
+    }
+
+    .invoice-preview {
+        order: 1;
+    }
+
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-actions {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 768px) {
+    .invoice-header {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .client-details {
+        text-align: left;
+    }
+
+    .invoice-meta {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .invoice-container {
+        padding: 1.5rem;
+    }
+
+    .data-table {
+        font-size: 0.875rem;
+    }
+
+    .data-table th,
+    .data-table td {
+        padding: 0.75rem 0.5rem;
+    }
+
+    .totals-grid {
+        min-width: 100%;
+    }
+
+    .total-row {
+        gap: 1rem;
+    }
+
+    .header-container {
+        padding: 1rem;
+    }
+
+    .main-content {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .sidebar-controls {
+        padding: 1.5rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+    }
+
+    .header-actions {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .invoice-title {
+        font-size: 1.5rem;
+    }
+
+    .data-table thead {
+        display: none;
+    }
+
+    .item-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        padding: 1rem 0;
+    }
+
+    .item-row td {
+        padding: 0.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .item-row td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--text-secondary);
+        font-size: 0.875rem;
+    }
+
+    .total-row {
+        font-size: 0.9375rem;
+    }
+
+    .total-final {
+        font-size: 1.125rem;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.item-row {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.invoice-preview {
+    animation: fadeIn 0.5s ease-out;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    opacity: 1;
+}
+
+::selection {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-primary:active,
+.btn-secondary:active {
+    transform: translateY(0);
+}
+
+.form-input::placeholder,
+.input-field::placeholder,
+.input-notes::placeholder {
+    color: #999;
+}

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create interactive quizzes with multiple question types, images, timers, and automatic score calculation. Export quiz data easily.">
+    <meta name="keywords" content="quiz maker, interactive quiz, online quiz, quiz creator, question builder, quiz timer, score calculation">
+    <meta property="og:title" content="Interactive Quiz Creator - Build Engaging Quizzes">
+    <meta property="og:description" content="Create professional quizzes with multiple question types, images, timers, and instant results.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/quiz-creator">
+    <title>Interactive Quiz Creator - Build Custom Quizzes</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Interactive Quiz Creator",
+        "description": "Create and share interactive quizzes with multiple question types, images, and timers",
+        "applicationCategory": "EducationalApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <h1 class="site-title">Interactive Quiz Creator</h1>
+            <p class="site-tagline">Build engaging quizzes in minutes</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="quiz-builder-section" id="builderSection">
+            <div class="quiz-settings-panel">
+                <h2 class="section-title">Quiz Settings</h2>
+                <div class="form-group">
+                    <label for="quizTitle" class="form-label">Quiz Title</label>
+                    <input type="text" id="quizTitle" class="form-input" placeholder="Enter quiz title">
+                </div>
+                <div class="form-group">
+                    <label for="quizDescription" class="form-label">Description</label>
+                    <textarea id="quizDescription" class="form-textarea" placeholder="Quiz description"></textarea>
+                </div>
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="enableTimer" class="form-checkbox">
+                    <label for="enableTimer" class="checkbox-label">Enable Timer</label>
+                </div>
+                <div class="form-group timer-settings" id="timerSettings" style="display:none;">
+                    <label for="timerDuration" class="form-label">Duration (seconds)</label>
+                    <input type="number" id="timerDuration" class="form-input" value="60" min="10">
+                </div>
+            </div>
+
+            <div class="questions-builder">
+                <div class="builder-header">
+                    <h2 class="section-title">Questions</h2>
+                    <button class="btn btn-primary add-question-btn" id="addQuestionBtn">+ Add Question</button>
+                </div>
+                <div class="questions-list" id="questionsList"></div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-success preview-quiz-btn" id="previewQuizBtn">Preview Quiz</button>
+                <button class="btn btn-secondary export-quiz-btn" id="exportQuizBtn">Export Quiz Data</button>
+            </div>
+        </section>
+
+        <section class="quiz-preview-section hidden" id="previewSection">
+            <div class="quiz-container">
+                <div class="quiz-header">
+                    <h2 class="quiz-title" id="displayQuizTitle"></h2>
+                    <p class="quiz-description" id="displayQuizDescription"></p>
+                    <div class="timer-display hidden" id="timerDisplay">
+                        <span class="timer-label">Time Remaining:</span>
+                        <span class="timer-value" id="timerValue">60</span>
+                    </div>
+                </div>
+
+                <div class="quiz-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <p class="progress-text" id="progressText">Question 1 of 5</p>
+                </div>
+
+                <div class="question-display" id="questionDisplay"></div>
+
+                <div class="quiz-navigation">
+                    <button class="btn btn-outline prev-question-btn" id="prevQuestionBtn">Previous</button>
+                    <button class="btn btn-primary next-question-btn" id="nextQuestionBtn">Next</button>
+                    <button class="btn btn-success submit-quiz-btn hidden" id="submitQuizBtn">Submit Quiz</button>
+                </div>
+
+                <button class="btn btn-secondary back-to-builder-btn" id="backToBuilderBtn">Back to Builder</button>
+            </div>
+        </section>
+
+        <section class="results-section hidden" id="resultsSection">
+            <div class="results-container">
+                <div class="results-header">
+                    <h2 class="results-title">Quiz Results</h2>
+                    <div class="score-display">
+                        <div class="score-circle">
+                            <span class="score-value" id="scoreValue">0</span>
+                            <span class="score-total" id="scoreTotal">/0</span>
+                        </div>
+                        <p class="score-percentage" id="scorePercentage">0%</p>
+                    </div>
+                </div>
+
+                <div class="results-summary">
+                    <div class="summary-card">
+                        <h3 class="summary-label">Correct Answers</h3>
+                        <p class="summary-value correct-count" id="correctCount">0</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3 class="summary-label">Incorrect Answers</h3>
+                        <p class="summary-value incorrect-count" id="incorrectCount">0</p>
+                    </div>
+                    <div class="summary-card">
+                        <h3 class="summary-label">Time Taken</h3>
+                        <p class="summary-value time-taken" id="timeTaken">0s</p>
+                    </div>
+                </div>
+
+                <div class="answers-review" id="answersReview">
+                    <h3 class="review-title">Answer Review</h3>
+                    <div class="review-list" id="reviewList"></div>
+                </div>
+
+                <div class="results-actions">
+                    <button class="btn btn-primary retry-quiz-btn" id="retryQuizBtn">Retry Quiz</button>
+                    <button class="btn btn-secondary export-results-btn" id="exportResultsBtn">Export Results</button>
+                    <button class="btn btn-outline new-quiz-btn" id="newQuizBtn">Create New Quiz</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="modal hidden" id="questionModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Add Question</h3>
+                    <button class="modal-close" id="modalClose">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="questionType" class="form-label">Question Type</label>
+                        <select id="questionType" class="form-select">
+                            <option value="multiple-choice">Multiple Choice</option>
+                            <option value="true-false">True/False</option>
+                            <option value="short-answer">Short Answer</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="questionText" class="form-label">Question Text</label>
+                        <textarea id="questionText" class="form-textarea" placeholder="Enter your question"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="questionImage" class="form-label">Question Image (Optional)</label>
+                        <div class="upload-zone" id="uploadZone">
+                            <input type="file" id="questionImage" class="file-input" accept="image/*">
+                            <div class="upload-placeholder">
+                                <span class="upload-icon">📁</span>
+                                <p class="upload-text">Click or drag image here</p>
+                            </div>
+                            <div class="image-preview hidden" id="imagePreview">
+                                <img src="" alt="Preview" class="preview-image" id="previewImage">
+                                <button class="remove-image-btn" id="removeImageBtn">&times;</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="options-container" id="optionsContainer">
+                        <label class="form-label">Answer Options</label>
+                        <div class="options-list" id="optionsList"></div>
+                        <button class="btn btn-outline add-option-btn" id="addOptionBtn">+ Add Option</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="correctAnswer" class="form-label">Correct Answer</label>
+                        <input type="text" id="correctAnswer" class="form-input" placeholder="Enter correct answer">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary cancel-btn" id="cancelBtn">Cancel</button>
+                    <button class="btn btn-primary save-question-btn" id="saveQuestionBtn">Save Question</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="ad-container">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9048718254553458"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <p class="footer-text">&copy; 2024 Interactive Quiz Creator. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

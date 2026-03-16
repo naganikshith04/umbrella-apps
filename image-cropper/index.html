@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online image crop and resize tool. Upload, crop, and resize images with precision using interactive tools, predefined aspect ratios, and real-time preview.">
+    <meta name="keywords" content="image crop, resize image, crop tool, image editor, aspect ratio, photo crop, online image tool">
+    <meta property="og:title" content="Image Crop & Resize Tool - Precision Image Editor">
+    <meta property="og:description" content="Crop and resize images with precision. Interactive tool with predefined aspect ratios and real-time preview.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://example.com/crop-tool-preview.jpg">
+    <title>Image Crop & Resize Tool - Precision Image Editor</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropperjs@1.6.1/dist/cropper.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Image Crop & Resize Tool",
+        "description": "Professional online tool to crop and resize images with precision",
+        "applicationCategory": "MultimediaApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "operatingSystem": "Any"
+    }
+    </script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1>Image Crop & Resize Tool</h1>
+            <p class="subtitle">Crop and resize images with precision</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="upload-section">
+                <div class="upload-zone" id="uploadZone">
+                    <svg class="upload-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <h2>Upload Image</h2>
+                    <p>Drag and drop an image or click to browse</p>
+                    <input type="file" id="imageInput" accept="image/*" class="file-input">
+                    <button class="btn-primary" onclick="document.getElementById('imageInput').click()">Choose Image</button>
+                </div>
+            </section>
+
+            <section class="editor-section" id="editorSection" style="display: none;">
+                <div class="editor-container">
+                    <div class="editor-sidebar">
+                        <div class="control-panel">
+                            <h3>Aspect Ratios</h3>
+                            <div class="aspect-ratio-buttons">
+                                <button class="btn-aspect" data-ratio="free">Free</button>
+                                <button class="btn-aspect" data-ratio="1">1:1</button>
+                                <button class="btn-aspect" data-ratio="1.333">4:3</button>
+                                <button class="btn-aspect" data-ratio="1.777">16:9</button>
+                                <button class="btn-aspect" data-ratio="0.75">3:4</button>
+                                <button class="btn-aspect" data-ratio="0.5625">9:16</button>
+                            </div>
+
+                            <h3>Custom Dimensions</h3>
+                            <div class="dimension-inputs">
+                                <div class="input-group">
+                                    <label for="widthInput">Width (px)</label>
+                                    <input type="number" id="widthInput" class="dimension-input" placeholder="Auto">
+                                </div>
+                                <div class="input-group">
+                                    <label for="heightInput">Height (px)</label>
+                                    <input type="number" id="heightInput" class="dimension-input" placeholder="Auto">
+                                </div>
+                                <button class="btn-secondary" id="applyDimensions">Apply Dimensions</button>
+                            </div>
+
+                            <h3>Actions</h3>
+                            <div class="action-buttons">
+                                <button class="btn-action" id="rotateLeft" title="Rotate Left">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                                        <path d="M3 3v5h5"></path>
+                                    </svg>
+                                </button>
+                                <button class="btn-action" id="rotateRight" title="Rotate Right">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"></path>
+                                        <path d="M21 3v5h-5"></path>
+                                    </svg>
+                                </button>
+                                <button class="btn-action" id="flipHorizontal" title="Flip Horizontal">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="12" y1="2" x2="12" y2="22"></line>
+                                        <path d="M17 5h5v14h-5z"></path>
+                                        <path d="M7 5H2v14h5z"></path>
+                                    </svg>
+                                </button>
+                                <button class="btn-action" id="flipVertical" title="Flip Vertical">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                                        <path d="M5 17v5h14v-5z"></path>
+                                        <path d="M5 7V2h14v5z"></path>
+                                    </svg>
+                                </button>
+                                <button class="btn-action" id="resetCrop" title="Reset">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"></path>
+                                        <path d="M21 3v5h-5"></path>
+                                        <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"></path>
+                                        <path d="M3 21v-5h5"></path>
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <div class="download-section">
+                                <h3>Download</h3>
+                                <div class="quality-selector">
+                                    <label for="qualityInput">Quality</label>
+                                    <input type="range" id="qualityInput" min="0.1" max="1" step="0.1" value="0.9" class="quality-slider">
+                                    <span id="qualityValue">90%</span>
+                                </div>
+                                <button class="btn-success" id="downloadBtn">Download Cropped Image</button>
+                                <button class="btn-secondary" id="newImageBtn">Upload New Image</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="editor-canvas">
+                        <div class="image-container">
+                            <img id="cropImage" src="" alt="Image to crop">
+                        </div>
+                        <div class="crop-info">
+                            <span id="cropDimensions">Select crop area</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features-section">
+                <h2>Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>🎯 Precision Cropping</h3>
+                        <p>Interactive crop tool with pixel-perfect accuracy</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📐 Aspect Ratios</h3>
+                        <p>Predefined ratios for social media and standard formats</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📏 Custom Dimensions</h3>
+                        <p>Set exact width and height for your images</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>👁️ Real-time Preview</h3>
+                        <p>See changes instantly as you crop and adjust</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🔄 Image Transformations</h3>
+                        <p>Rotate and flip images with ease</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>💾 High Quality Export</h3>
+                        <p>Download cropped images with adjustable quality</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2024 Image Crop & Resize Tool. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.6.1/dist/cropper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

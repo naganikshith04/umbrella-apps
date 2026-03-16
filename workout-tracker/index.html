@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Track your workouts, monitor progress, and achieve fitness goals with our comprehensive workout tracker featuring exercise library, statistics, and personal records.">
+    <meta name="keywords" content="workout tracker, exercise log, fitness tracker, gym log, progress tracking, personal records, workout statistics">
+    <meta property="og:title" content="Workout Tracker - Track Your Fitness Progress">
+    <meta property="og:description" content="Complete workout tracking solution with exercise library, progress charts, and personal records tracking.">
+    <meta property="og:type" content="website">
+    <title>Workout Tracker - Exercise Library & Progress Tracking</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@3.0.0/index.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Workout Tracker",
+        "description": "Track workouts, monitor progress, and achieve fitness goals",
+        "applicationCategory": "HealthApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1 class="logo">💪 Workout Tracker</h1>
+            <nav class="main-nav">
+                <button class="nav-btn active" data-view="dashboard">Dashboard</button>
+                <button class="nav-btn" data-view="exercises">Exercise Library</button>
+                <button class="nav-btn" data-view="log">Log Workout</button>
+                <button class="nav-btn" data-view="calendar">Calendar</button>
+                <button class="nav-btn" data-view="records">Records</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section id="dashboard" class="view-section active">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Workouts</h3>
+                        <p class="stat-value" id="totalWorkouts">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>This Week</h3>
+                        <p class="stat-value" id="weekWorkouts">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Volume</h3>
+                        <p class="stat-value" id="totalVolume">0 kg</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Personal Records</h3>
+                        <p class="stat-value" id="totalRecords">0</p>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <h2>Workout Progress</h2>
+                    <canvas id="progressChart"></canvas>
+                </div>
+
+                <div class="chart-container">
+                    <h2>Volume by Muscle Group</h2>
+                    <canvas id="muscleChart"></canvas>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-primary" id="exportData">Export Data</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="exercises" class="view-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Exercise Library</h2>
+                    <input type="search" class="search-input" placeholder="Search exercises..." id="exerciseSearch">
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-muscle="all">All</button>
+                    <button class="filter-btn" data-muscle="chest">Chest</button>
+                    <button class="filter-btn" data-muscle="back">Back</button>
+                    <button class="filter-btn" data-muscle="legs">Legs</button>
+                    <button class="filter-btn" data-muscle="shoulders">Shoulders</button>
+                    <button class="filter-btn" data-muscle="arms">Arms</button>
+                    <button class="filter-btn" data-muscle="core">Core</button>
+                </div>
+                <div class="exercise-grid" id="exerciseGrid"></div>
+            </div>
+        </section>
+
+        <section id="log" class="view-section">
+            <div class="container">
+                <h2>Log Workout</h2>
+                <form class="workout-form" id="workoutForm">
+                    <div class="form-group">
+                        <label for="workoutDate">Date</label>
+                        <input type="date" id="workoutDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="workoutName">Workout Name</label>
+                        <input type="text" id="workoutName" placeholder="e.g., Upper Body Day" required>
+                    </div>
+                    <div id="exerciseEntries">
+                        <div class="exercise-entry">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Exercise</label>
+                                    <select class="exercise-select" required>
+                                        <option value="">Select exercise...</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Sets</label>
+                                    <input type="number" class="sets-input" min="1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Reps</label>
+                                    <input type="number" class="reps-input" min="1" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Weight (kg)</label>
+                                    <input type="number" class="weight-input" min="0" step="0.5" required>
+                                </div>
+                                <button type="button" class="btn-remove">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-secondary" id="addExercise">+ Add Exercise</button>
+                    <button type="submit" class="btn-primary">Save Workout</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="calendar" class="view-section">
+            <div class="container">
+                <div class="calendar-header">
+                    <button class="btn-nav" id="prevMonth">←</button>
+                    <h2 id="currentMonth"></h2>
+                    <button class="btn-nav" id="nextMonth">→</button>
+                </div>
+                <div class="calendar-grid" id="calendarGrid"></div>
+                <div class="workout-details" id="workoutDetails"></div>
+            </div>
+        </section>
+
+        <section id="records" class="view-section">
+            <div class="container">
+                <h2>Personal Records</h2>
+                <div class="data-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Exercise</th>
+                                <th>Weight (kg)</th>
+                                <th>Reps</th>
+                                <th>Date</th>
+                                <th>1RM Estimate</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recordsTable"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <aside class="ad-container">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9048718254553458"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </aside>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2024 Workout Tracker. Track your progress, achieve your goals.</p>
+        </div>
+    </footer>
+
+    <div class="modal" id="exerciseModal">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h3 id="modalExerciseName"></h3>
+            <div id="modalExerciseDetails"></div>
+            <canvas id="exerciseProgressChart"></canvas>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

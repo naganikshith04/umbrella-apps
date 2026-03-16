@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online CSV to Excel converter. Upload CSV files, preview and edit data inline, convert to Excel (.xlsx) format, and download instantly. Supports batch conversion.">
+    <meta name="keywords" content="CSV to Excel, Excel converter, CSV converter, file conversion, spreadsheet converter, batch conversion, online converter">
+    <meta property="og:title" content="CSV to Excel Converter - Free Online Tool">
+    <meta property="og:description" content="Convert CSV files to Excel format online. Preview, edit, and download your converted files instantly.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/csv-excel-converter">
+    <title>CSV to Excel Converter - Free Online Tool</title>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "CSV to Excel Converter",
+        "description": "Convert between CSV and Excel formats with preview and inline editing",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1 class="site-title">CSV to Excel Converter</h1>
+            <p class="site-tagline">Convert, preview, and edit your spreadsheet files online</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="upload-section">
+                <div class="upload-zone" id="uploadZone">
+                    <div class="upload-icon">📁</div>
+                    <h2>Upload CSV File(s)</h2>
+                    <p>Drag and drop files here or click to browse</p>
+                    <input type="file" id="fileInput" accept=".csv" multiple class="file-input" aria-label="Upload CSV files">
+                    <button class="btn-primary" onclick="document.getElementById('fileInput').click()">Select Files</button>
+                </div>
+                <div class="file-list" id="fileList"></div>
+            </section>
+
+            <section class="controls-section">
+                <div class="control-group">
+                    <label for="delimiter">CSV Delimiter:</label>
+                    <select id="delimiter" class="form-select">
+                        <option value=",">Comma (,)</option>
+                        <option value=";">Semicolon (;)</option>
+                        <option value="\t">Tab</option>
+                        <option value="|">Pipe (|)</option>
+                    </select>
+                </div>
+                <div class="control-group">
+                    <label>
+                        <input type="checkbox" id="hasHeader" checked>
+                        First row is header
+                    </label>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn-secondary" id="clearBtn">Clear All</button>
+                    <button class="btn-success" id="convertBtn" disabled>Convert to Excel</button>
+                    <button class="btn-primary" id="downloadBtn" disabled>Download Excel</button>
+                </div>
+            </section>
+
+            <section class="preview-section" id="previewSection" style="display:none;">
+                <div class="section-header">
+                    <h2>Data Preview & Edit</h2>
+                    <div class="preview-info">
+                        <span id="rowCount">0 rows</span>
+                        <span id="colCount">0 columns</span>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <div class="table-wrapper">
+                        <table class="data-table" id="dataTable">
+                            <thead id="tableHead"></thead>
+                            <tbody id="tableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="table-actions">
+                    <button class="btn-small" id="addRowBtn">+ Add Row</button>
+                    <button class="btn-small" id="addColBtn">+ Add Column</button>
+                    <button class="btn-small btn-danger" id="deleteRowBtn">Delete Selected Row</button>
+                </div>
+            </section>
+
+            <section class="batch-section">
+                <h2>Batch Conversion</h2>
+                <div class="batch-container">
+                    <div class="batch-info">
+                        <p>Upload multiple CSV files to convert them all at once</p>
+                        <div class="batch-stats">
+                            <span>Files queued: <strong id="batchCount">0</strong></span>
+                            <span>Total size: <strong id="totalSize">0 KB</strong></span>
+                        </div>
+                    </div>
+                    <button class="btn-primary" id="batchConvertBtn" disabled>Convert All to Excel</button>
+                </div>
+            </section>
+
+            <section class="features-section">
+                <h2>Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">📤</div>
+                        <h3>Easy Upload</h3>
+                        <p>Drag and drop or browse to upload CSV files</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">👁️</div>
+                        <h3>Live Preview</h3>
+                        <p>View your data in a clean table format</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">✏️</div>
+                        <h3>Inline Editing</h3>
+                        <p>Edit cells directly before conversion</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔄</div>
+                        <h3>Quick Convert</h3>
+                        <p>Convert to Excel (.xlsx) instantly</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📥</div>
+                        <h3>Fast Download</h3>
+                        <p>Download converted files immediately</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📦</div>
+                        <h3>Batch Process</h3>
+                        <p>Convert multiple files at once</p>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="ad-container">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-9048718254553458"
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </aside>
+
+            <section class="instructions-section">
+                <h2>How to Use</h2>
+                <ol class="instruction-list">
+                    <li>Upload your CSV file(s) using the upload zone above</li>
+                    <li>Preview the data in the table and make any necessary edits</li>
+                    <li>Select the appropriate CSV delimiter if needed</li>
+                    <li>Click "Convert to Excel" to process the file</li>
+                    <li>Download your converted Excel (.xlsx) file</li>
+                    <li>For multiple files, use the batch conversion feature</li>
+                </ol>
+            </section>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2024 CSV to Excel Converter. All rights reserved.</p>
+            <p>Free online tool for converting spreadsheet formats</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

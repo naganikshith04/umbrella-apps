@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create professional invoices online with customizable templates. Add line items, calculate taxes, upload logos, and export to PDF instantly.">
+    <meta name="keywords" content="invoice generator, professional invoice, invoice template, PDF invoice, business invoice, online invoicing">
+    <meta property="og:title" content="Professional Invoice Generator - Create Invoices Online">
+    <meta property="og:description" content="Free online invoice generator with professional templates, tax calculation, and PDF export.">
+    <meta property="og:type" content="website">
+    <title>Professional Invoice Generator - Create Invoices Online</title>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Professional Invoice Generator",
+        "description": "Create professional invoices with customizable templates and PDF export",
+        "applicationCategory": "BusinessApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-container">
+            <h1>Professional Invoice Generator</h1>
+            <div class="header-actions">
+                <button class="btn-secondary" id="saveDraft">Save Draft</button>
+                <button class="btn-secondary" id="loadDraft">Load Draft</button>
+                <button class="btn-primary" id="exportPDF">Export to PDF</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <aside class="sidebar-controls">
+            <section class="control-section">
+                <h2>Template</h2>
+                <select id="templateSelect" class="form-select">
+                    <option value="modern">Modern</option>
+                    <option value="classic">Classic</option>
+                    <option value="minimal">Minimal</option>
+                    <option value="professional">Professional</option>
+                </select>
+            </section>
+
+            <section class="control-section">
+                <h2>Company Logo</h2>
+                <div class="upload-zone" id="logoUpload">
+                    <input type="file" id="logoInput" accept="image/*" hidden>
+                    <label for="logoInput" class="upload-label">
+                        <span>Click to upload logo</span>
+                    </label>
+                    <div class="logo-preview" id="logoPreview"></div>
+                </div>
+            </section>
+
+            <section class="control-section">
+                <h2>Settings</h2>
+                <label class="form-label">
+                    Tax Rate (%)
+                    <input type="number" id="taxRate" class="form-input" value="0" min="0" max="100" step="0.1">
+                </label>
+                <label class="form-label">
+                    Discount (%)
+                    <input type="number" id="discountRate" class="form-input" value="0" min="0" max="100" step="0.1">
+                </label>
+                <label class="form-label">
+                    Currency
+                    <select id="currency" class="form-select">
+                        <option value="$">USD ($)</option>
+                        <option value="€">EUR (€)</option>
+                        <option value="£">GBP (£)</option>
+                        <option value="¥">JPY (¥)</option>
+                    </select>
+                </label>
+            </section>
+        </aside>
+
+        <section class="invoice-container">
+            <div class="invoice-preview" id="invoicePreview">
+                <div class="invoice-header">
+                    <div class="company-details">
+                        <div class="logo-display" id="logoDisplay"></div>
+                        <input type="text" class="input-company-name" placeholder="Your Company Name" id="companyName">
+                        <textarea class="input-company-address" placeholder="Company Address&#10;City, State ZIP&#10;Country" id="companyAddress"></textarea>
+                        <input type="text" class="input-field" placeholder="Email" id="companyEmail">
+                        <input type="text" class="input-field" placeholder="Phone" id="companyPhone">
+                    </div>
+                    <div class="invoice-meta">
+                        <h2 class="invoice-title">INVOICE</h2>
+                        <div class="meta-group">
+                            <label>Invoice #</label>
+                            <input type="text" class="input-field" placeholder="INV-001" id="invoiceNumber">
+                        </div>
+                        <div class="meta-group">
+                            <label>Date</label>
+                            <input type="date" class="input-field" id="invoiceDate">
+                        </div>
+                        <div class="meta-group">
+                            <label>Due Date</label>
+                            <input type="date" class="input-field" id="dueDate">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="client-details">
+                    <h3>Bill To:</h3>
+                    <input type="text" class="input-field" placeholder="Client Name" id="clientName">
+                    <textarea class="input-company-address" placeholder="Client Address&#10;City, State ZIP" id="clientAddress"></textarea>
+                    <input type="text" class="input-field" placeholder="Client Email" id="clientEmail">
+                </div>
+
+                <div class="invoice-items">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Quantity</th>
+                                <th>Rate</th>
+                                <th>Amount</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="itemsTableBody">
+                            <tr class="item-row">
+                                <td><input type="text" class="input-field item-description" placeholder="Item description"></td>
+                                <td><input type="number" class="input-field item-quantity" value="1" min="0"></td>
+                                <td><input type="number" class="input-field item-rate" value="0" min="0" step="0.01"></td>
+                                <td class="item-amount">$0.00</td>
+                                <td><button class="btn-remove" onclick="removeItem(this)">×</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="btn-add-item" id="addItem">+ Add Line Item</button>
+                </div>
+
+                <div class="invoice-totals">
+                    <div class="totals-grid">
+                        <div class="total-row">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">$0.00</span>
+                        </div>
+                        <div class="total-row">
+                            <span>Discount (<span id="discountPercent">0</span>%):</span>
+                            <span id="discountAmount">$0.00</span>
+                        </div>
+                        <div class="total-row">
+                            <span>Tax (<span id="taxPercent">0</span>%):</span>
+                            <span id="taxAmount">$0.00</span>
+                        </div>
+                        <div class="total-row total-final">
+                            <span>Total:</span>
+                            <span id="totalAmount">$0.00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="invoice-notes">
+                    <h3>Notes:</h3>
+                    <textarea class="input-notes" placeholder="Payment terms, thank you message, or additional notes..." id="invoiceNotes"></textarea>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <p>Professional Invoice Generator - Create and export invoices in seconds</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

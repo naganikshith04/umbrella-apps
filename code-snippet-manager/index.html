@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Store, manage, and organize your code snippets with syntax highlighting, search, categories, and export functionality.">
+    <meta name="keywords" content="code snippets, snippet manager, syntax highlighting, code storage, developer tools">
+    <meta property="og:title" content="Code Snippet Manager">
+    <meta property="og:description" content="Store and manage your code snippets with syntax highlighting and smart organization">
+    <meta property="og:type" content="website">
+    <title>Code Snippet Manager</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Code Snippet Manager",
+        "description": "Store and manage code snippets with syntax highlighting",
+        "applicationCategory": "DeveloperApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <h1 class="app-title">Code Snippet Manager</h1>
+            <div class="header-actions">
+                <button class="btn-primary" id="addSnippetBtn">+ Add Snippet</button>
+                <button class="btn-secondary" id="exportAllBtn">Export All</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <aside class="sidebar">
+            <div class="search-container">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search snippets...">
+            </div>
+
+            <div class="filter-section">
+                <h3 class="section-title">Categories</h3>
+                <div class="category-list" id="categoryList">
+                    <button class="category-item active" data-category="all">All Snippets</button>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="section-title">Tags</h3>
+                <div class="tag-cloud" id="tagCloud"></div>
+            </div>
+
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-label">Total Snippets:</span>
+                    <span class="stat-value" id="totalSnippets">0</span>
+                </div>
+            </div>
+        </aside>
+
+        <section class="content-area">
+            <div class="snippet-grid" id="snippetGrid">
+                <div class="empty-state">
+                    <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                        <polyline points="13 2 13 9 20 9"></polyline>
+                    </svg>
+                    <h2>No Snippets Yet</h2>
+                    <p>Start by adding your first code snippet</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal" id="snippetModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Add Code Snippet</h2>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <form class="snippet-form" id="snippetForm">
+                <div class="form-group">
+                    <label for="snippetTitle" class="form-label">Title</label>
+                    <input type="text" id="snippetTitle" class="form-input" required placeholder="Enter snippet title">
+                </div>
+
+                <div class="form-group">
+                    <label for="snippetCategory" class="form-label">Category</label>
+                    <input type="text" id="snippetCategory" class="form-input" required placeholder="e.g., JavaScript, Python, CSS">
+                </div>
+
+                <div class="form-group">
+                    <label for="snippetTags" class="form-label">Tags</label>
+                    <input type="text" id="snippetTags" class="form-input" placeholder="Comma-separated tags">
+                </div>
+
+                <div class="form-group">
+                    <label for="snippetLanguage" class="form-label">Language</label>
+                    <select id="snippetLanguage" class="form-select">
+                        <option value="javascript">JavaScript</option>
+                        <option value="python">Python</option>
+                        <option value="css">CSS</option>
+                        <option value="html">HTML</option>
+                        <option value="java">Java</option>
+                        <option value="csharp">C#</option>
+                        <option value="php">PHP</option>
+                        <option value="sql">SQL</option>
+                        <option value="bash">Bash</option>
+                        <option value="json">JSON</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="snippetDescription" class="form-label">Description</label>
+                    <textarea id="snippetDescription" class="form-textarea" rows="2" placeholder="Brief description"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="snippetCode" class="form-label">Code</label>
+                    <textarea id="snippetCode" class="form-textarea code-input" rows="10" required placeholder="Paste your code here..."></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Snippet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="viewModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <div class="snippet-header-info">
+                    <h2 class="modal-title" id="viewTitle"></h2>
+                    <span class="snippet-category-badge" id="viewCategory"></span>
+                </div>
+                <button class="modal-close" id="closeViewModal">&times;</button>
+            </div>
+            <div class="snippet-details">
+                <p class="snippet-description" id="viewDescription"></p>
+                <div class="snippet-tags" id="viewTags"></div>
+                <div class="snippet-actions">
+                    <button class="action-btn" id="copyCodeBtn" title="Copy Code">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copy
+                    </button>
+                    <button class="action-btn" id="editSnippetBtn" title="Edit">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                        Edit
+                    </button>
+                    <button class="action-btn" id="exportSnippetBtn" title="Export">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Export
+                    </button>
+                    <button class="action-btn btn-danger" id="deleteSnippetBtn" title="Delete">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polyline points="3 6 5 6 21 6"></polyline>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        </svg>
+                        Delete
+                    </button>
+                </div>
+                <div class="code-preview">
+                    <pre><code id="viewCode" class="language-javascript"></code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-css.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-csharp.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-php.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-sql.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

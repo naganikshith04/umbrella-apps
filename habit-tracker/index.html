@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Track your daily habits with calendar view, streak counter, and statistics. Build better habits with our free habit tracking tool.">
+    <meta name="keywords" content="habit tracker, daily habits, streak counter, habit calendar, productivity, self improvement">
+    <meta property="og:title" content="Daily Habit Tracker - Build Better Habits">
+    <meta property="og:description" content="Track your daily habits with calendar view, streak counter, and statistics. Build better habits with our free habit tracking tool.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://habittracker.example.com">
+    <title>Daily Habit Tracker - Build Better Habits</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Daily Habit Tracker",
+        "description": "Track your daily habits with calendar view, streak counter, and statistics",
+        "applicationCategory": "ProductivityApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <h1 class="app-title">🎯 Daily Habit Tracker</h1>
+            <button class="export-button" id="exportBtn">📊 Export Data</button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="habit-input-section">
+            <div class="input-container">
+                <input type="text" id="habitInput" class="habit-input" placeholder="Enter a new habit..." maxlength="50">
+                <button class="add-button" id="addHabitBtn">+ Add Habit</button>
+            </div>
+        </section>
+
+        <section class="habits-list-section">
+            <h2 class="section-title">My Habits</h2>
+            <div class="habits-container" id="habitsContainer">
+                <div class="empty-state">
+                    <p>No habits yet. Add your first habit above!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="calendar-section">
+            <div class="calendar-header">
+                <h2 class="section-title">Calendar View</h2>
+                <div class="month-navigation">
+                    <button class="nav-button" id="prevMonthBtn">◀</button>
+                    <span class="current-month" id="currentMonth"></span>
+                    <button class="nav-button" id="nextMonthBtn">▶</button>
+                </div>
+            </div>
+            <div class="calendar-container" id="calendarContainer"></div>
+        </section>
+
+        <section class="statistics-section">
+            <h2 class="section-title">Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalHabits">0</div>
+                    <div class="stat-label">Total Habits</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="completedToday">0</div>
+                    <div class="stat-label">Completed Today</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="longestStreak">0</div>
+                    <div class="stat-label">Longest Streak</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="completionRate">0%</div>
+                    <div class="stat-label">Completion Rate</div>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="habitChart"></canvas>
+            </div>
+        </section>
+
+        <aside class="ad-container">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9048718254553458"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </aside>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2024 Daily Habit Tracker. Build better habits, one day at a time.</p>
+    </footer>
+
+    <template id="habitCardTemplate">
+        <div class="habit-card" data-habit-id="">
+            <div class="habit-header">
+                <h3 class="habit-name"></h3>
+                <button class="delete-button" title="Delete habit">×</button>
+            </div>
+            <div class="habit-stats">
+                <div class="streak-display">
+                    <span class="streak-icon">🔥</span>
+                    <span class="streak-count">0</span>
+                    <span class="streak-label">day streak</span>
+                </div>
+                <div class="completion-display">
+                    <span class="completion-percentage">0%</span>
+                    <span class="completion-label">completed</span>
+                </div>
+            </div>
+            <div class="habit-actions">
+                <button class="complete-button">✓ Mark Complete Today</button>
+            </div>
+            <div class="habit-calendar-mini"></div>
+        </div>
+    </template>
+
+    <template id="calendarDayTemplate">
+        <div class="calendar-day" data-date="">
+            <div class="day-number"></div>
+            <div class="day-indicators"></div>
+        </div>
+    </template>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

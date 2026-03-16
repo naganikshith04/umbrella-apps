@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Collage Maker - Create Beautiful Collages Online</title>
+    <meta name="description" content="Create stunning photo collages with multiple templates. Upload photos, drag and position them, add text overlays, and download your custom collage for free.">
+    <meta name="keywords" content="photo collage, collage maker, photo editor, image collage, template collage, online collage">
+    
+    <meta property="og:title" content="Photo Collage Maker - Create Beautiful Collages Online">
+    <meta property="og:description" content="Create stunning photo collages with multiple templates. Upload, customize, and download for free.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://example.com/og-image.jpg">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Photo Collage Maker",
+        "description": "Create beautiful photo collages with multiple templates",
+        "applicationCategory": "DesignApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <h1 class="site-title">📸 Photo Collage Maker</h1>
+            <p class="site-tagline">Create beautiful collages in minutes</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="upload-section">
+            <div class="upload-zone" id="uploadZone">
+                <div class="upload-icon">📁</div>
+                <h2>Upload Your Photos</h2>
+                <p>Click or drag photos here (up to 10 images)</p>
+                <input type="file" id="photoInput" accept="image/*" multiple hidden>
+                <button class="upload-button" id="uploadButton">Choose Photos</button>
+            </div>
+            
+            <div class="photo-gallery" id="photoGallery"></div>
+        </section>
+
+        <section class="template-section">
+            <h2 class="section-title">Choose a Template</h2>
+            <div class="template-grid">
+                <div class="template-card" data-template="grid-2">
+                    <div class="template-preview grid-2-preview"></div>
+                    <p>2 Photos Grid</p>
+                </div>
+                <div class="template-card" data-template="grid-3">
+                    <div class="template-preview grid-3-preview"></div>
+                    <p>3 Photos Grid</p>
+                </div>
+                <div class="template-card" data-template="grid-4">
+                    <div class="template-preview grid-4-preview"></div>
+                    <p>4 Photos Grid</p>
+                </div>
+                <div class="template-card" data-template="grid-6">
+                    <div class="template-preview grid-6-preview"></div>
+                    <p>6 Photos Grid</p>
+                </div>
+                <div class="template-card" data-template="vertical-3">
+                    <div class="template-preview vertical-3-preview"></div>
+                    <p>Vertical Layout</p>
+                </div>
+                <div class="template-card" data-template="horizontal-3">
+                    <div class="template-preview horizontal-3-preview"></div>
+                    <p>Horizontal Layout</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="editor-section">
+            <h2 class="section-title">Edit Your Collage</h2>
+            
+            <div class="editor-controls">
+                <div class="control-group">
+                    <label for="textInput">Add Text:</label>
+                    <input type="text" id="textInput" class="text-input" placeholder="Enter text overlay">
+                    <button class="control-button" id="addTextButton">Add Text</button>
+                </div>
+                
+                <div class="control-group">
+                    <label for="textColor">Text Color:</label>
+                    <input type="color" id="textColor" value="#ffffff">
+                </div>
+                
+                <div class="control-group">
+                    <label for="fontSize">Font Size:</label>
+                    <input type="range" id="fontSize" min="12" max="72" value="24">
+                    <span id="fontSizeValue">24px</span>
+                </div>
+                
+                <div class="control-group">
+                    <label for="bgColor">Background:</label>
+                    <input type="color" id="bgColor" value="#ffffff">
+                </div>
+            </div>
+
+            <div class="collage-container" id="collageContainer">
+                <div class="collage-canvas" id="collageCanvas">
+                    <p class="placeholder-text">Select a template to start creating your collage</p>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="action-button reset-button" id="resetButton">Reset</button>
+                <button class="action-button download-button" id="downloadButton">Download Collage</button>
+            </div>
+        </section>
+
+        <aside class="ad-container">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9048718254553458"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </aside>
+
+        <section class="instructions-section">
+            <h2 class="section-title">How to Use</h2>
+            <div class="instructions-grid">
+                <div class="instruction-card">
+                    <div class="instruction-number">1</div>
+                    <h3>Upload Photos</h3>
+                    <p>Click the upload button or drag and drop your photos</p>
+                </div>
+                <div class="instruction-card">
+                    <div class="instruction-number">2</div>
+                    <h3>Choose Template</h3>
+                    <p>Select from various layout templates that fit your needs</p>
+                </div>
+                <div class="instruction-card">
+                    <div class="instruction-number">3</div>
+                    <h3>Customize</h3>
+                    <p>Drag photos to position them and add text overlays</p>
+                </div>
+                <div class="instruction-card">
+                    <div class="instruction-number">4</div>
+                    <h3>Download</h3>
+                    <p>Save your finished collage as a high-quality image</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <p>&copy; 2024 Photo Collage Maker. Create stunning collages online for free.</p>
+            <nav class="footer-nav">
+                <a href="#privacy">Privacy Policy</a>
+                <a href="#terms">Terms of Service</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

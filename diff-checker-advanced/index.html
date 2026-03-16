@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Compare two text or code files side-by-side with syntax highlighting, line-by-line diff view, and export functionality. Free online text comparison tool.">
+    <meta name="keywords" content="text compare, code diff, file comparison, syntax highlighting, diff viewer, merge tool, text difference">
+    <meta property="og:title" content="Text & Code File Comparison Tool">
+    <meta property="og:description" content="Compare two text or code files with side-by-side diff view and syntax highlighting">
+    <meta property="og:type" content="website">
+    <title>Text & Code File Comparison Tool - Side-by-Side Diff Viewer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Text & Code File Comparison Tool",
+        "description": "Compare two text or code files side-by-side with syntax highlighting and diff view",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1>Text & Code File Comparison Tool</h1>
+            <p class="subtitle">Compare files side-by-side with syntax highlighting</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="control-panel">
+            <div class="container">
+                <div class="control-group">
+                    <label for="language-select" class="control-label">Language:</label>
+                    <select id="language-select" class="language-selector">
+                        <option value="plain">Plain Text</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="python">Python</option>
+                        <option value="java">Java</option>
+                        <option value="css">CSS</option>
+                        <option value="html">HTML</option>
+                        <option value="json">JSON</option>
+                        <option value="xml">XML</option>
+                    </select>
+                    <button class="action-button compare-button" id="compare-btn">Compare</button>
+                    <button class="action-button export-button" id="export-btn">Export Diff</button>
+                    <button class="action-button clear-button" id="clear-btn">Clear All</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="input-section">
+            <div class="container">
+                <div class="comparison-grid">
+                    <div class="input-panel">
+                        <div class="panel-header">
+                            <h2>Original File</h2>
+                            <label class="upload-button">
+                                <input type="file" id="file1-input" class="file-input" accept=".txt,.js,.py,.java,.css,.html,.json,.xml,.md">
+                                Upload File
+                            </label>
+                        </div>
+                        <div class="upload-zone" id="drop-zone-1">
+                            <p class="upload-hint">Drop file here or click upload</p>
+                        </div>
+                        <textarea id="text1-input" class="text-input-area" placeholder="Paste or type your text here..." rows="15"></textarea>
+                    </div>
+
+                    <div class="input-panel">
+                        <div class="panel-header">
+                            <h2>Modified File</h2>
+                            <label class="upload-button">
+                                <input type="file" id="file2-input" class="file-input" accept=".txt,.js,.py,.java,.css,.html,.json,.xml,.md">
+                                Upload File
+                            </label>
+                        </div>
+                        <div class="upload-zone" id="drop-zone-2">
+                            <p class="upload-hint">Drop file here or click upload</p>
+                        </div>
+                        <textarea id="text2-input" class="text-input-area" placeholder="Paste or type your text here..." rows="15"></textarea>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="diff-section" id="diff-section" style="display:none;">
+            <div class="container">
+                <div class="diff-header">
+                    <h2>Comparison Results</h2>
+                    <div class="diff-stats">
+                        <span class="stat-item stat-added" id="added-lines">Added: 0</span>
+                        <span class="stat-item stat-removed" id="removed-lines">Removed: 0</span>
+                        <span class="stat-item stat-unchanged" id="unchanged-lines">Unchanged: 0</span>
+                    </div>
+                </div>
+                <div class="diff-view-container">
+                    <div class="diff-column">
+                        <h3 class="column-title">Original</h3>
+                        <div class="diff-content" id="diff-left"></div>
+                    </div>
+                    <div class="diff-column">
+                        <h3 class="column-title">Modified</h3>
+                        <div class="diff-content" id="diff-right"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="ad-section">
+            <div class="container">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-9048718254553458"
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="container">
+                <h2>Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>📄 Multiple Input Methods</h3>
+                        <p>Upload files, drag & drop, or paste text directly</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🎨 Syntax Highlighting</h3>
+                        <p>Support for JavaScript, Python, Java, CSS, HTML and more</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>↔️ Side-by-Side View</h3>
+                        <p>Compare files line-by-line with visual indicators</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>💾 Export Reports</h3>
+                        <p>Download comparison results as HTML or text files</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2024 Text Comparison Tool. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>

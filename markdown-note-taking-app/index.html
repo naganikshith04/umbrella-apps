@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Powerful markdown-based note taking app with folders, tags, search, and export features. Organize your thoughts with real-time preview and keyboard shortcuts.">
+    <meta name="keywords" content="markdown, notes, note taking, folders, tags, search, export, pdf, html, productivity">
+    <meta property="og:title" content="Markdown Note Taking App">
+    <meta property="og:description" content="Organize your notes with folders, tags, and markdown preview. Export to HTML/PDF.">
+    <meta property="og:type" content="website">
+    <title>Markdown Note Taking App</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Markdown Note Taking App",
+        "applicationCategory": "ProductivityApplication",
+        "description": "A powerful note taking application with markdown support, folders, tags, and export features",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar-panel">
+            <div class="sidebar-header">
+                <h1 class="app-title">📝 Notes</h1>
+                <button class="btn-new-note" id="newNoteBtn" title="New Note (Ctrl+N)">+</button>
+            </div>
+            
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search notes..." aria-label="Search notes">
+            </div>
+
+            <div class="folder-section">
+                <div class="section-header">
+                    <h2>Folders</h2>
+                    <button class="btn-add-folder" id="addFolderBtn" title="Add Folder">+</button>
+                </div>
+                <ul class="folder-list" id="folderList">
+                    <li class="folder-item active" data-folder="all">
+                        <span class="folder-icon">📁</span>
+                        <span class="folder-name">All Notes</span>
+                        <span class="note-count">0</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="notes-section">
+                <h2 class="section-header">Notes</h2>
+                <ul class="notes-list" id="notesList"></ul>
+            </div>
+
+            <div class="keyboard-shortcuts-info">
+                <button class="btn-shortcuts" id="shortcutsBtn">⌨️ Shortcuts</button>
+            </div>
+        </aside>
+
+        <main class="editor-panel">
+            <div class="editor-header">
+                <input type="text" class="note-title-input" id="noteTitleInput" placeholder="Note Title" aria-label="Note title">
+                <div class="editor-toolbar">
+                    <button class="btn-toolbar" id="boldBtn" title="Bold (Ctrl+B)">B</button>
+                    <button class="btn-toolbar" id="italicBtn" title="Italic (Ctrl+I)">I</button>
+                    <button class="btn-toolbar" id="headingBtn" title="Heading">H</button>
+                    <button class="btn-toolbar" id="linkBtn" title="Link">🔗</button>
+                    <button class="btn-toolbar" id="codeBtn" title="Code">{ }</button>
+                    <div class="toolbar-separator"></div>
+                    <button class="btn-toolbar" id="exportHtmlBtn" title="Export HTML">HTML</button>
+                    <button class="btn-toolbar" id="exportPdfBtn" title="Export PDF">PDF</button>
+                    <button class="btn-toolbar btn-delete" id="deleteNoteBtn" title="Delete Note">🗑️</button>
+                </div>
+            </div>
+
+            <div class="tag-input-container">
+                <input type="text" class="tag-input" id="tagInput" placeholder="Add tags (comma separated)" aria-label="Add tags">
+                <div class="tags-display" id="tagsDisplay"></div>
+            </div>
+
+            <div class="editor-content-area">
+                <div class="editor-pane">
+                    <textarea class="markdown-editor" id="markdownEditor" placeholder="Start writing in markdown..." aria-label="Markdown editor"></textarea>
+                </div>
+                <div class="preview-pane">
+                    <div class="preview-content" id="previewContent"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div class="modal-overlay" id="folderModal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3>New Folder</h3>
+                <button class="btn-close-modal" id="closeFolderModal">×</button>
+            </div>
+            <div class="modal-body">
+                <input type="text" class="modal-input" id="folderNameInput" placeholder="Folder name" aria-label="Folder name">
+            </div>
+            <div class="modal-footer">
+                <button class="btn-modal-cancel" id="cancelFolderBtn">Cancel</button>
+                <button class="btn-modal-confirm" id="confirmFolderBtn">Create</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="shortcutsModal">
+        <div class="modal-dialog shortcuts-dialog">
+            <div class="modal-header">
+                <h3>Keyboard Shortcuts</h3>
+                <button class="btn-close-modal" id="closeShortcutsModal">×</button>
+            </div>
+            <div class="modal-body">
+                <table class="shortcuts-table">
+                    <tbody>
+                        <tr>
+                            <td class="shortcut-key">Ctrl + N</td>
+                            <td class="shortcut-desc">New Note</td>
+                        </tr>
+                        <tr>
+                            <td class="shortcut-key">Ctrl + S</td>
+                            <td class="shortcut-desc">Save Note</td>
+                        </tr>
+                        <tr>
+                            <td class="shortcut-key">Ctrl + B</td>
+                            <td class="shortcut-desc">Bold Text</td>
+                        </tr>
+                        <tr>
+                            <td class="shortcut-key">Ctrl + I</td>
+                            <td class="shortcut-desc">Italic Text</td>
+                        </tr>
+                        <tr>
+                            <td class="shortcut-key">Ctrl + F</td>
+                            <td class="shortcut-desc">Search Notes</td>
+                        </tr>
+                        <tr>
+                            <td class="shortcut-key">Ctrl + E</td>
+                            <td class="shortcut-desc">Export HTML</td>
+                        </tr>
+                        <tr>
+                            <td class="shortcut-key">Ctrl + P</td>
+                            <td class="shortcut-desc">Export PDF</td>
+                        </tr>
+                        <tr>
+                            <td class="shortcut-key">Delete</td>
+                            <td class="shortcut-desc">Delete Note</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-notification" id="toast"></div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

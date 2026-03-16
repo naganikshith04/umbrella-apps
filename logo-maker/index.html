@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create professional logos online. Choose icons, customize colors, add company name, and download as PNG or SVG. Free logo maker tool.">
+    <meta name="keywords" content="logo maker, create logo, logo design, free logo generator, company logo, brand identity">
+    <meta property="og:title" content="Basic Logo Creator - Free Online Logo Maker">
+    <meta property="og:description" content="Design professional logos with our easy-to-use logo maker. Customize icons, colors, fonts and download instantly.">
+    <meta property="og:type" content="website">
+    <title>Basic Logo Creator - Free Online Logo Maker</title>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Basic Logo Creator",
+        "description": "Create professional logos with customizable icons, colors, and fonts",
+        "applicationCategory": "DesignApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <h1 class="site-title">Basic Logo Creator</h1>
+            <p class="site-tagline">Design Your Professional Logo in Minutes</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="logo-creator-container">
+            <aside class="control-panel">
+                <section class="control-section icon-selector-section">
+                    <h2 class="section-title">Choose Icon/Shape</h2>
+                    <div class="icon-grid">
+                        <button class="icon-option" data-icon="circle">●</button>
+                        <button class="icon-option" data-icon="square">■</button>
+                        <button class="icon-option" data-icon="triangle">▲</button>
+                        <button class="icon-option" data-icon="star">★</button>
+                        <button class="icon-option" data-icon="hexagon">⬡</button>
+                        <button class="icon-option" data-icon="diamond">◆</button>
+                        <button class="icon-option" data-icon="heart">♥</button>
+                        <button class="icon-option" data-icon="rocket">🚀</button>
+                        <button class="icon-option" data-icon="bulb">💡</button>
+                        <button class="icon-option" data-icon="gear">⚙</button>
+                        <button class="icon-option" data-icon="leaf">🍃</button>
+                        <button class="icon-option" data-icon="crown">👑</button>
+                    </div>
+                </section>
+
+                <section class="control-section company-name-section">
+                    <h2 class="section-title">Company Name</h2>
+                    <input type="text" id="companyName" class="text-input" placeholder="Enter company name" maxlength="30" value="My Company">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="showTagline" class="checkbox-input">
+                        Add Tagline
+                    </label>
+                    <input type="text" id="taglineText" class="text-input tagline-input" placeholder="Enter tagline" maxlength="50" style="display:none;">
+                </section>
+
+                <section class="control-section color-customizer-section">
+                    <h2 class="section-title">Customize Colors</h2>
+                    <div class="color-control-group">
+                        <label class="color-label">
+                            Icon Color
+                            <input type="color" id="iconColor" class="color-picker" value="#3498db">
+                        </label>
+                        <label class="color-label">
+                            Text Color
+                            <input type="color" id="textColor" class="color-picker" value="#2c3e50">
+                        </label>
+                        <label class="color-label">
+                            Background
+                            <input type="color" id="bgColor" class="color-picker" value="#ffffff">
+                        </label>
+                    </div>
+                </section>
+
+                <section class="control-section font-selector-section">
+                    <h2 class="section-title">Select Font</h2>
+                    <select id="fontFamily" class="font-dropdown">
+                        <option value="Arial, sans-serif">Arial</option>
+                        <option value="'Courier New', monospace">Courier New</option>
+                        <option value="Georgia, serif">Georgia</option>
+                        <option value="'Times New Roman', serif">Times New Roman</option>
+                        <option value="Verdana, sans-serif">Verdana</option>
+                        <option value="Impact, sans-serif">Impact</option>
+                        <option value="'Trebuchet MS', sans-serif">Trebuchet MS</option>
+                        <option value="'Comic Sans MS', cursive">Comic Sans MS</option>
+                    </select>
+                    <label class="range-label">
+                        Font Size: <span id="fontSizeValue">32</span>px
+                        <input type="range" id="fontSize" class="range-slider" min="16" max="64" value="32">
+                    </label>
+                </section>
+
+                <section class="control-section layout-section">
+                    <h2 class="section-title">Layout</h2>
+                    <div class="layout-options">
+                        <button class="layout-btn active" data-layout="horizontal">Horizontal</button>
+                        <button class="layout-btn" data-layout="vertical">Vertical</button>
+                        <button class="layout-btn" data-layout="stacked">Stacked</button>
+                    </div>
+                </section>
+            </aside>
+
+            <div class="preview-workspace">
+                <section class="preview-section">
+                    <h2 class="section-title">Preview</h2>
+                    <div class="logo-preview-container" id="logoPreview">
+                        <div class="logo-canvas" id="logoCanvas">
+                            <div class="logo-icon" id="logoIcon">●</div>
+                            <div class="logo-text-container">
+                                <div class="logo-company-name" id="logoCompanyName">My Company</div>
+                                <div class="logo-tagline" id="logoTagline" style="display:none;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="variations-section">
+                    <h2 class="section-title">Color Variations</h2>
+                    <div class="variations-grid" id="variationsGrid">
+                        <div class="variation-item" data-colors='{"icon":"#3498db","text":"#2c3e50","bg":"#ffffff"}'></div>
+                        <div class="variation-item" data-colors='{"icon":"#e74c3c","text":"#ffffff","bg":"#2c3e50"}'></div>
+                        <div class="variation-item" data-colors='{"icon":"#2ecc71","text":"#27ae60","bg":"#ecf0f1"}'></div>
+                        <div class="variation-item" data-colors='{"icon":"#f39c12","text":"#ffffff","bg":"#34495e"}'></div>
+                    </div>
+                </section>
+
+                <section class="download-section">
+                    <h2 class="section-title">Download Logo</h2>
+                    <div class="download-buttons">
+                        <button class="download-btn png-download" id="downloadPNG">Download PNG</button>
+                        <button class="download-btn svg-download" id="downloadSVG">Download SVG</button>
+                    </div>
+                </section>
+
+                <aside class="ad-container">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-9048718254553458"
+                         data-ad-slot="1234567890"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2024 Basic Logo Creator. Create professional logos for free.</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

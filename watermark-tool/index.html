@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online watermark tool to add text or image watermarks to your photos. Batch watermarking with adjustable position and opacity. Download watermarked images instantly.">
+    <meta name="keywords" content="watermark, image watermark, text watermark, batch watermark, photo watermark, add watermark online, watermark tool">
+    <meta property="og:title" content="Image Watermark Tool - Add Watermarks to Photos Online">
+    <meta property="og:description" content="Free online watermark tool to add text or image watermarks to your photos. Batch processing available.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/watermark-tool">
+    <title>Image Watermark Tool - Add Watermarks to Photos Online</title>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Image Watermark Tool",
+        "description": "Add text or image watermarks to photos with adjustable position and opacity",
+        "applicationCategory": "DesignApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1>🖼️ Image Watermark Tool</h1>
+            <p>Add professional watermarks to your images</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="upload-section">
+                <div class="upload-zone" id="uploadZone">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <h2>Drop images here or click to upload</h2>
+                    <p>Support multiple images for batch watermarking</p>
+                    <input type="file" id="imageInput" accept="image/*" multiple hidden>
+                </div>
+            </section>
+
+            <section class="watermark-controls">
+                <div class="control-panel">
+                    <h3>Watermark Settings</h3>
+                    
+                    <div class="control-group">
+                        <label class="control-label">Watermark Type</label>
+                        <div class="button-group">
+                            <button class="btn-toggle active" data-type="text">Text</button>
+                            <button class="btn-toggle" data-type="image">Image</button>
+                        </div>
+                    </div>
+
+                    <div class="control-group text-watermark-controls">
+                        <label class="control-label" for="watermarkText">Watermark Text</label>
+                        <input type="text" id="watermarkText" class="input-field" placeholder="Enter watermark text" value="© Your Name">
+                    </div>
+
+                    <div class="control-group text-watermark-controls">
+                        <label class="control-label" for="fontSize">Font Size: <span id="fontSizeValue">36</span>px</label>
+                        <input type="range" id="fontSize" min="12" max="120" value="36" class="slider">
+                    </div>
+
+                    <div class="control-group text-watermark-controls">
+                        <label class="control-label" for="textColor">Text Color</label>
+                        <input type="color" id="textColor" value="#ffffff" class="color-picker">
+                    </div>
+
+                    <div class="control-group image-watermark-controls" style="display:none;">
+                        <label class="control-label">Upload Watermark Image</label>
+                        <input type="file" id="watermarkImageInput" accept="image/*" class="input-field">
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="opacity">Opacity: <span id="opacityValue">70</span>%</label>
+                        <input type="range" id="opacity" min="0" max="100" value="70" class="slider">
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Position</label>
+                        <div class="position-grid">
+                            <button class="position-btn" data-position="top-left">↖</button>
+                            <button class="position-btn" data-position="top-center">↑</button>
+                            <button class="position-btn" data-position="top-right">↗</button>
+                            <button class="position-btn" data-position="middle-left">←</button>
+                            <button class="position-btn active" data-position="center">●</button>
+                            <button class="position-btn" data-position="middle-right">→</button>
+                            <button class="position-btn" data-position="bottom-left">↙</button>
+                            <button class="position-btn" data-position="bottom-center">↓</button>
+                            <button class="position-btn" data-position="bottom-right">↘</button>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="applyWatermark">Apply Watermark</button>
+                        <button class="btn btn-secondary" id="downloadSingle" disabled>Download Image</button>
+                        <button class="btn btn-success" id="downloadAll" disabled>Download All (ZIP)</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="preview-section">
+                <h3>Preview & Results</h3>
+                <div class="preview-grid" id="previewGrid">
+                    <div class="empty-state">
+                        <p>Upload images to see preview</p>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="ad-container">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-9048718254553458"
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </aside>
+
+            <section class="features-section">
+                <h2>Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h4>📤 Upload Images</h4>
+                        <p>Drag and drop or click to upload multiple images at once</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>✍️ Text Watermark</h4>
+                        <p>Add custom text with adjustable font size and color</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🖼️ Image Watermark</h4>
+                        <p>Use your logo or any image as a watermark</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📍 Position Control</h4>
+                        <p>Place watermark anywhere on your images</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎨 Opacity Adjustment</h4>
+                        <p>Control transparency for subtle or bold watermarks</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>⚡ Batch Processing</h4>
+                        <p>Apply watermarks to multiple images simultaneously</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>💾 Easy Download</h4>
+                        <p>Download individual images or all as a ZIP file</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔒 Privacy First</h4>
+                        <p>All processing happens in your browser, no uploads to servers</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2024 Image Watermark Tool. All rights reserved.</p>
+            <p>Free online tool for adding watermarks to images</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

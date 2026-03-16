@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professional Portfolio Generator - Create stunning portfolios with projects, skills, testimonials, and contact forms. Export as HTML with multiple themes.">
+    <meta name="keywords" content="portfolio generator, web portfolio, resume builder, project showcase, professional portfolio, HTML export">
+    <meta property="og:title" content="Portfolio Generator - Create Your Professional Portfolio">
+    <meta property="og:description" content="Build and customize your professional portfolio with projects, skills, testimonials, and more. Export as HTML.">
+    <meta property="og:type" content="website">
+    <title>Portfolio Generator - Create Your Professional Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Portfolio Generator",
+        "description": "Create professional portfolios with projects, skills, and testimonials",
+        "applicationCategory": "BusinessApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1>Portfolio Generator</h1>
+            <nav class="theme-selector">
+                <label for="theme-select">Theme:</label>
+                <select id="theme-select" class="theme-dropdown">
+                    <option value="modern">Modern</option>
+                    <option value="classic">Classic</option>
+                    <option value="minimal">Minimal</option>
+                    <option value="dark">Dark</option>
+                </select>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="editor-section">
+            <div class="container">
+                <div class="control-panel">
+                    <h2>Build Your Portfolio</h2>
+                    <div class="action-buttons">
+                        <button class="btn-primary" id="preview-btn">Preview</button>
+                        <button class="btn-success" id="export-btn">Export HTML</button>
+                    </div>
+                </div>
+
+                <div class="editor-grid">
+                    <aside class="editor-sidebar">
+                        <nav class="editor-nav">
+                            <button class="nav-item active" data-section="about">About Me</button>
+                            <button class="nav-item" data-section="projects">Projects</button>
+                            <button class="nav-item" data-section="skills">Skills</button>
+                            <button class="nav-item" data-section="testimonials">Testimonials</button>
+                            <button class="nav-item" data-section="contact">Contact</button>
+                        </nav>
+                    </aside>
+
+                    <div class="editor-content">
+                        <div class="editor-panel active" id="about-panel">
+                            <h3>About Me Section</h3>
+                            <div class="form-group">
+                                <label for="full-name">Full Name</label>
+                                <input type="text" id="full-name" class="form-input" placeholder="John Doe">
+                            </div>
+                            <div class="form-group">
+                                <label for="job-title">Job Title</label>
+                                <input type="text" id="job-title" class="form-input" placeholder="Full Stack Developer">
+                            </div>
+                            <div class="form-group">
+                                <label for="bio">Bio</label>
+                                <textarea id="bio" class="form-textarea" rows="4" placeholder="Tell us about yourself..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="profile-photo">Profile Photo URL</label>
+                                <input type="url" id="profile-photo" class="form-input" placeholder="https://example.com/photo.jpg">
+                            </div>
+                        </div>
+
+                        <div class="editor-panel" id="projects-panel">
+                            <h3>Projects</h3>
+                            <div id="projects-list" class="items-list"></div>
+                            <button class="btn-add" id="add-project">+ Add Project</button>
+                            <template id="project-template">
+                                <div class="item-card">
+                                    <button class="btn-remove">×</button>
+                                    <input type="text" class="form-input project-title" placeholder="Project Title">
+                                    <textarea class="form-textarea project-description" rows="2" placeholder="Description"></textarea>
+                                    <input type="url" class="form-input project-url" placeholder="Project URL">
+                                    <input type="url" class="form-input project-image" placeholder="Image URL">
+                                </div>
+                            </template>
+                        </div>
+
+                        <div class="editor-panel" id="skills-panel">
+                            <h3>Skills</h3>
+                            <div id="skills-list" class="items-list"></div>
+                            <button class="btn-add" id="add-skill">+ Add Skill</button>
+                            <template id="skill-template">
+                                <div class="item-card skill-item">
+                                    <button class="btn-remove">×</button>
+                                    <input type="text" class="form-input skill-name" placeholder="Skill Name">
+                                    <div class="proficiency-control">
+                                        <label>Proficiency: <span class="proficiency-value">50</span>%</label>
+                                        <input type="range" class="skill-proficiency" min="0" max="100" value="50">
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+
+                        <div class="editor-panel" id="testimonials-panel">
+                            <h3>Testimonials</h3>
+                            <div id="testimonials-list" class="items-list"></div>
+                            <button class="btn-add" id="add-testimonial">+ Add Testimonial</button>
+                            <template id="testimonial-template">
+                                <div class="item-card">
+                                    <button class="btn-remove">×</button>
+                                    <input type="text" class="form-input testimonial-author" placeholder="Author Name">
+                                    <input type="text" class="form-input testimonial-position" placeholder="Position/Company">
+                                    <textarea class="form-textarea testimonial-text" rows="3" placeholder="Testimonial text"></textarea>
+                                </div>
+                            </template>
+                        </div>
+
+                        <div class="editor-panel" id="contact-panel">
+                            <h3>Contact Information</h3>
+                            <div class="form-group">
+                                <label for="contact-email">Email</label>
+                                <input type="email" id="contact-email" class="form-input" placeholder="your@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-phone">Phone</label>
+                                <input type="tel" id="contact-phone" class="form-input" placeholder="+1 234 567 8900">
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-linkedin">LinkedIn</label>
+                                <input type="url" id="contact-linkedin" class="form-input" placeholder="https://linkedin.com/in/yourprofile">
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-github">GitHub</label>
+                                <input type="url" id="contact-github" class="form-input" placeholder="https://github.com/yourusername">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="preview-section" id="preview-section">
+            <div class="preview-header">
+                <h2>Portfolio Preview</h2>
+                <button class="btn-close" id="close-preview">Close</button>
+            </div>
+            <div class="preview-container" id="portfolio-preview">
+                <div class="portfolio-output">
+                    <header class="portfolio-header">
+                        <img src="" alt="Profile Photo" class="profile-photo" id="preview-photo">
+                        <h1 class="portfolio-name" id="preview-name">Your Name</h1>
+                        <p class="portfolio-title" id="preview-title">Your Title</p>
+                    </header>
+
+                    <section class="portfolio-about">
+                        <h2>About Me</h2>
+                        <p id="preview-bio">Your bio will appear here...</p>
+                    </section>
+
+                    <section class="portfolio-projects">
+                        <h2>Projects</h2>
+                        <div class="projects-grid" id="preview-projects"></div>
+                    </section>
+
+                    <section class="portfolio-skills">
+                        <h2>Skills</h2>
+                        <div class="skills-chart" id="preview-skills"></div>
+                    </section>
+
+                    <section class="portfolio-testimonials">
+                        <h2>Testimonials</h2>
+                        <div class="testimonials-carousel" id="preview-testimonials">
+                            <button class="carousel-btn prev-btn">‹</button>
+                            <div class="testimonials-track"></div>
+                            <button class="carousel-btn next-btn">›</button>
+                        </div>
+                    </section>
+
+                    <section class="portfolio-contact">
+                        <h2>Contact Me</h2>
+                        <div class="contact-info" id="preview-contact-info"></div>
+                        <form class="contact-form">
+                            <input type="text" placeholder="Your Name" class="form-input" required>
+                            <input type="email" placeholder="Your Email" class="form-input" required>
+                            <textarea placeholder="Your Message" class="form-textarea" rows="4" required></textarea>
+                            <button type="submit" class="btn-primary">Send Message</button>
+                        </form>
+                    </section>
+
+                    <footer class="portfolio-footer">
+                        <p>&copy; <span id="preview-footer-name">Your Name</span> - <span id="current-year"></span></p>
+                    </footer>
+                </div>
+            </div>
+        </section>
+
+        <aside class="ad-container">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9048718254553458"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+        </aside>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2024 Portfolio Generator. Create your professional portfolio in minutes.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>

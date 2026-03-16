@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create interactive timelines with events, dates, descriptions, and images. Multiple timeline styles with export options to image or PDF.">
+    <meta name="keywords" content="timeline creator, interactive timeline, event timeline, timeline maker, visual timeline, timeline generator, export timeline">
+    <meta property="og:title" content="Interactive Timeline Creator">
+    <meta property="og:description" content="Create beautiful interactive timelines with events, dates, and images. Export as image or PDF.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.example.com/timeline-creator">
+    <meta property="og:image" content="https://www.example.com/timeline-preview.jpg">
+    <title>Interactive Timeline Creator - Create Beautiful Event Timelines</title>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Interactive Timeline Creator",
+        "description": "Create interactive timelines with events, dates, descriptions, and images",
+        "applicationCategory": "DesignApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": "Add events with dates, Add descriptions and images, Interactive navigation, Multiple timeline styles, Export as image or PDF"
+    }
+    </script>
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <h1 class="site-title">Interactive Timeline Creator</h1>
+            <p class="site-tagline">Create beautiful timelines with events, dates, and images</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="control-panel">
+            <div class="panel-section timeline-settings">
+                <h2 class="section-title">Timeline Settings</h2>
+                <div class="settings-grid">
+                    <div class="form-group">
+                        <label for="timeline-title" class="form-label">Timeline Title</label>
+                        <input type="text" id="timeline-title" class="form-input" placeholder="My Timeline">
+                    </div>
+                    <div class="form-group">
+                        <label for="timeline-style" class="form-label">Timeline Style</label>
+                        <select id="timeline-style" class="form-select">
+                            <option value="vertical">Vertical</option>
+                            <option value="horizontal">Horizontal</option>
+                            <option value="zigzag">Zigzag</option>
+                            <option value="centered">Centered</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-section event-form">
+                <h2 class="section-title">Add Event</h2>
+                <form id="event-form" class="form-container">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="event-date" class="form-label">Event Date</label>
+                            <input type="date" id="event-date" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="event-time" class="form-label">Time (Optional)</label>
+                            <input type="time" id="event-time" class="form-input">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-title" class="form-label">Event Title</label>
+                        <input type="text" id="event-title" class="form-input" placeholder="Event title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-description" class="form-label">Description</label>
+                        <textarea id="event-description" class="form-textarea" rows="3" placeholder="Event description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-image" class="form-label">Event Image (Optional)</label>
+                        <input type="file" id="event-image" class="form-file" accept="image/*">
+                    </div>
+                    <div class="form-group">
+                        <label for="event-color" class="form-label">Event Color</label>
+                        <input type="color" id="event-color" class="form-color" value="#3b82f6">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Event</button>
+                </form>
+            </div>
+
+            <div class="panel-section export-options">
+                <h2 class="section-title">Export Options</h2>
+                <div class="button-group">
+                    <button id="export-image" class="btn btn-secondary">Export as Image</button>
+                    <button id="export-pdf" class="btn btn-secondary">Export as PDF</button>
+                    <button id="clear-timeline" class="btn btn-danger">Clear Timeline</button>
+                </div>
+            </div>
+        </section>
+
+        <aside class="ad-container ad-sidebar">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9048718254553458"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </aside>
+
+        <section class="timeline-display">
+            <div class="timeline-header">
+                <h2 id="display-title" class="timeline-main-title">My Timeline</h2>
+                <div class="timeline-controls">
+                    <button id="zoom-in" class="control-btn" title="Zoom In">+</button>
+                    <button id="zoom-out" class="control-btn" title="Zoom Out">-</button>
+                    <button id="reset-view" class="control-btn" title="Reset View">⟲</button>
+                </div>
+            </div>
+            
+            <div id="timeline-container" class="timeline-wrapper" data-style="vertical">
+                <div class="timeline-line"></div>
+                <div id="timeline-events" class="timeline-events">
+                    <div class="empty-state">
+                        <svg class="empty-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        <p class="empty-text">No events yet. Add your first event to get started!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="event-list-section">
+            <h2 class="section-title">Event List</h2>
+            <div id="event-list" class="event-list-container">
+                <p class="no-events-message">No events added yet.</p>
+            </div>
+        </section>
+
+        <aside class="ad-container ad-bottom">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-9048718254553458"
+                 data-ad-slot="9876543210"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </aside>
+    </main>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <p class="footer-text">&copy; 2024 Interactive Timeline Creator. Create beautiful timelines easily.</p>
+            <nav class="footer-nav">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <div id="event-modal" class="modal" role="dialog" aria-hidden="true">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <div class="modal-body">
+                <img id="modal-image" class="modal-image" src="" alt="">
+                <h3 id="modal-title" class="modal-title"></h3>
+                <p id="modal-date" class="modal-date"></p>
+                <p id="modal-description" class="modal-description"></p>
+                <div class="modal-actions">
+                    <button id="edit-event" class="btn btn-secondary">Edit</button>
+                    <button id="delete-event" class="btn btn-danger">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

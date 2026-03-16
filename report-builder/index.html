@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create professional data-rich reports with charts, tables, and analysis. Import data sources, add visualizations, and export to PDF.">
+    <meta name="keywords" content="data reports, charts, tables, data analysis, PDF export, business reports, data visualization">
+    <meta property="og:title" content="Data Report Creator - Professional Reports Made Easy">
+    <meta property="og:description" content="Create data-rich reports with charts and tables. Import data, add analysis, and export to PDF.">
+    <meta property="og:type" content="website">
+    <title>Data Report Creator - Professional Reports</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Data Report Creator",
+        "description": "Create professional data-rich reports with charts, tables, and analysis tools",
+        "applicationCategory": "BusinessApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <h1>📊 Data Report Creator</h1>
+            <nav class="header-nav">
+                <button class="btn-primary" id="exportPdfBtn">Export to PDF</button>
+                <button class="btn-secondary" id="saveReportBtn">Save Report</button>
+            </nav>
+        </div>
+    </header>
+
+    <aside class="sidebar">
+        <div class="sidebar-section">
+            <h3>📁 Data Sources</h3>
+            <div class="upload-zone" id="uploadZone">
+                <input type="file" id="fileInput" accept=".csv,.json,.xlsx" hidden>
+                <label for="fileInput" class="upload-label">
+                    <span class="upload-icon">⬆️</span>
+                    <span>Click or drag to upload</span>
+                    <small>CSV, JSON, XLSX</small>
+                </label>
+            </div>
+            <div class="data-sources-list" id="dataSourcesList"></div>
+        </div>
+
+        <div class="sidebar-section">
+            <h3>📑 Report Sections</h3>
+            <button class="btn-add-section" id="addSectionBtn">+ Add Section</button>
+            <ul class="sections-list" id="sectionsList"></ul>
+        </div>
+
+        <div class="sidebar-section">
+            <h3>🎨 Templates</h3>
+            <select class="template-selector" id="templateSelector">
+                <option value="professional">Professional</option>
+                <option value="modern">Modern</option>
+                <option value="minimal">Minimal</option>
+                <option value="corporate">Corporate</option>
+            </select>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <div class="toolbar">
+            <div class="toolbar-group">
+                <button class="toolbar-btn" id="addChartBtn" title="Add Chart">📈 Chart</button>
+                <button class="toolbar-btn" id="addTableBtn" title="Add Table">📋 Table</button>
+                <button class="toolbar-btn" id="addTextBtn" title="Add Text">📝 Text</button>
+            </div>
+            <div class="toolbar-group">
+                <select class="chart-type-selector" id="chartTypeSelector">
+                    <option value="bar">Bar Chart</option>
+                    <option value="line">Line Chart</option>
+                    <option value="pie">Pie Chart</option>
+                    <option value="doughnut">Doughnut Chart</option>
+                    <option value="radar">Radar Chart</option>
+                </select>
+            </div>
+        </div>
+
+        <article class="report-container" id="reportContainer">
+            <section class="report-header">
+                <input type="text" class="report-title" placeholder="Report Title" value="Data Analysis Report">
+                <input type="text" class="report-subtitle" placeholder="Subtitle" value="Quarterly Performance Review">
+                <div class="report-meta">
+                    <input type="text" class="report-author" placeholder="Author" value="Author Name">
+                    <input type="date" class="report-date" id="reportDate">
+                </div>
+            </section>
+
+            <section class="report-section" data-section-id="1">
+                <div class="section-header">
+                    <input type="text" class="section-title" placeholder="Section Title" value="Executive Summary">
+                    <button class="btn-remove-section">✕</button>
+                </div>
+                <div class="section-content">
+                    <textarea class="analysis-text" placeholder="Write your analysis here...">This report provides a comprehensive overview of the key performance indicators and metrics for the reporting period.</textarea>
+                </div>
+            </section>
+
+            <section class="report-section" data-section-id="2">
+                <div class="section-header">
+                    <input type="text" class="section-title" placeholder="Section Title" value="Data Visualization">
+                    <button class="btn-remove-section">✕</button>
+                </div>
+                <div class="section-content">
+                    <div class="chart-container">
+                        <canvas id="sampleChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section class="report-section" data-section-id="3">
+                <div class="section-header">
+                    <input type="text" class="section-title" placeholder="Section Title" value="Detailed Data">
+                    <button class="btn-remove-section">✕</button>
+                </div>
+                <div class="section-content">
+                    <div class="data-table-wrapper">
+                        <table class="data-table" id="sampleTable">
+                            <thead>
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>Q1</th>
+                                    <th>Q2</th>
+                                    <th>Q3</th>
+                                    <th>Q4</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Revenue</td>
+                                    <td>$125K</td>
+                                    <td>$150K</td>
+                                    <td>$175K</td>
+                                    <td>$200K</td>
+                                </tr>
+                                <tr>
+                                    <td>Expenses</td>
+                                    <td>$75K</td>
+                                    <td>$80K</td>
+                                    <td>$85K</td>
+                                    <td>$90K</td>
+                                </tr>
+                                <tr>
+                                    <td>Profit</td>
+                                    <td>$50K</td>
+                                    <td>$70K</td>
+                                    <td>$90K</td>
+                                    <td>$110K</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <ins class="adsbygoogle ad-container"
+             style="display:block"
+             data-ad-client="ca-pub-9048718254553458"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+    </main>
+
+    <aside class="properties-panel" id="propertiesPanel">
+        <h3>⚙️ Properties</h3>
+        <div class="properties-content" id="propertiesContent">
+            <p class="no-selection">Select an element to edit its properties</p>
+        </div>
+    </aside>
+
+    <div class="modal" id="dataModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Configure Data</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <label>Select Data Source:</label>
+                <select class="data-source-select" id="dataSourceSelect"></select>
+                
+                <label>X-Axis Column:</label>
+                <select class="column-select" id="xAxisSelect"></select>
+                
+                <label>Y-Axis Column:</label>
+                <select class="column-select" id="yAxisSelect"></select>
+                
+                <label>Chart Title:</label>
+                <input type="text" class="chart-title-input" id="chartTitleInput" placeholder="Enter chart title">
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="cancelDataBtn">Cancel</button>
+                <button class="btn-primary" id="applyDataBtn">Apply</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script src="js/app.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>

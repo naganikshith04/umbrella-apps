@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create beautiful interactive charts from your data. Upload CSV, customize colors, and download as images. Free online chart maker with bar, line, pie, and scatter charts.">
+    <meta name="keywords" content="chart maker, data visualization, CSV upload, create charts, interactive charts, bar chart, line chart, pie chart, scatter plot">
+    <meta property="og:title" content="Chart Creator - Beautiful Data Visualization">
+    <meta property="og:description" content="Create stunning charts from your data with our free online tool. Upload CSV, customize, and download.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com">
+    <title>Chart Creator - Beautiful Data Visualization</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Chart Creator",
+        "description": "Create beautiful interactive charts from your data",
+        "applicationCategory": "BusinessApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": "CSV upload, Multiple chart types, Color customization, Interactive tooltips, Image download, JSON export"
+    }
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">📊 Chart Creator</h1>
+            <p class="site-tagline">Create beautiful charts from your data</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="features-section">
+                <h2 class="section-title">Features</h2>
+                <ul class="features-list">
+                    <li class="feature-item">📁 Upload CSV or paste data</li>
+                    <li class="feature-item">📈 Choose chart type (bar, line, pie, scatter)</li>
+                    <li class="feature-item">🎨 Customize colors and labels</li>
+                    <li class="feature-item">💡 Interactive tooltips</li>
+                    <li class="feature-item">💾 Download as image</li>
+                    <li class="feature-item">📤 Export data as JSON</li>
+                </ul>
+            </section>
+
+            <section class="data-input-section">
+                <h2 class="section-title">Step 1: Input Your Data</h2>
+                <div class="input-methods">
+                    <div class="upload-zone" id="uploadZone">
+                        <input type="file" id="csvFileInput" accept=".csv" class="file-input" hidden>
+                        <label for="csvFileInput" class="upload-label">
+                            <span class="upload-icon">📂</span>
+                            <span class="upload-text">Click to upload CSV file</span>
+                            <span class="upload-hint">or drag and drop here</span>
+                        </label>
+                    </div>
+                    <div class="paste-zone">
+                        <label for="dataTextarea" class="input-label">Or paste your data (CSV format):</label>
+                        <textarea id="dataTextarea" class="data-textarea" rows="8" placeholder="Label,Value&#10;Product A,45&#10;Product B,32&#10;Product C,67&#10;Product D,28"></textarea>
+                        <button type="button" id="parseDataBtn" class="btn btn-primary">Load Data</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="data-preview-section" id="dataPreviewSection" style="display:none;">
+                <h2 class="section-title">Data Preview</h2>
+                <div class="table-wrapper">
+                    <table class="data-table" id="dataTable">
+                        <thead>
+                            <tr id="tableHeader"></tr>
+                        </thead>
+                        <tbody id="tableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="chart-controls-section" id="chartControlsSection" style="display:none;">
+                <h2 class="section-title">Step 2: Customize Your Chart</h2>
+                <div class="controls-grid">
+                    <div class="control-group">
+                        <label for="chartType" class="control-label">Chart Type:</label>
+                        <select id="chartType" class="control-select">
+                            <option value="bar">Bar Chart</option>
+                            <option value="line">Line Chart</option>
+                            <option value="pie">Pie Chart</option>
+                            <option value="scatter">Scatter Plot</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label for="chartTitle" class="control-label">Chart Title:</label>
+                        <input type="text" id="chartTitle" class="control-input" placeholder="My Chart" value="Data Visualization">
+                    </div>
+                    <div class="control-group">
+                        <label for="chartColor" class="control-label">Primary Color:</label>
+                        <input type="color" id="chartColor" class="control-color" value="#4A90E2">
+                    </div>
+                    <div class="control-group">
+                        <label for="backgroundColor" class="control-label">Background Color:</label>
+                        <input type="color" id="backgroundColor" class="control-color" value="#ffffff">
+                    </div>
+                </div>
+                <button type="button" id="generateChartBtn" class="btn btn-success">Generate Chart</button>
+            </section>
+
+            <aside class="ad-container">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-9048718254553458"
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </aside>
+
+            <section class="chart-display-section" id="chartDisplaySection" style="display:none;">
+                <h2 class="section-title">Step 3: Your Chart</h2>
+                <div class="chart-container">
+                    <canvas id="chartCanvas"></canvas>
+                </div>
+                <div class="action-buttons">
+                    <button type="button" id="downloadImageBtn" class="btn btn-primary">
+                        <span class="btn-icon">📥</span> Download as Image
+                    </button>
+                    <button type="button" id="exportJsonBtn" class="btn btn-secondary">
+                        <span class="btn-icon">📄</span> Export as JSON
+                    </button>
+                    <button type="button" id="resetBtn" class="btn btn-outline">
+                        <span class="btn-icon">🔄</span> Start Over
+                    </button>
+                </div>
+            </section>
+
+            <section class="instructions-section">
+                <h2 class="section-title">How to Use</h2>
+                <ol class="instructions-list">
+                    <li class="instruction-item">
+                        <strong>Upload or paste your data:</strong> Use a CSV file or paste data in CSV format (comma-separated values)
+                    </li>
+                    <li class="instruction-item">
+                        <strong>Choose chart type:</strong> Select from bar, line, pie, or scatter charts
+                    </li>
+                    <li class="instruction-item">
+                        <strong>Customize appearance:</strong> Change colors, title, and other visual elements
+                    </li>
+                    <li class="instruction-item">
+                        <strong>Generate and download:</strong> Create your chart and save it as an image or export the data
+                    </li>
+                </ol>
+            </section>
+
+            <section class="example-section">
+                <h2 class="section-title">Example Data Format</h2>
+                <div class="example-box">
+                    <code class="example-code">
+Label,Value<br>
+January,120<br>
+February,150<br>
+March,180<br>
+April,140<br>
+May,200
+                    </code>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p class="footer-text">&copy; 2024 Chart Creator. Create beautiful visualizations from your data.</p>
+            <nav class="footer-nav">
+                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

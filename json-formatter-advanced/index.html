@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online JSON formatter, validator, and editor. Format, minify, validate, and manipulate JSON data with syntax highlighting, error detection, and tree view.">
+    <meta name="keywords" content="JSON formatter, JSON validator, JSON editor, format JSON, minify JSON, JSON syntax highlighting, JSON tree view">
+    <meta property="og:title" content="JSON Formatter & Validator - Format, Validate, and Manipulate JSON">
+    <meta property="og:description" content="Free online tool to format, validate, minify, and manipulate JSON data with syntax highlighting and error detection.">
+    <meta property="og:type" content="website">
+    <title>JSON Formatter & Validator - Format, Validate, and Manipulate JSON</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-json.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "JSON Formatter & Validator",
+        "description": "Format, validate, and manipulate JSON data online",
+        "applicationCategory": "DeveloperApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1>JSON Formatter & Validator</h1>
+            <p class="subtitle">Format, validate, and manipulate JSON data with ease</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="tool-section">
+            <div class="upload-zone">
+                <input type="file" id="fileInput" accept=".json" hidden>
+                <label for="fileInput" class="upload-label">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                    </svg>
+                    <span>Upload JSON File</span>
+                </label>
+            </div>
+
+            <div class="control-panel">
+                <button id="formatBtn" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="17 1 21 5 17 9"></polyline>
+                        <path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+                        <polyline points="7 23 3 19 7 15"></polyline>
+                        <path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+                    </svg>
+                    Format
+                </button>
+                <button id="minifyBtn" class="btn btn-secondary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="4 14 10 14 10 20"></polyline>
+                        <polyline points="20 10 14 10 14 4"></polyline>
+                        <line x1="14" y1="10" x2="21" y2="3"></line>
+                        <line x1="3" y1="21" x2="10" y2="14"></line>
+                    </svg>
+                    Minify
+                </button>
+                <button id="validateBtn" class="btn btn-info">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    Validate
+                </button>
+                <button id="clearBtn" class="btn btn-danger">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                    Clear
+                </button>
+                <button id="downloadBtn" class="btn btn-success">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download
+                </button>
+            </div>
+
+            <div class="view-toggle">
+                <button id="codeViewBtn" class="toggle-btn active">Code View</button>
+                <button id="treeViewBtn" class="toggle-btn">Tree View</button>
+            </div>
+
+            <div class="editor-container">
+                <div id="codeView" class="code-view active">
+                    <textarea id="jsonInput" class="json-textarea" placeholder="Paste your JSON here..." spellcheck="false"></textarea>
+                    <div id="highlightedCode" class="highlighted-code"></div>
+                </div>
+                <div id="treeView" class="tree-view"></div>
+            </div>
+
+            <div id="errorMessage" class="error-message"></div>
+            <div id="successMessage" class="success-message"></div>
+
+            <div class="stats-panel">
+                <div class="stat-item">
+                    <span class="stat-label">Characters:</span>
+                    <span id="charCount" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Lines:</span>
+                    <span id="lineCount" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Size:</span>
+                    <span id="sizeCount" class="stat-value">0 B</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <h2>Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Format & Beautify</h3>
+                    <p>Automatically format and indent JSON for better readability</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Minify</h3>
+                    <p>Compress JSON by removing whitespace and line breaks</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Validate</h3>
+                    <p>Check JSON syntax and detect errors with detailed messages</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Syntax Highlighting</h3>
+                    <p>Color-coded JSON for easy reading and navigation</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Tree View</h3>
+                    <p>Visualize JSON structure in an expandable tree format</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Download</h3>
+                    <p>Save formatted or minified JSON as a file</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 JSON Formatter & Validator. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

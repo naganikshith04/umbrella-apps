@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online image converter tool. Convert images between JPG, PNG, WebP, and GIF formats. Batch conversion support with quality adjustment and ZIP download.">
+    <meta name="keywords" content="image converter, JPG to PNG, PNG to WebP, GIF converter, batch image conversion, online image tool">
+    <meta property="og:title" content="Image Format Converter - Convert JPG, PNG, WebP, GIF">
+    <meta property="og:description" content="Convert images between different formats with batch support. Adjust quality and download as ZIP.">
+    <meta property="og:type" content="website">
+    <title>Image Format Converter - Convert JPG, PNG, WebP, GIF</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Image Format Converter",
+        "description": "Convert images between JPG, PNG, WebP, and GIF formats with batch support",
+        "applicationCategory": "MultimediaApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "featureList": "Batch conversion, Quality adjustment, Multiple formats, ZIP download"
+    }
+    </script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <h1>Image Format Converter</h1>
+            <p>Convert images between JPG, PNG, WebP, and GIF formats</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="converter-section">
+                <div class="upload-zone" id="uploadZone">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                    </svg>
+                    <h2>Drop images here or click to upload</h2>
+                    <p>Supports JPG, PNG, WebP, and GIF formats</p>
+                    <input type="file" id="fileInput" accept="image/*" multiple hidden>
+                    <button class="upload-button" id="uploadButton">Select Images</button>
+                </div>
+
+                <div class="conversion-controls">
+                    <div class="control-group">
+                        <label for="outputFormat">Output Format:</label>
+                        <select id="outputFormat" class="format-select">
+                            <option value="png">PNG</option>
+                            <option value="jpeg">JPG</option>
+                            <option value="webp">WebP</option>
+                            <option value="gif">GIF</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="qualitySlider">Quality: <span id="qualityValue">90</span>%</label>
+                        <input type="range" id="qualitySlider" min="1" max="100" value="90" class="quality-slider">
+                    </div>
+
+                    <div class="control-group">
+                        <button class="action-button convert-button" id="convertButton" disabled>Convert Images</button>
+                        <button class="action-button download-button" id="downloadButton" disabled>Download as ZIP</button>
+                        <button class="action-button clear-button" id="clearButton">Clear All</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AdSense Ad -->
+            <div class="ad-container">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-9048718254553458"
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+
+            <section class="preview-section" id="previewSection">
+                <h2>Images (<span id="imageCount">0</span>)</h2>
+                <div class="image-grid" id="imageGrid"></div>
+            </section>
+
+            <section class="features-section">
+                <h2>Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>Multiple Formats</h3>
+                        <p>Convert between JPG, PNG, WebP, and GIF formats seamlessly</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Batch Processing</h3>
+                        <p>Upload and convert multiple images at once to save time</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Quality Control</h3>
+                        <p>Adjust output quality to balance file size and image clarity</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Live Preview</h3>
+                        <p>Preview converted images before downloading</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>ZIP Download</h3>
+                        <p>Download all converted images as a single ZIP file</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Client-Side</h3>
+                        <p>All processing happens in your browser - secure and private</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="instructions-section">
+                <h2>How to Use</h2>
+                <ol class="instructions-list">
+                    <li>Upload one or more images by clicking or dragging files to the upload zone</li>
+                    <li>Select your desired output format (PNG, JPG, WebP, or GIF)</li>
+                    <li>Adjust the quality slider to set compression level (higher = better quality, larger file)</li>
+                    <li>Click "Convert Images" to process all uploaded files</li>
+                    <li>Preview the converted images in the gallery below</li>
+                    <li>Download individual images or click "Download as ZIP" for bulk download</li>
+                </ol>
+            </section>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2024 Image Format Converter. All rights reserved. Process images securely in your browser.</p>
+        </div>
+    </footer>
+
+    <template id="imageCardTemplate">
+        <div class="image-card">
+            <div class="image-preview-container">
+                <img class="image-preview" alt="Preview">
+                <div class="image-status"></div>
+            </div>
+            <div class="image-info">
+                <div class="image-name"></div>
+                <div class="image-details">
+                    <span class="original-format"></span>
+                    <span class="arrow">→</span>
+                    <span class="converted-format"></span>
+                </div>
+                <div class="image-size"></div>
+            </div>
+            <div class="image-actions">
+                <button class="download-single-button" title="Download">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+                    </svg>
+                </button>
+                <button class="remove-button" title="Remove">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </template>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

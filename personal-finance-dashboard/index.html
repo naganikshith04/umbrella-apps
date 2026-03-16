@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal Finance Dashboard - Track your budget, manage expenses, visualize spending with interactive charts. Free budget tracking tool with expense categorization and financial reports.">
+    <meta name="keywords" content="personal finance, budget tracker, expense management, financial dashboard, spending analysis, money management">
+    <meta property="og:title" content="Personal Finance Dashboard">
+    <meta property="og:description" content="Track your budget, manage expenses, and visualize your financial health with interactive charts">
+    <meta property="og:type" content="website">
+    <title>Personal Finance Dashboard - Budget & Expense Tracker</title>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Personal Finance Dashboard",
+        "description": "Budget tracking and expense management tool with visualizations",
+        "applicationCategory": "FinanceApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <h1 class="app-title">💰 Personal Finance Dashboard</h1>
+            <nav class="main-nav">
+                <button class="nav-btn active" data-tab="dashboard">Dashboard</button>
+                <button class="nav-btn" data-tab="transactions">Transactions</button>
+                <button class="nav-btn" data-tab="budget">Budget</button>
+                <button class="nav-btn" data-tab="reports">Reports</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section id="dashboard" class="tab-content active">
+            <div class="summary-cards">
+                <article class="summary-card income-card">
+                    <h3>Total Income</h3>
+                    <p class="amount" id="totalIncome">$0.00</p>
+                </article>
+                <article class="summary-card expense-card">
+                    <h3>Total Expenses</h3>
+                    <p class="amount" id="totalExpenses">$0.00</p>
+                </article>
+                <article class="summary-card balance-card">
+                    <h3>Balance</h3>
+                    <p class="amount" id="balance">$0.00</p>
+                </article>
+                <article class="summary-card budget-card">
+                    <h3>Budget Left</h3>
+                    <p class="amount" id="budgetLeft">$0.00</p>
+                </article>
+            </div>
+
+            <div class="chart-grid">
+                <div class="chart-container">
+                    <h2>Expenses by Category</h2>
+                    <canvas id="categoryPieChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h2>Monthly Spending Trend</h2>
+                    <canvas id="trendLineChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h2>Income vs Expenses</h2>
+                    <canvas id="comparisonBarChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="transactions" class="tab-content">
+            <div class="section-header">
+                <h2>Transactions</h2>
+                <button class="btn-primary" id="addTransactionBtn">+ Add Transaction</button>
+            </div>
+
+            <div class="filter-bar">
+                <select id="filterType" class="filter-select">
+                    <option value="all">All Types</option>
+                    <option value="income">Income</option>
+                    <option value="expense">Expense</option>
+                </select>
+                <select id="filterCategory" class="filter-select">
+                    <option value="all">All Categories</option>
+                </select>
+                <input type="date" id="filterDateFrom" class="filter-input">
+                <input type="date" id="filterDateTo" class="filter-input">
+                <button class="btn-secondary" id="clearFilters">Clear Filters</button>
+            </div>
+
+            <div class="data-table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="budget" class="tab-content">
+            <div class="section-header">
+                <h2>Budget Management</h2>
+                <button class="btn-primary" id="addBudgetBtn">+ Add Budget</button>
+            </div>
+
+            <div class="budget-list" id="budgetList"></div>
+        </section>
+
+        <section id="reports" class="tab-content">
+            <div class="section-header">
+                <h2>Reports & Export</h2>
+            </div>
+
+            <div class="report-actions">
+                <button class="btn-primary" id="exportCSV">📥 Export CSV</button>
+                <button class="btn-primary" id="exportJSON">📥 Export JSON</button>
+                <button class="btn-secondary upload-btn">
+                    📤 Import CSV
+                    <input type="file" id="importCSV" accept=".csv" class="file-input">
+                </button>
+            </div>
+
+            <div class="report-summary">
+                <h3>Financial Summary</h3>
+                <div class="summary-grid" id="reportSummary"></div>
+            </div>
+        </section>
+    </main>
+
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 id="modalTitle">Add Transaction</h3>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="transactionForm" class="form-group">
+                    <label for="transactionDate">Date</label>
+                    <input type="date" id="transactionDate" required>
+
+                    <label for="transactionDescription">Description</label>
+                    <input type="text" id="transactionDescription" required>
+
+                    <label for="transactionType">Type</label>
+                    <select id="transactionType" required>
+                        <option value="expense">Expense</option>
+                        <option value="income">Income</option>
+                    </select>
+
+                    <label for="transactionCategory">Category</label>
+                    <select id="transactionCategory" required></select>
+
+                    <label for="transactionAmount">Amount</label>
+                    <input type="number" id="transactionAmount" step="0.01" min="0" required>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Save</button>
+                        <button type="button" class="btn-secondary" id="cancelTransaction">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="budgetModal" class="modal-overlay">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3>Set Budget</h3>
+                <button class="modal-close" id="closeBudgetModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="budgetForm" class="form-group">
+                    <label for="budgetCategory">Category</label>
+                    <select id="budgetCategory" required></select>
+
+                    <label for="budgetAmount">Monthly Budget</label>
+                    <input type="number" id="budgetAmount" step="0.01" min="0" required>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Save Budget</button>
+                        <button type="button" class="btn-secondary" id="cancelBudget">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <p>&copy; 2024 Personal Finance Dashboard. Manage your money wisely.</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Card Designer - Create Professional Cards Online</title>
+    <meta name="description" content="Design professional business cards online with multiple templates, customizable colors and fonts, logo upload, and 3D preview. Download print-ready PDFs instantly.">
+    <meta name="keywords" content="business card designer, card maker, template, print ready, PDF download, logo design">
+    <meta property="og:title" content="Business Card Designer - Create Professional Cards Online">
+    <meta property="og:description" content="Design professional business cards with customizable templates, colors, and fonts. Download print-ready PDFs.">
+    <meta property="og:type" content="website">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Business Card Designer",
+        "description": "Online tool to design professional business cards with templates and customization options",
+        "applicationCategory": "DesignApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <h1>Business Card Designer</h1>
+        <p class="tagline">Create professional business cards in minutes</p>
+    </header>
+
+    <main class="app-container">
+        <section class="control-panel">
+            <div class="template-selector">
+                <h2>Choose Template</h2>
+                <div class="template-grid">
+                    <button class="template-option active" data-template="modern">Modern</button>
+                    <button class="template-option" data-template="classic">Classic</button>
+                    <button class="template-option" data-template="minimal">Minimal</button>
+                    <button class="template-option" data-template="bold">Bold</button>
+                    <button class="template-option" data-template="creative">Creative</button>
+                    <button class="template-option" data-template="elegant">Elegant</button>
+                </div>
+            </div>
+
+            <div class="customization-section">
+                <h2>Customize Design</h2>
+                
+                <div class="form-group">
+                    <label for="card-name">Full Name</label>
+                    <input type="text" id="card-name" class="text-input" placeholder="John Doe">
+                </div>
+
+                <div class="form-group">
+                    <label for="card-title">Job Title</label>
+                    <input type="text" id="card-title" class="text-input" placeholder="Marketing Director">
+                </div>
+
+                <div class="form-group">
+                    <label for="card-company">Company</label>
+                    <input type="text" id="card-company" class="text-input" placeholder="Company Name">
+                </div>
+
+                <div class="form-group">
+                    <label for="card-email">Email</label>
+                    <input type="email" id="card-email" class="text-input" placeholder="john@company.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="card-phone">Phone</label>
+                    <input type="tel" id="card-phone" class="text-input" placeholder="+1 234 567 8900">
+                </div>
+
+                <div class="form-group">
+                    <label for="card-website">Website</label>
+                    <input type="text" id="card-website" class="text-input" placeholder="www.company.com">
+                </div>
+
+                <div class="color-selector">
+                    <h3>Colors</h3>
+                    <div class="color-options">
+                        <label>Background:
+                            <input type="color" id="bg-color" value="#ffffff">
+                        </label>
+                        <label>Text:
+                            <input type="color" id="text-color" value="#000000">
+                        </label>
+                        <label>Accent:
+                            <input type="color" id="accent-color" value="#3498db">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="font-selector">
+                    <h3>Font</h3>
+                    <select id="font-family" class="select-input">
+                        <option value="Arial">Arial</option>
+                        <option value="Helvetica">Helvetica</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                        <option value="Courier New">Courier New</option>
+                        <option value="Verdana">Verdana</option>
+                    </select>
+                </div>
+
+                <div class="upload-zone">
+                    <h3>Upload Logo</h3>
+                    <input type="file" id="logo-upload" accept="image/*" class="file-input">
+                    <label for="logo-upload" class="upload-button">Choose Logo</label>
+                    <span class="file-name"></span>
+                </div>
+
+                <div class="upload-zone">
+                    <h3>Upload Photo</h3>
+                    <input type="file" id="photo-upload" accept="image/*" class="file-input">
+                    <label for="photo-upload" class="upload-button">Choose Photo</label>
+                    <span class="file-name"></span>
+                </div>
+
+                <div class="side-toggle">
+                    <h3>Design Side</h3>
+                    <div class="toggle-buttons">
+                        <button class="side-btn active" data-side="front">Front</button>
+                        <button class="side-btn" data-side="back">Back</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="preview-container">
+            <h2>Preview</h2>
+            
+            <div class="view-toggle">
+                <button class="view-btn active" data-view="2d">2D View</button>
+                <button class="view-btn" data-view="3d">3D Mockup</button>
+            </div>
+
+            <div class="card-preview-wrapper">
+                <div class="card-preview-2d active">
+                    <div class="business-card front" id="card-front">
+                        <div class="card-logo"></div>
+                        <div class="card-photo"></div>
+                        <div class="card-content">
+                            <h3 class="card-name-display">Your Name</h3>
+                            <p class="card-title-display">Your Title</p>
+                            <p class="card-company-display">Company Name</p>
+                            <div class="card-contact">
+                                <p class="card-email-display"></p>
+                                <p class="card-phone-display"></p>
+                                <p class="card-website-display"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="business-card back" id="card-back" style="display:none;">
+                        <div class="card-back-content">
+                            <div class="card-logo-back"></div>
+                            <div class="back-pattern"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-preview-3d">
+                    <div class="mockup-scene">
+                        <div class="card-3d">
+                            <div class="card-3d-front"></div>
+                            <div class="card-3d-back"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn-primary" id="download-pdf">Download PDF</button>
+                <button class="btn-secondary" id="reset-design">Reset</button>
+            </div>
+
+            <div class="card-dimensions">
+                <p>Standard Size: 3.5" × 2" (89mm × 51mm)</p>
+                <p>Resolution: 300 DPI print-ready</p>
+            </div>
+        </section>
+    </main>
+
+    <aside class="ad-container">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9048718254553458"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </aside>
+
+    <footer class="main-footer">
+        <p>&copy; 2024 Business Card Designer. All rights reserved.</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

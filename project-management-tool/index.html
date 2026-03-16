@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online project management tool with kanban boards, drag-and-drop task tracking, team collaboration features, and data export capabilities.">
+    <meta name="keywords" content="project management, kanban board, task tracking, team collaboration, drag and drop, task manager, productivity tool">
+    <meta property="og:title" content="Project Management Tool - Kanban Board & Task Tracking">
+    <meta property="og:description" content="Organize projects with intuitive kanban boards, track tasks with priorities and due dates, and collaborate effectively with your team.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://example.com/og-image.jpg">
+    <title>Project Management Tool - Kanban Board & Task Tracking</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Project Management Tool",
+        "applicationCategory": "BusinessApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "description": "Free online project management tool with kanban boards and task tracking"
+    }
+    </script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <h1 class="app-title">Project Manager</h1>
+            <nav class="main-navigation">
+                <button class="nav-button active" data-view="kanban">Kanban</button>
+                <button class="nav-button" data-view="list">List View</button>
+                <button class="nav-button" data-view="analytics">Analytics</button>
+            </nav>
+            <div class="header-actions">
+                <button class="action-button" id="export-json">Export JSON</button>
+                <button class="action-button" id="export-csv">Export CSV</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <aside class="sidebar">
+            <section class="project-selector">
+                <h2>Projects</h2>
+                <div class="project-list" id="project-list"></div>
+                <button class="add-button" id="add-project">+ New Project</button>
+            </section>
+            <section class="task-filters">
+                <h3>Filters</h3>
+                <div class="filter-group">
+                    <label for="filter-priority">Priority</label>
+                    <select id="filter-priority" class="filter-select">
+                        <option value="all">All</option>
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="filter-assignee">Assignee</label>
+                    <select id="filter-assignee" class="filter-select">
+                        <option value="all">All</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="sort-tasks">Sort By</label>
+                    <select id="sort-tasks" class="filter-select">
+                        <option value="created">Created Date</option>
+                        <option value="due">Due Date</option>
+                        <option value="priority">Priority</option>
+                        <option value="title">Title</option>
+                    </select>
+                </div>
+            </section>
+            <ins class="adsbygoogle sidebar-ad" style="display:block" data-ad-client="ca-pub-9048718254553458" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        </aside>
+
+        <section class="workspace">
+            <div class="view-container kanban-view active" id="kanban-view">
+                <div class="kanban-board">
+                    <div class="kanban-column" data-status="todo">
+                        <div class="column-header">
+                            <h3 class="column-title">To Do</h3>
+                            <span class="task-count">0</span>
+                        </div>
+                        <div class="task-list" data-column="todo"></div>
+                        <button class="add-task-button" data-status="todo">+ Add Task</button>
+                    </div>
+                    <div class="kanban-column" data-status="in-progress">
+                        <div class="column-header">
+                            <h3 class="column-title">In Progress</h3>
+                            <span class="task-count">0</span>
+                        </div>
+                        <div class="task-list" data-column="in-progress"></div>
+                        <button class="add-task-button" data-status="in-progress">+ Add Task</button>
+                    </div>
+                    <div class="kanban-column" data-status="review">
+                        <div class="column-header">
+                            <h3 class="column-title">Review</h3>
+                            <span class="task-count">0</span>
+                        </div>
+                        <div class="task-list" data-column="review"></div>
+                        <button class="add-task-button" data-status="review">+ Add Task</button>
+                    </div>
+                    <div class="kanban-column" data-status="done">
+                        <div class="column-header">
+                            <h3 class="column-title">Done</h3>
+                            <span class="task-count">0</span>
+                        </div>
+                        <div class="task-list" data-column="done"></div>
+                        <button class="add-task-button" data-status="done">+ Add Task</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="view-container list-view" id="list-view">
+                <div class="data-table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Task</th>
+                                <th>Status</th>
+                                <th>Priority</th>
+                                <th>Assignee</th>
+                                <th>Due Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="task-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="view-container analytics-view" id="analytics-view">
+                <div class="chart-container">
+                    <canvas id="status-chart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="priority-chart"></canvas>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h4>Total Tasks</h4>
+                        <p class="stat-value" id="stat-total">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Completed</h4>
+                        <p class="stat-value" id="stat-completed">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>In Progress</h4>
+                        <p class="stat-value" id="stat-progress">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Overdue</h4>
+                        <p class="stat-value" id="stat-overdue">0</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal" id="task-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Task Details</h2>
+                <button class="close-button" id="close-modal">&times;</button>
+            </div>
+            <form class="task-form" id="task-form">
+                <div class="form-group">
+                    <label for="task-title">Title</label>
+                    <input type="text" id="task-title" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="task-description">Description</label>
+                    <textarea id="task-description" class="form-textarea" rows="4"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="task-priority">Priority</label>
+                        <select id="task-priority" class="form-select">
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-status">Status</label>
+                        <select id="task-status" class="form-select">
+                            <option value="todo">To Do</option>
+                            <option value="in-progress">In Progress</option>
+                            <option value="review">Review</option>
+                            <option value="done">Done</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="task-assignee">Assignee</label>
+                        <input type="text" id="task-assignee" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="task-due-date">Due Date</label>
+                        <input type="date" id="task-due-date" class="form-input">
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="submit-button">Save Task</button>
+                    <button type="button" class="cancel-button" id="cancel-task">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="project-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">New Project</h2>
+                <button class="close-button" id="close-project-modal">&times;</button>
+            </div>
+            <form class="task-form" id="project-form">
+                <div class="form-group">
+                    <label for="project-name">Project Name</label>
+                    <input type="text" id="project-name" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="project-description">Description</label>
+                    <textarea id="project-description" class="form-textarea" rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="submit-button">Create Project</button>
+                    <button type="button" class="cancel-button" id="cancel-project">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <p>&copy; 2024 Project Management Tool. All rights reserved.</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

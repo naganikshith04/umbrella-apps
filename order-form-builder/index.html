@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Build custom order forms with product catalog, quantity selection, automatic total calculation, and PDF generation. Easy-to-use online order form builder.">
+    <meta name="keywords" content="order form, custom order, product catalog, PDF order, order builder, invoice generator, order management">
+    <meta property="og:title" content="Custom Order Form Builder">
+    <meta property="og:description" content="Create professional order forms with product selection, automatic calculations, and PDF export">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/order-form">
+    <title>Custom Order Form Builder</title>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Custom Order Form Builder",
+        "description": "Build custom order forms with product catalog and PDF generation",
+        "applicationCategory": "BusinessApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <h1>Custom Order Form Builder</h1>
+            <p>Create professional orders with automatic calculations and PDF export</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="order-form-section">
+            <div class="form-container">
+                <div class="customer-info-panel">
+                    <h2>Customer Information</h2>
+                    <form id="customerForm" class="customer-form">
+                        <div class="form-group">
+                            <label for="customerName">Full Name *</label>
+                            <input type="text" id="customerName" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customerEmail">Email *</label>
+                            <input type="email" id="customerEmail" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="customerPhone">Phone</label>
+                            <input type="tel" id="customerPhone" class="form-input">
+                        </div>
+                        <div class="form-group">
+                            <label for="customerAddress">Shipping Address</label>
+                            <textarea id="customerAddress" class="form-textarea" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="orderNotes">Order Notes</label>
+                            <textarea id="orderNotes" class="form-textarea" rows="2"></textarea>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="product-catalog-panel">
+                    <h2>Product Catalog</h2>
+                    <div class="product-grid" id="productCatalog">
+                        <div class="product-card" data-id="1" data-name="Premium Widget" data-price="29.99">
+                            <div class="product-image">📦</div>
+                            <h3 class="product-name">Premium Widget</h3>
+                            <p class="product-price">$29.99</p>
+                            <div class="quantity-selector">
+                                <label>Quantity:</label>
+                                <input type="number" class="quantity-input" min="0" value="0" data-product="1">
+                            </div>
+                            <button class="add-to-order-btn" data-product="1">Add to Order</button>
+                        </div>
+                        <div class="product-card" data-id="2" data-name="Deluxe Gadget" data-price="49.99">
+                            <div class="product-image">🎁</div>
+                            <h3 class="product-name">Deluxe Gadget</h3>
+                            <p class="product-price">$49.99</p>
+                            <div class="quantity-selector">
+                                <label>Quantity:</label>
+                                <input type="number" class="quantity-input" min="0" value="0" data-product="2">
+                            </div>
+                            <button class="add-to-order-btn" data-product="2">Add to Order</button>
+                        </div>
+                        <div class="product-card" data-id="3" data-name="Standard Tool" data-price="19.99">
+                            <div class="product-image">🔧</div>
+                            <h3 class="product-name">Standard Tool</h3>
+                            <p class="product-price">$19.99</p>
+                            <div class="quantity-selector">
+                                <label>Quantity:</label>
+                                <input type="number" class="quantity-input" min="0" value="0" data-product="3">
+                            </div>
+                            <button class="add-to-order-btn" data-product="3">Add to Order</button>
+                        </div>
+                        <div class="product-card" data-id="4" data-name="Professional Kit" data-price="99.99">
+                            <div class="product-image">💼</div>
+                            <h3 class="product-name">Professional Kit</h3>
+                            <p class="product-price">$99.99</p>
+                            <div class="quantity-selector">
+                                <label>Quantity:</label>
+                                <input type="number" class="quantity-input" min="0" value="0" data-product="4">
+                            </div>
+                            <button class="add-to-order-btn" data-product="4">Add to Order</button>
+                        </div>
+                        <div class="product-card" data-id="5" data-name="Basic Package" data-price="14.99">
+                            <div class="product-image">📋</div>
+                            <h3 class="product-name">Basic Package</h3>
+                            <p class="product-price">$14.99</p>
+                            <div class="quantity-selector">
+                                <label>Quantity:</label>
+                                <input type="number" class="quantity-input" min="0" value="0" data-product="5">
+                            </div>
+                            <button class="add-to-order-btn" data-product="5">Add to Order</button>
+                        </div>
+                        <div class="product-card" data-id="6" data-name="Enterprise Solution" data-price="199.99">
+                            <div class="product-image">🏢</div>
+                            <h3 class="product-name">Enterprise Solution</h3>
+                            <p class="product-price">$199.99</p>
+                            <div class="quantity-selector">
+                                <label>Quantity:</label>
+                                <input type="number" class="quantity-input" min="0" value="0" data-product="6">
+                            </div>
+                            <button class="add-to-order-btn" data-product="6">Add to Order</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="order-summary-panel">
+                    <h2>Order Summary</h2>
+                    <div class="order-items-list" id="orderItemsList">
+                        <p class="empty-order-message">No items added yet. Select products from the catalog above.</p>
+                    </div>
+                    <div class="order-totals">
+                        <div class="total-row subtotal-row">
+                            <span>Subtotal:</span>
+                            <span id="subtotalAmount">$0.00</span>
+                        </div>
+                        <div class="total-row">
+                            <label for="taxRate">Tax Rate (%):</label>
+                            <input type="number" id="taxRate" class="tax-input" min="0" max="100" step="0.1" value="8.5">
+                        </div>
+                        <div class="total-row">
+                            <span>Tax:</span>
+                            <span id="taxAmount">$0.00</span>
+                        </div>
+                        <div class="total-row">
+                            <label for="shippingCost">Shipping:</label>
+                            <input type="number" id="shippingCost" class="shipping-input" min="0" step="0.01" value="0">
+                        </div>
+                        <div class="total-row grand-total-row">
+                            <span>Grand Total:</span>
+                            <span id="grandTotal">$0.00</span>
+                        </div>
+                    </div>
+                    <div class="order-actions">
+                        <button id="clearOrderBtn" class="action-btn clear-btn">Clear Order</button>
+                        <button id="generatePdfBtn" class="action-btn generate-btn">Generate PDF</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="pdfPreview" class="pdf-preview-container" style="display: none;">
+            <div class="pdf-content" id="pdfContent">
+                <div class="pdf-header">
+                    <h1>Order Form</h1>
+                    <p class="order-date" id="pdfOrderDate"></p>
+                </div>
+                <div class="pdf-customer-info">
+                    <h2>Customer Information</h2>
+                    <div id="pdfCustomerDetails"></div>
+                </div>
+                <div class="pdf-order-details">
+                    <h2>Order Details</h2>
+                    <table class="order-table" id="pdfOrderTable">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pdfOrderItems"></tbody>
+                    </table>
+                </div>
+                <div class="pdf-totals" id="pdfTotals"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <p>&copy; 2024 Custom Order Form Builder. All rights reserved.</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

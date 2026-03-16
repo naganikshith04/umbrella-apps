@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Convert playlists between music streaming services. Paste playlist URL, parse tracks, and export to CSV/JSON format. Support for Spotify, Apple Music, YouTube Music, and more.">
+    <meta name="keywords" content="playlist converter, music playlist, spotify converter, apple music, youtube music, playlist export, CSV, JSON">
+    <meta property="og:title" content="Playlist Converter - Convert Between Music Services">
+    <meta property="og:description" content="Convert playlists between Spotify, Apple Music, YouTube Music and more. Export to CSV/JSON format.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://playlistconverter.com">
+    <title>Playlist Converter - Convert Between Music Services</title>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Playlist Converter",
+        "description": "Convert playlists between music streaming services",
+        "applicationCategory": "MultimediaApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">🎵 Playlist Converter</h1>
+            <p class="site-tagline">Convert playlists between music streaming services</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="converter-section">
+                <div class="input-zone">
+                    <h2 class="section-title">Paste Playlist URL</h2>
+                    <div class="url-input-container">
+                        <input type="url" id="playlistUrl" class="url-input" placeholder="https://open.spotify.com/playlist/..." aria-label="Playlist URL">
+                        <select id="sourceService" class="service-selector" aria-label="Source service">
+                            <option value="spotify">Spotify</option>
+                            <option value="apple">Apple Music</option>
+                            <option value="youtube">YouTube Music</option>
+                            <option value="tidal">Tidal</option>
+                            <option value="deezer">Deezer</option>
+                        </select>
+                    </div>
+                    <button id="parseBtn" class="btn btn-primary">Parse Playlist</button>
+                    <div class="status-message" id="statusMessage" role="status"></div>
+                </div>
+
+                <div class="loading-indicator" id="loadingIndicator" style="display:none;">
+                    <div class="spinner"></div>
+                    <p>Parsing playlist...</p>
+                </div>
+
+                <div class="playlist-preview" id="playlistPreview" style="display:none;">
+                    <div class="preview-header">
+                        <h3 class="preview-title" id="playlistTitle">Playlist Name</h3>
+                        <p class="preview-meta">
+                            <span id="trackCount">0 tracks</span> • 
+                            <span id="playlistDuration">0:00</span>
+                        </p>
+                    </div>
+
+                    <div class="data-table-container">
+                        <table class="data-table" id="trackTable">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Track</th>
+                                    <th>Artist</th>
+                                    <th>Album</th>
+                                    <th>Duration</th>
+                                </tr>
+                            </thead>
+                            <tbody id="trackTableBody">
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="conversion-options">
+                        <h3 class="section-subtitle">Convert & Export</h3>
+                        <div class="options-grid">
+                            <div class="option-group">
+                                <label for="targetService" class="option-label">Target Service:</label>
+                                <select id="targetService" class="service-selector">
+                                    <option value="spotify">Spotify</option>
+                                    <option value="apple">Apple Music</option>
+                                    <option value="youtube">YouTube Music</option>
+                                    <option value="tidal">Tidal</option>
+                                    <option value="deezer">Deezer</option>
+                                </select>
+                            </div>
+                            <div class="option-group">
+                                <label class="option-label">Export Format:</label>
+                                <div class="button-group">
+                                    <button id="exportCsvBtn" class="btn btn-secondary">Export CSV</button>
+                                    <button id="exportJsonBtn" class="btn btn-secondary">Export JSON</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="share-section">
+                        <h3 class="section-subtitle">Share Converted Playlist</h3>
+                        <div class="share-link-container">
+                            <input type="text" id="shareableLink" class="share-link-input" readonly placeholder="Generate shareable link...">
+                            <button id="generateLinkBtn" class="btn btn-accent">Generate Link</button>
+                            <button id="copyLinkBtn" class="btn btn-outline" style="display:none;">Copy Link</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <aside class="ad-container">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-9048718254553458"
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </aside>
+
+            <section class="features-section">
+                <h2 class="section-title">Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔗</div>
+                        <h3 class="feature-title">Paste URL</h3>
+                        <p class="feature-description">Simply paste your playlist URL from any supported service</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎼</div>
+                        <h3 class="feature-title">Parse Tracks</h3>
+                        <p class="feature-description">Automatically extract all tracks with metadata</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔄</div>
+                        <h3 class="feature-title">Convert Format</h3>
+                        <p class="feature-description">Transform playlists between different music services</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3 class="feature-title">Export Data</h3>
+                        <p class="feature-description">Download as CSV or JSON for further processing</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔗</div>
+                        <h3 class="feature-title">Share Links</h3>
+                        <p class="feature-description">Generate shareable links for converted playlists</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3 class="feature-title">Fast & Free</h3>
+                        <p class="feature-description">Quick conversion with no registration required</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="supported-services">
+                <h2 class="section-title">Supported Services</h2>
+                <div class="services-list">
+                    <span class="service-badge">Spotify</span>
+                    <span class="service-badge">Apple Music</span>
+                    <span class="service-badge">YouTube Music</span>
+                    <span class="service-badge">Tidal</span>
+                    <span class="service-badge">Deezer</span>
+                    <span class="service-badge">Amazon Music</span>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 Playlist Converter. All rights reserved.</p>
+            <p class="footer-note">Convert your playlists easily between streaming services</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

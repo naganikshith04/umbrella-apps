@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop the best products online with advanced filtering, sorting, and secure checkout. Browse our extensive product catalog with great deals.">
+    <meta name="keywords" content="e-commerce, online shopping, product catalog, shopping cart, checkout, buy online, deals">
+    <meta property="og:title" content="Premium E-commerce Store - Shop Now">
+    <meta property="og:description" content="Discover amazing products with our advanced filtering and sorting options. Easy checkout and secure payment.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com">
+    <meta property="og:image" content="https://example.com/og-image.jpg">
+    <title>E-commerce Product Catalog - Shop Online</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "E-commerce Store",
+        "url": "https://example.com",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://example.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
+    </script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <h1 class="site-logo">ShopHub</h1>
+            <div class="search-bar-container">
+                <input type="search" id="productSearch" class="search-input" placeholder="Search products...">
+                <button class="search-button" aria-label="Search">🔍</button>
+            </div>
+            <div class="cart-icon-container">
+                <button class="cart-toggle-button" aria-label="Shopping Cart">
+                    🛒 <span class="cart-count-badge">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <aside class="filter-sidebar">
+            <div class="filter-section">
+                <h2 class="filter-title">Filters</h2>
+                <button class="clear-filters-button">Clear All</button>
+            </div>
+
+            <div class="filter-group">
+                <h3 class="filter-group-title">Category</h3>
+                <label class="filter-checkbox-label">
+                    <input type="checkbox" class="filter-checkbox" data-filter="category" value="electronics">
+                    <span>Electronics</span>
+                </label>
+                <label class="filter-checkbox-label">
+                    <input type="checkbox" class="filter-checkbox" data-filter="category" value="clothing">
+                    <span>Clothing</span>
+                </label>
+                <label class="filter-checkbox-label">
+                    <input type="checkbox" class="filter-checkbox" data-filter="category" value="books">
+                    <span>Books</span>
+                </label>
+                <label class="filter-checkbox-label">
+                    <input type="checkbox" class="filter-checkbox" data-filter="category" value="home">
+                    <span>Home & Garden</span>
+                </label>
+            </div>
+
+            <div class="filter-group">
+                <h3 class="filter-group-title">Price Range</h3>
+                <div class="price-range-inputs">
+                    <input type="number" id="minPrice" class="price-input" placeholder="Min" min="0">
+                    <span>-</span>
+                    <input type="number" id="maxPrice" class="price-input" placeholder="Max" min="0">
+                </div>
+                <button class="apply-price-button">Apply</button>
+            </div>
+
+            <div class="filter-group">
+                <h3 class="filter-group-title">Rating</h3>
+                <label class="filter-checkbox-label">
+                    <input type="checkbox" class="filter-checkbox" data-filter="rating" value="4">
+                    <span>⭐⭐⭐⭐ & up</span>
+                </label>
+                <label class="filter-checkbox-label">
+                    <input type="checkbox" class="filter-checkbox" data-filter="rating" value="3">
+                    <span>⭐⭐⭐ & up</span>
+                </label>
+            </div>
+        </aside>
+
+        <section class="product-catalog-section">
+            <div class="catalog-controls">
+                <div class="view-toggle-group">
+                    <button class="view-toggle-button active" data-view="grid" aria-label="Grid View">⊞</button>
+                    <button class="view-toggle-button" data-view="list" aria-label="List View">☰</button>
+                </div>
+                <div class="sort-controls">
+                    <label for="sortSelect">Sort by:</label>
+                    <select id="sortSelect" class="sort-dropdown">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="name-asc">Name: A-Z</option>
+                        <option value="rating">Top Rated</option>
+                    </select>
+                </div>
+                <div class="results-count">
+                    <span id="resultsCount">0 products</span>
+                </div>
+            </div>
+
+            <div class="product-grid" id="productGrid">
+                <!-- Products will be dynamically inserted here -->
+            </div>
+        </section>
+    </main>
+
+    <aside class="shopping-cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Shopping Cart</h2>
+            <button class="cart-close-button" aria-label="Close Cart">✕</button>
+        </div>
+        <div class="cart-items-container" id="cartItems">
+            <p class="empty-cart-message">Your cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-subtotal">
+                <span>Subtotal:</span>
+                <span class="cart-total-amount" id="cartTotal">$0.00</span>
+            </div>
+            <button class="checkout-button" id="checkoutButton">Proceed to Checkout</button>
+        </div>
+    </aside>
+
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="checkout-modal">
+            <div class="modal-header">
+                <h2>Checkout</h2>
+                <button class="modal-close-button" aria-label="Close">✕</button>
+            </div>
+            <div class="modal-body">
+                <form class="checkout-form" id="checkoutForm">
+                    <section class="checkout-section">
+                        <h3 class="checkout-section-title">Shipping Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" class="form-input" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" id="address" class="form-input" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" id="city" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="zipCode">ZIP Code</label>
+                                <input type="text" id="zipCode" class="form-input" required>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="checkout-section">
+                        <h3 class="checkout-section-title">Payment Information</h3>
+                        <div class="form-group">
+                            <label for="cardNumber">Card Number</label>
+                            <input type="text" id="cardNumber" class="form-input" placeholder="1234 5678 9012 3456" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiryDate">Expiry Date</label>
+                                <input type="text" id="expiryDate" class="form-input" placeholder="MM/YY" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" class="form-input" placeholder="123" required>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="checkout-section">
+                        <h3 class="checkout-section-title">Order Summary</h3>
+                        <div class="order-summary-container" id="orderSummary">
+                            <!-- Order items will be inserted here -->
+                        </div>
+                        <div class="order-total-section">
+                            <div class="order-total-row">
+                                <span>Subtotal:</span>
+                                <span id="checkoutSubtotal">$0.00</span>
+                            </div>
+                            <div class="order-total-row">
+                                <span>Shipping:</span>
+                                <span>$5.99</span>
+                            </div>
+                            <div class="order-total-row">
+                                <span>Tax:</span>
+                                <span id="checkoutTax">$0.00</span>
+                            </div>
+                            <div class="order-total-row order-grand-total">
+                                <span>Total:</span>
+                                <span id="checkoutGrandTotal">$0.00</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <button type="submit" class="place-order-button">Place Order</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification-toast" id="notificationToast"></div>
+
+    <footer class="main-footer">
+        <p>&copy; 2024 ShopHub. All rights reserved.</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

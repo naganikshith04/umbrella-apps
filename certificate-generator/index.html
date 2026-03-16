@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Create custom certificates online. Choose templates, customize text, add signatures and logos. Preview and export as PDF. Free certificate maker with batch generation support.">
+    <meta name="keywords" content="certificate maker, custom certificates, PDF certificates, online certificate generator, batch certificates, certificate templates">
+    <meta property="og:title" content="Custom Certificate Creator - Free Online Tool">
+    <meta property="og:description" content="Create professional certificates with customizable templates, signatures, and logos. Export as PDF instantly.">
+    <meta property="og:type" content="website">
+    <title>Custom Certificate Creator - Free Online Tool</title>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Custom Certificate Creator",
+        "description": "Create custom certificates with templates, signatures, and logos",
+        "applicationCategory": "DesignApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="app-header">
+        <h1>Custom Certificate Creator</h1>
+        <p class="app-subtitle">Design professional certificates in minutes</p>
+    </header>
+
+    <main class="app-container">
+        <section class="control-panel">
+            <div class="template-selector-section">
+                <h2>Choose Template</h2>
+                <div class="template-grid">
+                    <div class="template-card active" data-template="classic">
+                        <div class="template-preview template-classic"></div>
+                        <span>Classic</span>
+                    </div>
+                    <div class="template-card" data-template="modern">
+                        <div class="template-preview template-modern"></div>
+                        <span>Modern</span>
+                    </div>
+                    <div class="template-card" data-template="elegant">
+                        <div class="template-preview template-elegant"></div>
+                        <span>Elegant</span>
+                    </div>
+                    <div class="template-card" data-template="minimal">
+                        <div class="template-preview template-minimal"></div>
+                        <span>Minimal</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="customization-section">
+                <h2>Customize Text</h2>
+                <form class="certificate-form">
+                    <div class="form-group">
+                        <label for="recipient-name">Recipient Name</label>
+                        <input type="text" id="recipient-name" class="form-input" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="certificate-title">Certificate Title</label>
+                        <input type="text" id="certificate-title" class="form-input" placeholder="Certificate of Achievement" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description-text">Description</label>
+                        <textarea id="description-text" class="form-input" rows="3" placeholder="For outstanding performance in..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="issue-date">Issue Date</label>
+                        <input type="date" id="issue-date" class="form-input" required>
+                    </div>
+                </form>
+            </div>
+
+            <div class="upload-section">
+                <h2>Add Elements</h2>
+                <div class="upload-grid">
+                    <div class="upload-zone" id="logo-upload-zone">
+                        <input type="file" id="logo-upload" accept="image/*" hidden>
+                        <label for="logo-upload" class="upload-label">
+                            <svg class="upload-icon" viewBox="0 0 24 24" width="32" height="32">
+                                <path fill="currentColor" d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/>
+                            </svg>
+                            <span>Upload Logo</span>
+                        </label>
+                        <div class="uploaded-preview" id="logo-preview"></div>
+                    </div>
+                    <div class="upload-zone" id="signature-upload-zone">
+                        <input type="file" id="signature-upload" accept="image/*" hidden>
+                        <label for="signature-upload" class="upload-label">
+                            <svg class="upload-icon" viewBox="0 0 24 24" width="32" height="32">
+                                <path fill="currentColor" d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                            </svg>
+                            <span>Add Signature</span>
+                        </label>
+                        <div class="uploaded-preview" id="signature-preview"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="batch-section">
+                <h2>Batch Generation</h2>
+                <div class="upload-zone" id="csv-upload-zone">
+                    <input type="file" id="csv-upload" accept=".csv" hidden>
+                    <label for="csv-upload" class="upload-label">
+                        <svg class="upload-icon" viewBox="0 0 24 24" width="32" height="32">
+                            <path fill="currentColor" d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+                        </svg>
+                        <span>Upload CSV File</span>
+                    </label>
+                </div>
+                <p class="batch-info">CSV format: name,title,description,date</p>
+                <div class="data-table-container" id="batch-data-preview"></div>
+            </div>
+
+            <div class="action-buttons">
+                <button type="button" class="btn btn-secondary" id="preview-btn">Preview Certificate</button>
+                <button type="button" class="btn btn-primary" id="download-btn">Download PDF</button>
+                <button type="button" class="btn btn-primary" id="batch-download-btn" style="display:none;">Download All (ZIP)</button>
+            </div>
+        </section>
+
+        <section class="preview-panel">
+            <h2>Preview</h2>
+            <div class="certificate-preview-container">
+                <div class="certificate-canvas" id="certificate-canvas">
+                    <div class="certificate-content classic-template">
+                        <div class="certificate-border">
+                            <div class="certificate-logo" id="preview-logo"></div>
+                            <h3 class="certificate-header">Certificate of Achievement</h3>
+                            <p class="certificate-subtitle">This is to certify that</p>
+                            <h2 class="certificate-recipient">John Doe</h2>
+                            <p class="certificate-description">has successfully completed the requirements</p>
+                            <div class="certificate-footer">
+                                <div class="certificate-signature" id="preview-signature"></div>
+                                <p class="certificate-date">Date: <span id="preview-date">2024-01-01</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <aside class="ad-container">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9048718254553458"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </aside>
+
+    <footer class="app-footer">
+        <p>&copy; 2024 Custom Certificate Creator. All rights reserved.</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Recipe Manager - Organize recipes, plan meals, create shopping lists, and manage ingredients with our comprehensive recipe management tool.">
+    <meta name="keywords" content="recipe manager, meal planning, shopping list, ingredients, cooking, recipes, meal prep">
+    <meta property="og:title" content="Recipe Manager - Plan Meals & Organize Recipes">
+    <meta property="og:description" content="Manage your recipes, plan weekly meals, and generate shopping lists automatically.">
+    <meta property="og:type" content="website">
+    <title>Recipe Manager - Meal Planning & Shopping Lists</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@3.0.0/index.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9048718254553458" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Recipe Manager",
+        "description": "Comprehensive recipe management tool with meal planning and shopping list features",
+        "applicationCategory": "LifestyleApplication",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <h1 class="app-title">🍳 Recipe Manager</h1>
+            <nav class="main-nav">
+                <button class="nav-btn active" data-tab="recipes">Recipes</button>
+                <button class="nav-btn" data-tab="planner">Meal Planner</button>
+                <button class="nav-btn" data-tab="shopping">Shopping List</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section id="recipes-tab" class="tab-content active">
+            <div class="content-header">
+                <h2>My Recipes</h2>
+                <button class="btn-primary" id="add-recipe-btn">+ Add Recipe</button>
+            </div>
+
+            <div class="search-filter-bar">
+                <input type="text" class="search-input" id="recipe-search" placeholder="Search recipes...">
+                <select class="filter-select" id="category-filter">
+                    <option value="">All Categories</option>
+                    <option value="breakfast">Breakfast</option>
+                    <option value="lunch">Lunch</option>
+                    <option value="dinner">Dinner</option>
+                    <option value="dessert">Dessert</option>
+                    <option value="snack">Snack</option>
+                </select>
+            </div>
+
+            <div class="recipe-grid" id="recipe-grid"></div>
+        </section>
+
+        <section id="planner-tab" class="tab-content">
+            <div class="content-header">
+                <h2>Weekly Meal Planner</h2>
+                <button class="btn-secondary" id="generate-shopping-list">Generate Shopping List</button>
+            </div>
+            <div class="meal-planner-calendar" id="meal-calendar"></div>
+        </section>
+
+        <section id="shopping-tab" class="tab-content">
+            <div class="content-header">
+                <h2>Shopping List</h2>
+                <div class="button-group">
+                    <button class="btn-secondary" id="clear-shopping-list">Clear List</button>
+                    <button class="btn-primary" id="export-shopping-list">Export List</button>
+                </div>
+            </div>
+            <div class="shopping-list-container">
+                <ul class="shopping-list" id="shopping-list"></ul>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal" id="recipe-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="close-modal">&times;</button>
+            <h2 class="modal-title" id="modal-title">Add New Recipe</h2>
+            <form class="recipe-form" id="recipe-form">
+                <div class="form-group">
+                    <label for="recipe-name">Recipe Name</label>
+                    <input type="text" id="recipe-name" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="recipe-category">Category</label>
+                    <select id="recipe-category" class="form-select" required>
+                        <option value="breakfast">Breakfast</option>
+                        <option value="lunch">Lunch</option>
+                        <option value="dinner">Dinner</option>
+                        <option value="dessert">Dessert</option>
+                        <option value="snack">Snack</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="recipe-image">Image URL</label>
+                    <input type="url" id="recipe-image" class="form-input" placeholder="https://...">
+                </div>
+                <div class="form-group">
+                    <label for="recipe-servings">Servings</label>
+                    <input type="number" id="recipe-servings" class="form-input" min="1" value="4" required>
+                </div>
+                <div class="form-group">
+                    <label for="recipe-time">Prep Time (minutes)</label>
+                    <input type="number" id="recipe-time" class="form-input" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label>Ingredients</label>
+                    <div class="ingredient-list" id="ingredient-list">
+                        <div class="ingredient-item">
+                            <input type="text" class="form-input ingredient-input" placeholder="e.g., 2 cups flour" required>
+                            <button type="button" class="btn-remove">×</button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-secondary btn-small" id="add-ingredient">+ Add Ingredient</button>
+                </div>
+                <div class="form-group">
+                    <label>Instructions</label>
+                    <div class="instruction-list" id="instruction-list">
+                        <div class="instruction-item">
+                            <textarea class="form-textarea instruction-input" placeholder="Step 1..." required></textarea>
+                            <button type="button" class="btn-remove">×</button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-secondary btn-small" id="add-instruction">+ Add Step</button>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancel-recipe">Cancel</button>
+                    <button type="submit" class="btn-primary">Save Recipe</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="recipe-detail-modal">
+        <div class="modal-content modal-large">
+            <button class="modal-close" id="close-detail-modal">&times;</button>
+            <div class="recipe-detail" id="recipe-detail"></div>
+        </div>
+    </div>
+
+    <div class="modal" id="meal-plan-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="close-meal-modal">&times;</button>
+            <h2 class="modal-title">Add to Meal Plan</h2>
+            <div class="meal-plan-form">
+                <p id="meal-plan-date"></p>
+                <div class="recipe-selection" id="recipe-selection"></div>
+            </div>
+        </div>
+    </div>
+
+    <aside class="ad-container">
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9048718254553458"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </aside>
+
+    <footer class="main-footer">
+        <p>&copy; 2024 Recipe Manager. Organize, Plan, Cook.</p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
